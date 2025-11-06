@@ -1,3 +1,5 @@
+
+
 import React, { useMemo, useState, useEffect } from "react";
 import {
   Filter,
@@ -168,6 +170,21 @@ function Badge({ children }) {
   return <span className="rounded-full border border-border px-2 py-1 text-xs text-text/80">{children}</span>;
 }
 
+function Dialog({ open, onClose, children }) {
+  return open ? (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+      <div className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-4">
+        <div className="flex justify-end">
+          <button className="rounded-full px-2 text-2xl" onClick={onClose}>
+            ×
+          </button>
+        </div>
+        {children}
+      </div>
+    </div>
+  ) : null;
+}
+
 /* =========================
    NAVBAR
    ========================= */
@@ -181,24 +198,12 @@ function NavBar() {
         </a>
 
         <div className="hidden gap-6 md:flex">
-          <a href="#programs" className="text-sm hover:opacity-80">
-            Programs
-          </a>
-          <a href="#howto" className="text-sm hover:opacity-80">
-            How to Apply
-          </a>
-          <a href="#destinations" className="text-sm hover:opacity-80">
-            Destinations
-          </a>
-          <a href="#services" className="text-sm hover:opacity-80">
-            Services
-          </a>
-          <a href="#testimonials" className="text-sm hover:opacity-80">
-            Testimonials
-          </a>
-          <a href="#contact" className="text-sm hover:opacity-80">
-            Contact
-          </a>
+          <a href="#programs" className="text-sm hover:opacity-80">Programs</a>
+          <a href="#howto" className="text-sm hover:opacity-80">How to Apply</a>
+          <a href="#destinations" className="text-sm hover:opacity-80">Destinations</a>
+          <a href="#services" className="text-sm hover:opacity-80">Services</a>
+          <a href="#testimonials" className="text-sm hover:opacity-80">Testimonials</a>
+          <a href="#contact" className="text-sm hover:opacity-80">Contact</a>
         </div>
 
         <div className="flex items-center gap-2">
@@ -208,13 +213,10 @@ function NavBar() {
           <Button className="bg-olive text-white hover:bg-olivedk" onClick={() => setOpen(true)}>
             Quick Application
           </Button>
-          <a href="#book">
-            <Button>Book a Call</Button>
-          </a>
+          <a href="#book"><Button>Book a Call</Button></a>
         </div>
       </div>
 
-      {/* Quick Apply dialog trigger from navbar */}
       <Dialog open={open} onClose={() => setOpen(false)}>
         <div className="px-2 pb-6">
           <h3 className="mb-4 text-xl font-semibold text-text">Quick Application</h3>
@@ -241,31 +243,19 @@ function Hero() {
             Search programs, apply once, track everything. We guide you end-to-end—admissions, visas, housing, and more.
           </p>
           <div className="flex flex-wrap gap-3">
-            <a href="#programs">
-              <Button className="bg-olive text-white hover:bg-olivedk">Find Programs</Button>
-            </a>
+            <a href="#programs"><Button className="bg-olive text-white hover:bg-olivedk">Find Programs</Button></a>
             <Button onClick={() => setOpen(true)}>Quick Application</Button>
           </div>
           <div className="mt-6 flex items-center gap-6 text-sm text-text/70">
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4" /> Trusted partners
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4" /> Fast response
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4" /> Document checklist
-            </div>
+            <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4"/> Trusted partners</div>
+            <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4"/> Fast response</div>
+            <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4"/> Document checklist</div>
           </div>
         </div>
 
         <Card>
           <CardHeader>
-            <CardTitle>
-              <span className="inline-flex items-center gap-2">
-                <Filter className="h-5 w-5" /> Program Finder
-              </span>
-            </CardTitle>
+            <CardTitle><span className="inline-flex items-center gap-2"><Filter className="h-5 w-5"/> Program Finder</span></CardTitle>
           </CardHeader>
           <CardContent>
             <ProgramSearch compact />
@@ -273,7 +263,6 @@ function Hero() {
         </Card>
       </div>
 
-      {/* Quick Apply dialog from hero */}
       <Dialog open={open} onClose={() => setOpen(false)}>
         <div className="px-2 pb-6">
           <h3 className="mb-4 text-xl font-semibold text-text">Quick Application</h3>
@@ -311,47 +300,24 @@ function ProgramSearch({ compact = false }) {
     <div>
       <div className={`grid gap-3 ${compact ? "md:grid-cols-2" : "md:grid-cols-5"}`}>
         <div className="relative md:col-span-2">
-          <Input
-            placeholder="Search program or institution"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className="pl-9"
-          />
-          <Search className="pointer-events-none absolute left-2 top-2.5 h-4 w-4 text-text/50" />
+          <Input placeholder="Search program or institution" value={query} onChange={(e)=>setQuery(e.target.value)} className="pl-9" />
+          <Search className="pointer-events-none absolute left-2 top-2.5 h-4 w-4 text-text/50"/>
         </div>
         <Select value={country} onChange={setCountry} placeholder="Country">
-          {COUNTRIES.map((c) => (
-            <option key={c} value={c}>
-              {c}
-            </option>
-          ))}
+          {COUNTRIES.map(c => <option key={c} value={c}>{c}</option>)}
         </Select>
         <Select value={level} onChange={setLevel} placeholder="Level">
-          {LEVELS.map((l) => (
-            <option key={l} value={l}>
-              {l}
-            </option>
-          ))}
+          {LEVELS.map(l => <option key={l} value={l}>{l}</option>)}
         </Select>
         <Select value={field} onChange={setField} placeholder="Field">
-          {FIELDS.map((f) => (
-            <option key={f} value={f}>
-              {f}
-            </option>
-          ))}
+          {FIELDS.map(f => <option key={f} value={f}>{f}</option>)}
         </Select>
-        <Input
-          placeholder="Max tuition (€)"
-          value={maxTuition}
-          onChange={(e) => setMaxTuition(e.target.value)}
-        />
+        <Input placeholder="Max tuition (€)" value={maxTuition} onChange={e=>setMaxTuition(e.target.value)} />
       </div>
 
       {!compact && (
         <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {results.map((p) => (
-            <ProgramCard key={p.id} p={p} />
-          ))}
+          {results.map(p => <ProgramCard key={p.id} p={p} />)}
           {results.length === 0 && <div className="text-sm text-text/60">No results. Loosen filters.</div>}
         </div>
       )}
@@ -365,49 +331,28 @@ function ProgramCard({ p }) {
     <Card className="flex flex-col">
       <CardHeader>
         <CardTitle className="text-lg text-text">{p.program_name}</CardTitle>
-        <div className="text-sm text-text/70">
-          {p.institution} • {p.city}, {p.country}
-        </div>
+        <div className="text-sm text-text/70">{p.institution} • {p.city}, {p.country}</div>
       </CardHeader>
       <CardContent className="flex flex-1 flex-col gap-3">
         <div className="flex flex-wrap gap-2">
-          <Badge>
-            <span className="inline-flex items-center gap-1">
-              <GraduationCap className="h-3 w-3" />
-              {p.level}
-            </span>
-          </Badge>
-          <Badge>
-            <span className="inline-flex items-center gap-1">
-              <MapPin className="h-3 w-3" />
-              {p.field}
-            </span>
-          </Badge>
+          <Badge><span className="inline-flex items-center gap-1"><GraduationCap className="h-3 w-3"/>{p.level}</span></Badge>
+          <Badge><span className="inline-flex items-center gap-1"><MapPin className="h-3 w-3"/>{p.field}</span></Badge>
           {p.scholarships && <Badge>Scholarships</Badge>}
         </div>
-        <div className="text-sm text-text">
-          Tuition: <strong>{currency(p.tuition_per_year)}/year</strong>
-        </div>
+        <div className="text-sm text-text">Tuition: <strong>{currency(p.tuition_per_year)}/year</strong></div>
         <div className="text-sm text-text">Intakes: {p.intake_months.join(", ")}</div>
         <div className="text-sm text-text">Language: {p.language}</div>
         <div className="text-xs text-text/60">Last updated: {p.last_updated}</div>
         <div className="mt-auto flex gap-2 pt-2">
-          <Button className="bg-olive text-white hover:bg-olivedk" onClick={() => setOpen(true)}>
-            Apply
-          </Button>
-          <a href={p.application_link} className="flex-1">
-            <Button className="w-full">Details</Button>
-          </a>
+          <Button className="bg-olive text-white hover:bg-olivedk" onClick={()=>setOpen(true)}>Apply</Button>
+          <a href={p.application_link} className="flex-1"><Button className="w-full">Details</Button></a>
         </div>
       </CardContent>
 
-      <Dialog open={open} onClose={() => setOpen(false)}>
+      <Dialog open={open} onClose={()=>setOpen(false)}>
         <div className="px-2 pb-6">
           <h3 className="mb-4 text-xl font-semibold text-text">Apply – {p.program_name}</h3>
-          <QuickApplyForm
-            preset={{ program_name: p.program_name, institution: p.institution, country: p.country }}
-            onDone={() => setOpen(false)}
-          />
+          <QuickApplyForm preset={{ program_name: p.program_name, institution: p.institution, country: p.country }} onDone={()=>setOpen(false)} />
         </div>
       </Dialog>
     </Card>
@@ -425,9 +370,7 @@ function QuickApplyForm({ preset, onDone }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setSubmitting(true);
-    setErr("");
-    setOk(false);
+    setSubmitting(true); setErr(""); setOk(false);
 
     try {
       let uploadedUrl = null;
@@ -441,21 +384,9 @@ function QuickApplyForm({ preset, onDone }) {
       }
 
       const data = Object.fromEntries(new FormData(e.currentTarget));
-      const payload = {
-        ...data,
-        uploaded_docs: uploadedUrl,
-        source_page: window.location.href,
-        submitted_at: new Date().toISOString(),
-      };
-
-      if (!HUBSPOT_WEBHOOK_URL) {
-        console.warn("No webhook set; printing payload", payload);
-      }
-      const r = await fetch(HUBSPOT_WEBHOOK_URL || "/__debug", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      const payload = { ...data, uploaded_docs: uploadedUrl, source_page: window.location.href, submitted_at: new Date().toISOString() };
+      if (!HUBSPOT_WEBHOOK_URL) { console.warn("No webhook set; printing payload", payload); }
+      const r = await fetch(HUBSPOT_WEBHOOK_URL || "/__debug", { method: "POST", headers: { "Content-Type":"application/json" }, body: JSON.stringify(payload) });
       if (!r.ok) throw new Error("Submit failed");
 
       setOk(true);
@@ -475,11 +406,7 @@ function QuickApplyForm({ preset, onDone }) {
         <Input name="name" placeholder="Full name" required />
         <Input type="email" name="email" placeholder="Email" required />
         <Input name="phone" placeholder="Phone/WhatsApp" />
-        <select
-          name="level"
-          className="w-full rounded-xl border border-border px-3 py-2 text-sm text-text"
-          defaultValue={preset?.level || ""}
-        >
+        <select name="level" className="w-full rounded-xl border border-border px-3 py-2 text-sm text-text" defaultValue={preset?.level || ""}>
           <option value="">Target level</option>
           <option>Undergraduate</option>
           <option>Postgraduate</option>
@@ -499,14 +426,10 @@ function QuickApplyForm({ preset, onDone }) {
       <label className="flex items-center gap-2 text-sm text-text/70">
         <Upload className="h-4 w-4" /> <span>Upload transcript/IELTS (optional)</span>
       </label>
-      <Input type="file" onChange={(e) => setFile(e.target.files?.[0] || null)} />
-      <div className="text-xs text-text/60">
-        By submitting you consent to processing your data for admissions guidance. See our Privacy Policy.
-      </div>
+      <Input type="file" onChange={(e)=>setFile(e.target.files?.[0] || null)} />
+      <div className="text-xs text-text/60">By submitting you consent to processing your data for admissions guidance. See our Privacy Policy.</div>
       <div className="flex items-center gap-3">
-        <Button type="submit" className="bg-olive text-white hover:bg-olivedk" disabled={submitting}>
-          {submitting ? "Submitting…" : "Submit"}
-        </Button>
+        <Button type="submit" className="bg-olive text-white hover:bg-olivedk" disabled={submitting}>{submitting ? "Submitting…" : "Submit"}</Button>
         {ok && <span className="text-sm text-emerald-600">Thanks! We'll contact you shortly.</span>}
         {err && <span className="text-sm text-red-600">{err}</span>}
       </div>
@@ -529,14 +452,7 @@ function HowToApply() {
     <Section id="howto" title="How to Apply" bg="bg-white">
       <div className="grid gap-4 md:grid-cols-5">
         {steps.map((s, i) => (
-          <Card key={i}>
-            <CardHeader>
-              <CardTitle>
-                {i + 1}. {s.t}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm text-text/70">{s.d}</CardContent>
-          </Card>
+          <Card key={i}><CardHeader><CardTitle>{i+1}. {s.t}</CardTitle></CardHeader><CardContent className="text-sm text-text/70">{s.d}</CardContent></Card>
         ))}
       </div>
     </Section>
@@ -552,13 +468,8 @@ function Destinations() {
   return (
     <Section id="destinations" title="Top Destinations" bg="bg-card">
       <div className="grid gap-4 md:grid-cols-3">
-        {dests.map((d) => (
-          <Card key={d.c}>
-            <CardHeader>
-              <CardTitle>{d.c}</CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm text-text/70">{d.blurb}</CardContent>
-          </Card>
+        {dests.map(d => (
+          <Card key={d.c}><CardHeader><CardTitle>{d.c}</CardTitle></CardHeader><CardContent className="text-sm text-text/70">{d.blurb}</CardContent></Card>
         ))}
       </div>
     </Section>
@@ -575,13 +486,8 @@ function Services() {
   return (
     <Section id="services" title="Services" bg="bg-white">
       <div className="grid gap-4 md:grid-cols-4">
-        {items.map((i) => (
-          <Card key={i.t}>
-            <CardHeader>
-              <CardTitle>{i.t}</CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm text-text/70">{i.d}</CardContent>
-          </Card>
+        {items.map(i => (
+          <Card key={i.t}><CardHeader><CardTitle>{i.t}</CardTitle></CardHeader><CardContent className="text-sm text-text/70">{i.d}</CardContent></Card>
         ))}
       </div>
     </Section>
@@ -615,10 +521,7 @@ function Testimonials() {
         <h2 className="mb-8 text-3xl font-bold text-text">Our Students’ Journeys</h2>
         <div className="grid gap-4 md:grid-cols-3">
           {t.map((x) => (
-            <div
-              key={x.n}
-              className="rounded-2xl border border-border bg-white p-6 shadow-sm transition hover:shadow-md"
-            >
+            <div key={x.n} className="rounded-2xl border border-border bg-white p-6 shadow-sm transition hover:shadow-md">
               <div className="mb-4 flex items-center gap-3">
                 <img src={x.img} alt={x.n} className="h-12 w-12 rounded-full object-cover" />
                 <div className="font-semibold text-text">{x.n}</div>
@@ -646,8 +549,7 @@ function Contact() {
         <div className="mx-auto max-w-7xl px-4">
           <h2 className="mb-6 text-3xl font-bold text-text">Become a Volunteer</h2>
           <p className="mb-4 text-sm text-text/70">
-            Already studying abroad? Help new students with airport pickup, accommodation, and settling in — free or
-            paid.
+            Already studying abroad? Help new students with airport pickup, accommodation, and settling in — free or paid.
           </p>
 
           <form action="mailto:sanjaybolla@gmail.com" method="post" encType="text/plain" className="grid gap-3">
@@ -656,33 +558,16 @@ function Contact() {
               <input name="country" placeholder="Country" className="rounded-xl border border-border px-3 py-2" required />
               <input name="city" placeholder="City" className="rounded-xl border border-border px-3 py-2" required />
             </div>
-            <input
-              name="whatsapp"
-              placeholder="WhatsApp number"
-              className="rounded-xl border border-border px-3 py-2"
-              required
-            />
+            <input name="whatsapp" placeholder="WhatsApp number" className="rounded-xl border border-border px-3 py-2" required />
             <input name="email" type="email" placeholder="Email" className="rounded-xl border border-border px-3 py-2" />
             <select name="type" className="rounded-xl border border-border px-3 py-2" required>
               <option value="">Free or Paid?</option>
               <option>Free</option>
               <option>Paid</option>
             </select>
-            <input
-              name="hourly_rate"
-              placeholder="Hourly rate (€) if paid"
-              className="rounded-xl border border-border px-3 py-2"
-            />
-            <input
-              name="services"
-              placeholder="Services (comma separated)"
-              className="rounded-xl border border-border px-3 py-2"
-            />
-            <textarea
-              name="bio"
-              placeholder="Short description (optional)"
-              className="rounded-xl border border-border px-3 py-2"
-            />
+            <input name="hourly_rate" placeholder="Hourly rate (€) if paid" className="rounded-xl border border-border px-3 py-2" />
+            <input name="services" placeholder="Services (comma separated)" className="rounded-xl border border-border px-3 py-2" />
+            <textarea name="bio" placeholder="Short description (optional)" className="rounded-xl border border-border px-3 py-2" />
             <button className="rounded-2xl bg-olive px-4 py-2 text-white hover:bg-olivedk">Submit</button>
           </form>
 
@@ -703,12 +588,7 @@ function Contact() {
             </CardHeader>
             <CardContent>
               <div id="book" className="aspect-video w-full overflow-hidden rounded-xl">
-                <iframe
-                  title="Calendly"
-                  src={CALENDLY_INLINE_URL}
-                  className="h-full w-full"
-                  frameBorder="0"
-                />
+                <iframe title="Calendly" src={CALENDLY_INLINE_URL} className="h-full w-full" frameBorder="0" />
               </div>
             </CardContent>
           </Card>
@@ -728,11 +608,7 @@ function Contact() {
                   await fetch(HUBSPOT_WEBHOOK_URL || "/__debug", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                      ...data,
-                      form: "contact",
-                      source_page: window.location.href,
-                    }),
+                    body: JSON.stringify({ ...data, form: "contact", source_page: window.location.href }),
                   });
                   e.currentTarget.reset();
                   alert("Thanks! We'll reply soon.");
@@ -742,9 +618,7 @@ function Contact() {
                 <Input type="email" name="email" placeholder="Email" required />
                 <Input name="phone" placeholder="Phone/WhatsApp" />
                 <Textarea name="message" placeholder="How can we help?" required />
-                <Button className="bg-olive text-white hover:bg-olivedk" type="submit">
-                  Send
-                </Button>
+                <Button className="bg-olive text-white hover:bg-olivedk" type="submit">Send</Button>
               </form>
 
               <div className="mt-4 flex items-center gap-2 text-sm text-text/70">
@@ -767,31 +641,12 @@ function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 md:flex-row">
         <div className="text-sm text-text/70">© {new Date().getFullYear()} WeGuideAbroad. All rights reserved.</div>
         <div className="flex gap-4 text-sm">
-          <a href="#privacy" className="hover:underline">
-            Privacy
-          </a>
-          <a href="#terms" className="hover:underline">
-            Terms
-          </a>
+          <a href="#privacy" className="hover:underline">Privacy</a>
+          <a href="#terms" className="hover:underline">Terms</a>
         </div>
       </div>
     </footer>
   );
-}
-
-function Dialog({ open, onClose, children }) {
-  return open ? (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-      <div className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-4">
-        <div className="flex justify-end">
-          <button className="rounded-full px-2 text-2xl" onClick={onClose}>
-            ×
-          </button>
-        </div>
-        {children}
-      </div>
-    </div>
-  ) : null;
 }
 
 function ChatWidget() {
@@ -800,9 +655,7 @@ function ChatWidget() {
     const s = document.createElement("script");
     s.innerHTML = CHAT_WIDGET_SCRIPT;
     document.body.appendChild(s);
-    return () => {
-      document.body.removeChild(s);
-    };
+    return () => { document.body.removeChild(s); };
   }, []);
   return null;
 }
