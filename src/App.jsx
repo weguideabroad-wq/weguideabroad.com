@@ -129,7 +129,12 @@ function NavBar() {
   return (
     <div className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-        <a href="#home" className="text-xl font-bold">WeGuideAbroad</a>
+        <a href="#home" className="text-xl font-bolWd"><img
+  src="/logo.png"
+  alt="WeGuideAbroad Logo"
+  className="h-10 w-auto"
+/>
+</a>
         <div className="hidden gap-6 md:flex">
           <a href="#programs" className="text-sm hover:opacity-80">Programs</a>
           <a href="#howto" className="text-sm hover:opacity-80">How to Apply</a>
