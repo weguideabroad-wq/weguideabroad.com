@@ -195,8 +195,8 @@ function NavBar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <a href="tel:+37125722769">
-            <Button className="text-olive border-olive hover:bg-olive/10">Call: +371 25722769</Button>
+          <a href="tel:+918712290029">
+            <Button className="text-olive border-olive hover:bg-olive/10">Call: +91 8712290029</Button>
           </a>
           <Button className="bg-olive text-white hover:bg-olivedk" onClick={() => setOpen(true)}>
             Quick Application
@@ -485,7 +485,7 @@ function Contact() {
             Already studying abroad? Help new students with airport pickup, accommodation, and settling in — free or paid.
           </p>
 
-          <form action="mailto:sanjaybolla@gmail.com" method="post" encType="text/plain" className="grid gap-3">
+          <form action="mailto:weguideabroad@gmail.com" method="post" encType="text/plain" className="grid gap-3">
             <input name="name" placeholder="Full name" className="rounded-xl border border-border px-3 py-2" required />
             <div className="grid gap-3 md:grid-cols-2">
               <input name="country" placeholder="Country" className="rounded-xl border border-border px-3 py-2" required />
