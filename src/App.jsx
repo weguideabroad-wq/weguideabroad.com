@@ -466,7 +466,38 @@ function Testimonials() {
 }
 
 function Contact() {
-  return (
+  return (<section id="volunteers" className="bg-card py-16">
+  <div className="mx-auto max-w-7xl px-4">
+    <h2 className="mb-6 text-3xl font-bold text-text">Become a Volunteer</h2>
+    <p className="mb-4 text-sm text-text/70">
+      Already studying abroad? Help new students with airport pickup, accommodation, and settling in — free or paid.
+    </p>
+
+    <form action="mailto:sanjaybolla@gmail.com" method="post" encType="text/plain" className="grid gap-3">
+      <input name="name" placeholder="Full name" className="rounded-xl border border-border px-3 py-2" required />
+      <div className="grid gap-3 md:grid-cols-2">
+        <input name="country" placeholder="Country" className="rounded-xl border border-border px-3 py-2" required />
+        <input name="city" placeholder="City" className="rounded-xl border border-border px-3 py-2" required />
+      </div>
+      <input name="whatsapp" placeholder="WhatsApp number" className="rounded-xl border border-border px-3 py-2" required />
+      <input name="email" type="email" placeholder="Email" className="rounded-xl border border-border px-3 py-2" />
+      <select name="type" className="rounded-xl border border-border px-3 py-2" required>
+        <option value="">Free or Paid?</option>
+        <option>Free</option>
+        <option>Paid</option>
+      </select>
+      <input name="hourly_rate" placeholder="Hourly rate (€) if paid" className="rounded-xl border border-border px-3 py-2" />
+      <input name="services" placeholder="Services (comma separated)" className="rounded-xl border border-border px-3 py-2" />
+      <textarea name="bio" placeholder="Short description (optional)" className="rounded-xl border border-border px-3 py-2" />
+      <button className="rounded-2xl bg-olive px-4 py-2 text-white hover:bg-olivedk">Submit</button>
+    </form>
+
+    <p className="mt-4 text-xs text-text/60">
+      Prefer WhatsApp? Message us at +371 25722769 with your city and services.
+    </p>
+  </div>
+</section>
+
     <Section id="contact" title="Talk to us" bg="bg-white">
       <div className="grid gap-6 md:grid-cols-2">
         <Card>
