@@ -4,12 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg:      "#F2EFE7", // background cream
-        card:    "#E2E7D2", // section cards
-        olive:   "#6F7D48", // primary button
-        olivedk: "#556235", // hover/dark
-        text:    "#1A1A1A", // main text
-        border:  "#D9D9D2", // subtle borders
+        bg:      "#F2EFE7",
+        card:    "#E2E7D2",
+        olive:   "#6F7D48",
+        olivedk: "#556235",
+        text:    "#1A1A1A",
+        border:  "#D9D9D2",
       },
     },
   },
