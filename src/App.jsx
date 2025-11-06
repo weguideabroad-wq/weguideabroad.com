@@ -190,6 +190,9 @@ function Hero() {
     </section>
   );
 }
+<a href="tel:+37125722769" className="inline-flex items-center rounded-2xl border border-[#6F7D48] px-4 py-2 text-[#6F7D48] hover:bg-[#6F7D48]/10">
+  Call: +371 25722769
+</a>
 
 // ---------- PROGRAM SEARCH ----------
 function ProgramSearch({ compact = false }) {
