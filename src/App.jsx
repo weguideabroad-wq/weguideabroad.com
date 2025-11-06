@@ -190,7 +190,6 @@ function NavBar() {
           <a href="#howto" className="text-sm hover:opacity-80">How to Apply</a>
           <a href="#destinations" className="text-sm hover:opacity-80">Destinations</a>
           <a href="#services" className="text-sm hover:opacity-80">Services</a>
-          <a href="#testimonials" className="text-sm hover:opacity-80">Testimonials</a>
           <a href="#contact" className="text-sm hover:opacity-80">Contact</a>
         </div>
 
@@ -475,15 +474,9 @@ function Services() {
   );
 }
 
-/* ========= TESTIMONIALS (REAL STUDENTS) ========= */
-function Testimonials() {
-  const t = [
-    { n: "Adesh Goud Mallati", img: "/testimonials/adesh.jpg", q: "From Nizamabad to RNU — BBA in Tourism. Smooth process, guided every step." },
-    { n: "Suryateja Gajendrawar", img: "/testimonials/suryateja.jpg", q: "From Nizamabad to RTU — Masters in Aviation Engineering. Visa + admission support was on point." },
-    { n: "Vinaykumar Karakanti", img: "/testimonials/vinay.jpg", q: "From Warangal to TSI University — Masters in Computer Science. Fast responses, transparent guidance." },
-  ];
+
   return (
-    <section id="testimonials" className="bg-card py-16">
+    
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="mb-8 text-3xl font-bold text-text">Our Students’ Journeys</h2>
         <div className="grid gap-4 md:grid-cols-3">
@@ -630,7 +623,6 @@ export default function App() {
       <HowToApply />
       <Destinations />
       <Services />
-      <Testimonials />
       <Contact />
       <Footer />
     </div>
