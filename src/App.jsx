@@ -1,5 +1,3 @@
-
-
 import React, { useMemo, useState, useEffect } from "react";
 import {
   Filter,
@@ -13,18 +11,14 @@ import {
   Upload,
 } from "lucide-react";
 
-/* =========================
-   ENV VARS (set in Vercel)
-   ========================= */
+/* ========= ENV (Vercel → Environment Variables) ========= */
 const HUBSPOT_WEBHOOK_URL = import.meta.env.VITE_WEBHOOK_URL || "";
 const FILE_UPLOAD_ENDPOINT = import.meta.env.VITE_UPLOAD_ENDPOINT || "";
 const CALENDLY_INLINE_URL =
   import.meta.env.VITE_CALENDLY_URL || "https://calendly.com/your-team/intro-call";
 const CHAT_WIDGET_SCRIPT = ""; // optional
 
-/* =========================
-   DATA (edit later or move to JSON)
-   ========================= */
+/* ========= SAMPLE DATA (edit later) ========= */
 const PROGRAMS = [
   {
     id: 1,
@@ -96,9 +90,7 @@ function currency(n) {
   return new Intl.NumberFormat(undefined, { style: "currency", currency: "EUR" }).format(n);
 }
 
-/* =========================
-   SMALL UI PRIMITIVES
-   ========================= */
+/* ========= UI PRIMITIVES ========= */
 function Section({ id, title, children, bg = "bg-bg" }) {
   return (
     <section id={id} className={`${bg} py-16`}>
@@ -109,7 +101,6 @@ function Section({ id, title, children, bg = "bg-bg" }) {
     </section>
   );
 }
-
 function Card({ className = "", children }) {
   return <div className={`rounded-2xl border border-border bg-white shadow-sm ${className}`}>{children}</div>;
 }
@@ -169,7 +160,6 @@ function Select({ value, onChange, children, placeholder }) {
 function Badge({ children }) {
   return <span className="rounded-full border border-border px-2 py-1 text-xs text-text/80">{children}</span>;
 }
-
 function Dialog({ open, onClose, children }) {
   return open ? (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
@@ -185,9 +175,7 @@ function Dialog({ open, onClose, children }) {
   ) : null;
 }
 
-/* =========================
-   NAVBAR
-   ========================= */
+/* ========= NAVBAR ========= */
 function NavBar() {
   const [open, setOpen] = useState(false);
   return (
@@ -227,9 +215,7 @@ function NavBar() {
   );
 }
 
-/* =========================
-   HERO
-   ========================= */
+/* ========= HERO ========= */
 function Hero() {
   const [open, setOpen] = useState(false);
   return (
@@ -273,11 +259,10 @@ function Hero() {
   );
 }
 
-/* =========================
-   PROGRAM SEARCH
-   ========================= */
+/* ========= PROGRAM SEARCH ========= */
 function ProgramSearch({ compact = false }) {
   const [query, setQuery] = useState("");
+  thead;
   const [country, setCountry] = useState("");
   const [level, setLevel] = useState("");
   const [field, setField] = useState("");
@@ -359,9 +344,7 @@ function ProgramCard({ p }) {
   );
 }
 
-/* =========================
-   QUICK APPLY (webhook + optional upload)
-   ========================= */
+/* ========= QUICK APPLY ========= */
 function QuickApplyForm({ preset, onDone }) {
   const [submitting, setSubmitting] = useState(false);
   const [ok, setOk] = useState(false);
@@ -385,7 +368,6 @@ function QuickApplyForm({ preset, onDone }) {
 
       const data = Object.fromEntries(new FormData(e.currentTarget));
       const payload = { ...data, uploaded_docs: uploadedUrl, source_page: window.location.href, submitted_at: new Date().toISOString() };
-      if (!HUBSPOT_WEBHOOK_URL) { console.warn("No webhook set; printing payload", payload); }
       const r = await fetch(HUBSPOT_WEBHOOK_URL || "/__debug", { method: "POST", headers: { "Content-Type":"application/json" }, body: JSON.stringify(payload) });
       if (!r.ok) throw new Error("Submit failed");
 
@@ -437,9 +419,7 @@ function QuickApplyForm({ preset, onDone }) {
   );
 }
 
-/* =========================
-   HOW TO APPLY / DESTINATIONS / SERVICES
-   ========================= */
+/* ========= STATIC SECTIONS ========= */
 function HowToApply() {
   const steps = [
     { t: "Profile & Goals", d: "Tell us your background, budget, and timeline." },
@@ -494,33 +474,19 @@ function Services() {
   );
 }
 
-/* =========================
-   TESTIMONIALS (your real students)
-   ========================= */
+/* ========= TESTIMONIALS (REAL STUDENTS) ========= */
 function Testimonials() {
   const t = [
-    {
-      n: "Adesh Goud Mallati",
-      img: "/testimonials/adesh.jpg",
-      q: "From Nizamabad to RNU — BBA in Tourism. Smooth process, guided every step.",
-    },
-    {
-      n: "Suryateja Gajendrawar",
-      img: "/testimonials/suryateja.jpg",
-      q: "From Nizamabad to RTU — Masters in Aviation Engineering. Visa + admission support was on point.",
-    },
-    {
-      n: "Vinaykumar Karakanti",
-      img: "/testimonials/vinay.jpg",
-      q: "From Warangal to TSI University — Masters in Computer Science. Fast responses, transparent guidance.",
-    },
+    { n: "Adesh Goud Mallati", img: "/testimonials/adesh.jpg", q: "From Nizamabad to RNU — BBA in Tourism. Smooth process, guided every step." },
+    { n: "Suryateja Gajendrawar", img: "/testimonials/suryateja.jpg", q: "From Nizamabad to RTU — Masters in Aviation Engineering. Visa + admission support was on point." },
+    { n: "Vinaykumar Karakanti", img: "/testimonials/vinay.jpg", q: "From Warangal to TSI University — Masters in Computer Science. Fast responses, transparent guidance." },
   ];
   return (
     <section id="testimonials" className="bg-card py-16">
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="mb-8 text-3xl font-bold text-text">Our Students’ Journeys</h2>
         <div className="grid gap-4 md:grid-cols-3">
-          {t.map((x) => (
+          {t.map(x => (
             <div key={x.n} className="rounded-2xl border border-border bg-white p-6 shadow-sm transition hover:shadow-md">
               <div className="mb-4 flex items-center gap-3">
                 <img src={x.img} alt={x.n} className="h-12 w-12 rounded-full object-cover" />
@@ -530,17 +496,13 @@ function Testimonials() {
             </div>
           ))}
         </div>
-        <p className="mt-6 text-center text-sm text-text/60">
-          And many more success stories from WeGuideAbroad students across Europe.
-        </p>
+        <p className="mt-6 text-center text-sm text-text/60">And many more success stories from WeGuideAbroad students across Europe.</p>
       </div>
     </section>
   );
 }
 
-/* =========================
-   VOLUNTEERS + CONTACT / CALENDLY
-   ========================= */
+/* ========= VOLUNTEERS + CONTACT ========= */
 function Contact() {
   return (
     <>
@@ -571,9 +533,7 @@ function Contact() {
             <button className="rounded-2xl bg-olive px-4 py-2 text-white hover:bg-olivedk">Submit</button>
           </form>
 
-          <p className="mt-4 text-xs text-text/60">
-            Prefer WhatsApp? Message us at +371 25722769 with your city and services.
-          </p>
+          <p className="mt-4 text-xs text-text/60">Prefer WhatsApp? Message us at +371 25722769 with your city and services.</p>
         </div>
       </section>
 
@@ -582,9 +542,7 @@ function Contact() {
         <div className="grid gap-6 md:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle className="inline-flex items-center gap-2">
-                <Calendar className="h-5 w-5" /> Book a call
-              </CardTitle>
+              <CardTitle className="inline-flex items-center gap-2"><Calendar className="h-5 w-5" /> Book a call</CardTitle>
             </CardHeader>
             <CardContent>
               <div id="book" className="aspect-video w-full overflow-hidden rounded-xl">
@@ -595,9 +553,7 @@ function Contact() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="inline-flex items-center gap-2">
-                <Mail className="h-5 w-5" /> Message us
-              </CardTitle>
+              <CardTitle className="inline-flex items-center gap-2"><Mail className="h-5 w-5" /> Message us</CardTitle>
             </CardHeader>
             <CardContent>
               <form
@@ -632,9 +588,7 @@ function Contact() {
   );
 }
 
-/* =========================
-   FOOTER + CHAT
-   ========================= */
+/* ========= FOOTER + CHAT ========= */
 function Footer() {
   return (
     <footer className="border-t border-border bg-white py-8">
@@ -648,7 +602,6 @@ function Footer() {
     </footer>
   );
 }
-
 function ChatWidget() {
   useEffect(() => {
     if (!CHAT_WIDGET_SCRIPT) return;
@@ -660,9 +613,7 @@ function ChatWidget() {
   return null;
 }
 
-/* =========================
-   APP
-   ========================= */
+/* ========= APP ========= */
 export default function App() {
   return (
     <div className="min-h-screen scroll-smooth bg-bg text-text">
