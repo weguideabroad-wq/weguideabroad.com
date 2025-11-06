@@ -11,7 +11,7 @@ import {
   Upload,
 } from "lucide-react";
 
-/* ========= ENV (Vercel → Environment Variables) ========= */
+/* ========= ENV (set in Vercel) ========= */
 const HUBSPOT_WEBHOOK_URL = import.meta.env.VITE_WEBHOOK_URL || "";
 const FILE_UPLOAD_ENDPOINT = import.meta.env.VITE_UPLOAD_ENDPOINT || "";
 const CALENDLY_INLINE_URL =
@@ -190,6 +190,7 @@ function NavBar() {
           <a href="#howto" className="text-sm hover:opacity-80">How to Apply</a>
           <a href="#destinations" className="text-sm hover:opacity-80">Destinations</a>
           <a href="#services" className="text-sm hover:opacity-80">Services</a>
+          {/* Testimonials link removed */}
           <a href="#contact" className="text-sm hover:opacity-80">Contact</a>
         </div>
 
@@ -213,7 +214,6 @@ function NavBar() {
     </div>
   );
 }
-
 
 /* ========= HERO ========= */
 function Hero() {
@@ -262,7 +262,6 @@ function Hero() {
 /* ========= PROGRAM SEARCH ========= */
 function ProgramSearch({ compact = false }) {
   const [query, setQuery] = useState("");
-  thead;
   const [country, setCountry] = useState("");
   const [level, setLevel] = useState("");
   const [field, setField] = useState("");
@@ -474,29 +473,7 @@ function Services() {
   );
 }
 
-
-  return (
-    
-      <div className="mx-auto max-w-7xl px-4">
-        <h2 className="mb-8 text-3xl font-bold text-text">Our Students’ Journeys</h2>
-        <div className="grid gap-4 md:grid-cols-3">
-          {t.map(x => (
-            <div key={x.n} className="rounded-2xl border border-border bg-white p-6 shadow-sm transition hover:shadow-md">
-              <div className="mb-4 flex items-center gap-3">
-                <img src={x.img} alt={x.n} className="h-12 w-12 rounded-full object-cover" />
-                <div className="font-semibold text-text">{x.n}</div>
-              </div>
-              <p className="text-sm text-text/80">“{x.q}”</p>
-            </div>
-          ))}
-        </div>
-        <p className="mt-6 text-center text-sm text-text/60">And many more success stories from WeGuideAbroad students across Europe.</p>
-      </div>
-    </section>
-  );
-}
-
-/* ========= VOLUNTEERS + CONTACT ========= */
+/* ========= CONTACT (Volunteers + Calendly + Form) ========= */
 function Contact() {
   return (
     <>
@@ -596,6 +573,7 @@ function Footer() {
     </footer>
   );
 }
+
 function ChatWidget() {
   useEffect(() => {
     if (!CHAT_WIDGET_SCRIPT) return;
@@ -623,6 +601,7 @@ export default function App() {
       <HowToApply />
       <Destinations />
       <Services />
+      {/* Testimonials removed */}
       <Contact />
       <Footer />
     </div>
