@@ -135,7 +135,46 @@ function NavBar() {
           <a href="#howto" className="text-sm hover:opacity-80">How to Apply</a>
           <a href="#destinations" className="text-sm hover:opacity-80">Destinations</a>
           <a href="#services" className="text-sm hover:opacity-80">Services</a>
-          <a href="#testimonials" className="text-sm hover:opacity-80">Testimonials</a>
+          <a href="#testimonials" className="text-sm hover:opacity-80">function Testimonials() {
+  const t = [
+    { 
+      n: "Adesh Goud Mallati", 
+      img: "/testimonials/adesh.jpg", 
+      q: "From Nizamabad to RNU — completed Bachelor's in Business Administration in Tourism. Smooth process, guided every step."
+    },
+    { 
+      n: "Suryateja Gajendrawar", 
+      img: "/testimonials/suryateja.jpg", 
+      q: "From Nizamabad to RTU — pursuing Masters in Aviation Engineering. Visa and admission support were on point."
+    },
+    { 
+      n: "Vinaykumar Karakanti", 
+      img: "/testimonials/vinay.jpg", 
+      q: "From Warangal to TSI University — Masters in Computer Science. Fast responses and transparent guidance."
+    }
+  ];
+
+  return (
+    <section id="testimonials" className="bg-card py-16">
+      <div className="mx-auto max-w-7xl px-4">
+        <h2 className="mb-8 text-3xl font-bold text-text">Our Students’ Journeys</h2>
+        <div className="grid gap-4 md:grid-cols-3">
+          {t.map(x => (
+            <div key={x.n} className="rounded-2xl border border-border bg-white p-6 shadow-sm hover:shadow-md transition">
+              <div className="mb-4 flex items-center gap-3">
+                <img src={x.img} alt={x.n} className="h-12 w-12 rounded-full object-cover" />
+                <div className="font-semibold text-text">{x.n}</div>
+              </div>
+              <p className="text-text/80 text-sm">“{x.q}”</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-6 text-center text-text/60 text-sm">And many more success stories from WeGuideAbroad students across Europe.</p>
+      </div>
+    </section>
+  );
+}
+</a>
           <a href="#contact" className="text-sm hover:opacity-80">Contact</a>
         </div>
         <div className="flex items-center gap-2">
