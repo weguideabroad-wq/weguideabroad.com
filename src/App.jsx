@@ -1,4 +1,7 @@
 
+const CALENDLY_INLINE_URL = import.meta.env.VITE_CALENDLY_URL || "";
+const HUBSPOT_WEBHOOK_URL = import.meta.env.VITE_WEBHOOK_URL || "";
+
 import React, { useMemo, useState, useEffect } from 'react'
 import { Filter, Search, CheckCircle2, MapPin, GraduationCap, Phone, Mail, Calendar, Upload } from 'lucide-react'
 
@@ -466,71 +469,112 @@ function Testimonials() {
 }
 
 function Contact() {
-  return (<section id="volunteers" className="bg-card py-16">
-  <div className="mx-auto max-w-7xl px-4">
-    <h2 className="mb-6 text-3xl font-bold text-text">Become a Volunteer</h2>
-    <p className="mb-4 text-sm text-text/70">
-      Already studying abroad? Help new students with airport pickup, accommodation, and settling in — free or paid.
-    </p>
+  return (
+    <>
+      {/* Volunteers */}
+      <section id="volunteers" className="bg-card py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <h2 className="mb-6 text-3xl font-bold text-text">Become a Volunteer</h2>
+          <p className="mb-4 text-sm text-text/70">
+            Already studying abroad? Help new students with airport pickup, accommodation, and settling in — free or paid.
+          </p>
 
-    <form action="mailto:sanjaybolla@gmail.com" method="post" encType="text/plain" className="grid gap-3">
-      <input name="name" placeholder="Full name" className="rounded-xl border border-border px-3 py-2" required />
-      <div className="grid gap-3 md:grid-cols-2">
-        <input name="country" placeholder="Country" className="rounded-xl border border-border px-3 py-2" required />
-        <input name="city" placeholder="City" className="rounded-xl border border-border px-3 py-2" required />
-      </div>
-      <input name="whatsapp" placeholder="WhatsApp number" className="rounded-xl border border-border px-3 py-2" required />
-      <input name="email" type="email" placeholder="Email" className="rounded-xl border border-border px-3 py-2" />
-      <select name="type" className="rounded-xl border border-border px-3 py-2" required>
-        <option value="">Free or Paid?</option>
-        <option>Free</option>
-        <option>Paid</option>
-      </select>
-      <input name="hourly_rate" placeholder="Hourly rate (€) if paid" className="rounded-xl border border-border px-3 py-2" />
-      <input name="services" placeholder="Services (comma separated)" className="rounded-xl border border-border px-3 py-2" />
-      <textarea name="bio" placeholder="Short description (optional)" className="rounded-xl border border-border px-3 py-2" />
-      <button className="rounded-2xl bg-olive px-4 py-2 text-white hover:bg-olivedk">Submit</button>
-    </form>
-
-    <p className="mt-4 text-xs text-text/60">
-      Prefer WhatsApp? Message us at +371 25722769 with your city and services.
-    </p>
-  </div>
-</section>
-
-    <Section id="contact" title="Talk to us" bg="bg-white">
-      <div className="grid gap-6 md:grid-cols-2">
-        <Card>
-          <CardHeader><CardTitle className="inline-flex items-center gap-2"><Calendar className="h-5 w-5"/> Book a call</CardTitle></CardHeader>
-          <CardContent>
-            <div id="book" className="aspect-video w-full overflow-hidden rounded-xl">
-              <iframe title="Calendly" src={CALENDLY_INLINE_URL} className="h-full w-full" frameBorder="0"></iframe>
+          <form
+            action="mailto:sanjaybolla@gmail.com"
+            method="post"
+            encType="text/plain"
+            className="grid gap-3"
+          >
+            <input name="name" placeholder="Full name" className="rounded-xl border border-border px-3 py-2" required />
+            <div className="grid gap-3 md:grid-cols-2">
+              <input name="country" placeholder="Country" className="rounded-xl border border-border px-3 py-2" required />
+              <input name="city" placeholder="City" className="rounded-xl border border-border px-3 py-2" required />
             </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader><CardTitle className="inline-flex items-center gap-2"><Mail className="h-5 w-5"/> Message us</CardTitle></CardHeader>
-          <CardContent>
-            <form className="grid gap-3" onSubmit={async (e)=>{
-              e.preventDefault();
-              const data = Object.fromEntries(new FormData(e.currentTarget));
-              await fetch(HUBSPOT_WEBHOOK_URL||"/__debug", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({ ...data, form: "contact", source_page: window.location.href }) });
-              e.currentTarget.reset();
-              alert("Thanks! We'll reply soon.");
-            }}>
-              <Input name="name" placeholder="Name" required />
-              <Input type="email" name="email" placeholder="Email" required />
-              <Input name="phone" placeholder="Phone/WhatsApp" />
-              <Textarea name="message" placeholder="How can we help?" required />
-              <Button className="bg-olive hover:bg-olivedk text-white" type="submit">Send</Button>
-            </form>
-            <div className="mt-4 text-sm text-slate-600 flex gap-2 items-center"><Phone className="h-4 w-4"/> +371-0000-0000</div>
-          </CardContent>
-        </Card>
-      </div>
-    </Section>
+            <input name="whatsapp" placeholder="WhatsApp number" className="rounded-xl border border-border px-3 py-2" required />
+            <input name="email" type="email" placeholder="Email" className="rounded-xl border border-border px-3 py-2" />
+            <select name="type" className="rounded-xl border border-border px-3 py-2" required>
+              <option value="">Free or Paid?</option>
+              <option>Free</option>
+              <option>Paid</option>
+            </select>
+            <input name="hourly_rate" placeholder="Hourly rate (€) if paid" className="rounded-xl border border-border px-3 py-2" />
+            <input name="services" placeholder="Services (comma separated)" className="rounded-xl border border-border px-3 py-2" />
+            <textarea name="bio" placeholder="Short description (optional)" className="rounded-xl border border-border px-3 py-2" />
+            <button className="rounded-2xl bg-olive px-4 py-2 text-white hover:bg-olivedk">Submit</button>
+          </form>
+
+          <p className="mt-4 text-xs text-text/60">
+            Prefer WhatsApp? Message us at +371 25722769 with your city and services.
+          </p>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <Section id="contact" title="Talk to us" bg="bg-white">
+        <div className="grid gap-6 md:grid-cols-2">
+          <Card>
+            <CardHeader>
+              <CardTitle className="inline-flex items-center gap-2">
+                <Calendar className="h-5 w-5" /> Book a call
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div id="book" className="aspect-video w-full overflow-hidden rounded-xl">
+                <iframe
+                  title="Calendly"
+                  src={CALENDLY_INLINE_URL}
+                  className="h-full w-full"
+                  frameBorder="0"
+                />
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="inline-flex items-center gap-2">
+                <Mail className="h-5 w-5" /> Message us
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <form
+                className="grid gap-3"
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  const data = Object.fromEntries(new FormData(e.currentTarget));
+                  await fetch(HUBSPOT_WEBHOOK_URL || "/__debug", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      ...data,
+                      form: "contact",
+                      source_page: window.location.href,
+                    }),
+                  });
+                  e.currentTarget.reset();
+                  alert("Thanks! We'll reply soon.");
+                }}
+              >
+                <Input name="name" placeholder="Name" required />
+                <Input type="email" name="email" placeholder="Email" required />
+                <Input name="phone" placeholder="Phone/WhatsApp" />
+                <Textarea name="message" placeholder="How can we help?" required />
+                <Button className="bg-olive hover:bg-olivedk text-white" type="submit">
+                  Send
+                </Button>
+              </form>
+
+              <div className="mt-4 flex items-center gap-2 text-sm text-slate-600">
+                <Phone className="h-4 w-4" /> +371 25722769
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </Section>
+    </>
   );
 }
+
 
 function Footer() {
   return (
