@@ -78,7 +78,7 @@ const FIELDS = [...new Set(PROGRAMS.map(p => p.field))];
 
 function currency(n) { return new Intl.NumberFormat(undefined, { style: "currency", currency: "EUR" }).format(n); }
 
-function Section({ id, title, children, bg="bg-white" }) {
+function Section({ id, title, children, bg="bg-bg" }) {
   return (
     <section id={id} className={`${bg} py-16`}>
       <div className="mx-auto max-w-7xl px-4">
@@ -376,7 +376,7 @@ function Destinations() {
     { c: "Poland", blurb: "Wide program choice, budget-friendly." },
   ];
   return (
-    <Section id="destinations" title="Top Destinations" bg="bg-slate-50">
+    <Section id="destinations" title="Top Destinations" bg="bg-card">
       <div className="grid gap-4 md:grid-cols-3">
         {dests.map(d => (
           <Card key={d.c}><CardHeader><CardTitle>{d.c}</CardTitle></CardHeader><CardContent className="text-sm text-slate-600">{d.blurb}</CardContent></Card>
@@ -447,7 +447,7 @@ function Contact() {
               <Input type="email" name="email" placeholder="Email" required />
               <Input name="phone" placeholder="Phone/WhatsApp" />
               <Textarea name="message" placeholder="How can we help?" required />
-              <Button className="bg-black text-white" type="submit">Send</Button>
+              <Button className="bg-olive hover:bg-olivedk text-white" type="submit">Send</Button>
             </form>
             <div className="mt-4 text-sm text-slate-600 flex gap-2 items-center"><Phone className="h-4 w-4"/> +371-0000-0000</div>
           </CardContent>
@@ -459,7 +459,7 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer className="border-t bg-white py-8">
+    <footer className="border-border-t bg-white py-8">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 md:flex-row">
         <div className="text-sm text-slate-600">© {new Date().getFullYear()} WeGuideAbroad. All rights reserved.</div>
         <div className="flex gap-4 text-sm">
@@ -484,7 +484,7 @@ function ChatWidget() {
 
 export default function App() {
   return (
-    <div className="min-h-screen scroll-smooth bg-white text-slate-900">
+    <div className="min-h-screen scroll-smooth bg-white text-text">
       <ChatWidget />
       <NavBar />
       <Hero />
