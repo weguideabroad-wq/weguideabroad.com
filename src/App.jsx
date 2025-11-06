@@ -215,6 +215,7 @@ function NavBar() {
   );
 }
 
+
 /* ========= HERO ========= */
 function Hero() {
   const [open, setOpen] = useState(false);
