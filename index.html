@@ -1,13 +1,330 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WeGuideAbroad</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WeGuideAbroad - Your Gateway to Global Education</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --primary:#3d5a6c;--secondary:#e8a956;--dark:#2c3e50;
+      --light:#f4ebe0;--beige:#f4ebe0;--success:#10b981
+    }
+    body{font-family:Georgia, 'Times New Roman', serif;line-height:1.7;color:var(--dark);background:#fafafa;overflow-x:hidden}
+
+    /* Header */
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;
+      background:linear-gradient(135deg,var(--primary),#5a7c8f);color:#fff;
+      box-shadow:0 2px 10px rgba(0,0,0,.1)}
+    .container{max-width:1200px;margin:0 auto;padding:0 2rem}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:.75rem 0}
+    .logo{display:flex;align-items:center;gap:1rem;font-weight:700;font-size:1.2rem}
+    .logo-img{width:44px;height:44px;border-radius:10px;box-shadow:0 4px 6px rgba(0,0,0,.1);
+      background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><rect fill="%23f4ebe0" width="500" height="500"/><path d="M190 180 Q220 120, 320 120 L330 135 L240 165 L250 180 Z" fill="%23e8a956" stroke="%233d5a6c" stroke-width="8"/><path d="M160 110 Q180 150, 190 180" fill="none" stroke="%235a7c8f" stroke-width="6" stroke-linecap="round"/></svg>') center/cover}
+    .nav-links{display:flex;gap:1rem;list-style:none;flex-wrap:wrap}
+    .nav-links a{color:#fff;text-decoration:none;padding:.5rem .9rem;border-radius:8px;transition:.25s}
+    .nav-links a:hover{background:rgba(255,255,255,.18)}
+
+    /* Hero */
+    .hero{margin-top:84px;background:linear-gradient(135deg,var(--primary) 0%,#5a7c8f 100%);color:#fff;text-align:center;position:relative;overflow:hidden}
+    .hero .inner{padding:4.5rem 1rem}
+    .hero h1{font-size:2.6rem;margin-bottom:1rem;font-weight:700}
+    .hero p{font-size:1.2rem;color:var(--beige);margin-bottom:1.6rem;font-style:italic}
+    .cta{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+    .btn{padding:.9rem 1.6rem;border:none;border-radius:999px;font-weight:700;cursor:pointer;transition:.25s}
+    .btn-primary{background:linear-gradient(135deg,var(--secondary),#f0b870);color:var(--dark)}
+    .btn-primary:hover{transform:translateY(-2px)}
+    .btn-secondary{background:#fff;color:var(--primary)}
+    .btn-secondary:hover{transform:translateY(-2px)}
+
+    /* Sections */
+    section{padding:3.5rem 0}
+    .section-title{text-align:center;font-size:2rem;margin-bottom:2rem;color:var(--dark);font-weight:700}
+
+    /* Services */
+    .services{background:var(--beige)}
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem}
+    .card{background:#fff;border-radius:18px;box-shadow:0 2px 18px rgba(0,0,0,.08);padding:1.8rem;transition:.25s;border:1px solid rgba(232,169,86,.12)}
+    .card:hover{transform:translateY(-6px);box-shadow:0 10px 28px rgba(0,0,0,.15)}
+    .icon{font-size:2rem;margin-bottom:.75rem}
+    .card h3{color:var(--primary);margin-bottom:.6rem}
+
+    /* Countries / Universities */
+    .countries{background:#fff}
+    .filter{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.4rem}
+    .chip{padding:.6rem 1rem;border-radius:999px;border:2px solid rgba(61,90,108,.25);background:#fff;color:var(--primary);font-weight:700;cursor:pointer;transition:.2s}
+    .chip.active,.chip:hover{background:linear-gradient(135deg,var(--primary),#5a7c8f);color:#fff;border-color:transparent}
+    .uni-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.2rem}
+    .uni-card{background:#fff;border-radius:16px;border:1px solid rgba(61,90,108,.12);padding:1.6rem;box-shadow:0 2px 14px rgba(0,0,0,.06)}
+    .uni-card h4{color:var(--primary);margin-bottom:.4rem}
+    .uni-fee{margin:.6rem 0;font-weight:700;color:var(--success)}
+    .uni-link{display:inline-block;margin-top:.4rem;color:var(--primary);text-decoration:none;font-weight:700}
+
+    /* Booking */
+    .booking .box{background:#fff;border:1px solid rgba(232,169,86,.18);max-width:640px;margin:0 auto;border-radius:20px;box-shadow:0 12px 30px rgba(0,0,0,.08);padding:2rem;text-align:center}
+
+    /* Footer */
+    footer{background:var(--dark);color:#fff}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-bottom:1.2rem}
+    .footer-section h3{color:var(--secondary);margin-bottom:.6rem}
+    .footer-section a{color:#fff;text-decoration:none}
+    .foot-bottom{text-align:center;border-top:1px solid rgba(255,255,255,.12);padding:1rem 0;font-size:.92rem}
+
+    @media (max-width:768px){
+      .hero h1{font-size:2.1rem}
+      .nav-links a{padding:.45rem .7rem}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav class="container">
+      <div class="logo">
+        <div class="logo-img"></div>
+        <span>WeGuideAbroad</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#universities">Universities</a></li>
+        <li><a href="#booking">Book</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="inner container">
+      <h1>Your Gateway to Global Education</h1>
+      <p>The Right Path & The Right Place — together.</p>
+      <div class="cta">
+        <button class="btn btn-primary" onclick="openBookingForm()">Book Consultation</button>
+        <button class="btn btn-secondary" onclick="openQuickApplication()">Quick Application</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <div class="services-grid">
+        <div class="card"><div class="icon">🎯</div><h3>University Selection</h3><p>Personalized shortlists that match your profile, budget, and goals.</p></div>
+        <div class="card"><div class="icon">📝</div><h3>Application Support</h3><p>End-to-end help with applications, SOPs, LORs, and submissions.</p></div>
+        <div class="card"><div class="icon">✈️</div><h3>Visa Guidance</h3><p>Document checklist, mock interviews, and filing support.</p></div>
+        <div class="card"><div class="icon">🤝</div><h3>Volunteer Network</h3><p>Students in-country helping new arrivals with pickup & housing.</p><button class="btn btn-primary" onclick="openVolunteerForm()" style="margin-top:.6rem">Join as Volunteer</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Universities -->
+  <section id="universities" class="countries">
+    <div class="container">
+      <h2 class="section-title">Partner Universities Worldwide</h2>
+
+      <div class="filter" id="countryChips">
+        <button class="chip active" data-country="usa">🇺🇸 USA</button>
+        <button class="chip" data-country="uk">🇬🇧 UK</button>
+        <button class="chip" data-country="canada">🇨🇦 Canada</button>
+        <button class="chip" data-country="australia">🇦🇺 Australia</button>
+        <button class="chip" data-country="newzealand">🇳🇿 New Zealand</button>
+        <button class="chip" data-country="latvia">🇱🇻 Latvia</button>
+        <button class="chip" data-country="lithuania">🇱🇹 Lithuania</button>
+        <button class="chip" data-country="estonia">🇪🇪 Estonia</button>
+        <button class="chip" data-country="poland">🇵🇱 Poland</button>
+        <button class="chip" data-country="germany">🇩🇪 Germany</button>
+        <button class="chip" data-country="ireland">🇮🇪 Ireland</button>
+        <button class="chip" data-country="finland">🇫🇮 Finland</button>
+        <button class="chip" data-country="georgia">🇬🇪 Georgia</button>
+      </div>
+
+      <div id="uniContainer" class="uni-grid"></div>
+    </div>
+  </section>
+
+  <!-- US Visa slot (kept as CTA to your Google Form) -->
+  <section class="booking">
+    <div class="container">
+      <h2 class="section-title">US Visa Slot Booking Service</h2>
+      <div class="box">
+        <p style="margin-bottom:1rem">Get expert assistance in securing your F1/F2 appointment.</p>
+        <button class="btn btn-primary" onclick="openUSVisaForm()">Book US Visa Slot</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking -->
+  <section id="booking" class="booking" style="background:var(--light)">
+    <div class="container">
+      <h2 class="section-title">Book Your Free Consultation</h2>
+      <div class="box">
+        <p style="margin-bottom:1rem">Schedule a personalized session with our counselors.</p>
+        <button class="btn btn-primary" onclick="openBookingForm()">Schedule Consultation</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h3>WeGuideAbroad</h3>
+          <p>Your trusted partner for studying abroad. We guide you end-to-end from shortlist to arrival.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <p><a href="#services">Services</a></p>
+          <p><a href="#universities">Universities</a></p>
+          <p><a href="#booking">Book</a></p>
+          <p><a href="#" onclick="openVolunteerForm();return false;">Join as Volunteer</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>📧 <a href="mailto:weguideabroad@gmail.com">weguideabroad@gmail.com</a></p>
+          <p>📱 <a href="tel:+918712290029">+91 8712290029</a></p>
+          <p>🌐 <a href="https://www.weguideabroad.com">www.weguideabroad.com</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Office</h3>
+          <p>Street Number 3, Nizamabad<br/>Telangana 503003, India</p>
+        </div>
+      </div>
+      <div class="foot-bottom">© 2025 WeGuideAbroad. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Modals (simple quick-apply CTA) -->
+  <div id="quickAppModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;align-items:center;justify-content:center;padding:1rem">
+    <div style="background:#fff;max-width:520px;width:100%;border-radius:18px;padding:1.6rem">
+      <div style="display:flex;justify-content:flex-end"><button onclick="closeQuickApplication()" style="font-size:22px;border:0;background:none;cursor:pointer">×</button></div>
+      <h2 style="color:var(--primary);margin-bottom:.6rem">Quick Application</h2>
+      <p style="color:#64748b;margin-bottom:1rem">Start your study abroad journey with us</p>
+      <button class="btn btn-primary" onclick="openQuickAppForm()" style="width:100%">Complete Application Form</button>
+    </div>
+  </div>
+
+  <script>
+    // ----- DATA -----
+    const universitiesData = {
+      usa:[
+        {name:"Harvard University",location:"Cambridge, MA",courses:"Business, Law, Medicine, Engineering, Computer Science",tuition:"$50,000–$70,000/yr",link:"https://www.harvard.edu"},
+        {name:"MIT",location:"Cambridge, MA",courses:"Engineering, Computer Science, Business, Physics",tuition:"$55,000–$75,000/yr",link:"https://www.mit.edu"}
+      ],
+      uk:[
+        {name:"University of Oxford",location:"Oxford",courses:"Medicine, Law, Business, Engineering, Arts",tuition:"£30,000–£45,000/yr",link:"https://www.ox.ac.uk"},
+        {name:"University of Cambridge",location:"Cambridge",courses:"Sciences, Engineering, Medicine, Law",tuition:"£28,000–£42,000/yr",link:"https://www.cam.ac.uk"}
+      ],
+      canada:[
+        {name:"University of Toronto",location:"Toronto, ON",courses:"Engineering, Business, Medicine, Computer Science",tuition:"CAD 45,000–60,000/yr",link:"https://www.utoronto.ca"},
+        {name:"UBC",location:"Vancouver, BC",courses:"Business, Engineering, Sciences, Arts",tuition:"CAD 40,000–55,000/yr",link:"https://www.ubc.ca"}
+      ],
+      australia:[
+        {name:"University of Melbourne",location:"Melbourne, VIC",courses:"Business, Medicine, Engineering, Law",tuition:"AUD 40,000–60,000/yr",link:"https://www.unimelb.edu.au"}
+      ],
+      newzealand:[
+        {name:"University of Auckland",location:"Auckland",courses:"Business, Engineering, Medicine, Sciences",tuition:"NZD 30,000–45,000/yr",link:"https://www.auckland.ac.nz"}
+      ],
+      latvia:[
+        {name:"University of Latvia",location:"Riga",courses:"Business, Medicine, Engineering, Sciences, Law",tuition:"€3,000–€12,000/yr",link:"https://www.lu.lv"},
+        {name:"Riga Technical University",location:"Riga",courses:"Engineering, CS, Business, Architecture",tuition:"€2,800–€10,000/yr",link:"https://www.rtu.lv"}
+      ],
+      lithuania:[
+        {name:"Vilnius University",location:"Vilnius",courses:"Medicine, Business, Sciences, Law, Humanities",tuition:"€3,500–€14,000/yr",link:"https://www.vu.lt"}
+      ],
+      estonia:[
+        {name:"University of Tartu",location:"Tartu",courses:"Medicine, CS, Business, Sciences",tuition:"€3,000–€11,000/yr",link:"https://ut.ee"}
+      ],
+      poland:[
+        {name:"University of Warsaw",location:"Warsaw",courses:"Business, Law, Sciences, Medicine, Humanities",tuition:"€2,000–€12,000/yr",link:"https://www.uw.edu.pl"}
+      ],
+      germany:[
+        {name:"TUM",location:"Munich",courses:"Engineering, CS, Business, Physics",tuition:"€500–€3,000/yr + living",link:"https://www.tum.de"}
+      ],
+      ireland:[
+        {name:"Trinity College Dublin",location:"Dublin",courses:"Business, CS, Medicine, Law",tuition:"€20,000–€35,000/yr",link:"https://www.tcd.ie"}
+      ],
+      finland:[
+        {name:"University of Helsinki",location:"Helsinki",courses:"Sciences, Medicine, Law, Education, Arts",tuition:"EU: Free / Non-EU: €13k–€18k",link:"https://www.helsinki.fi"}
+      ],
+      georgia:[
+        {name:"TSMU",location:"Tbilisi",courses:"Medicine, Dentistry, Pharmacy",tuition:"$6,000–$8,000/yr",link:"https://tsmu.edu"}
+      ]
+    };
+
+    // ----- RENDER -----
+    function renderUniversities(country){
+      const list = universitiesData[country] || [];
+      const el = document.getElementById('uniContainer');
+      el.innerHTML = list.map(u => `
+        <div class="uni-card">
+          <h4>${u.name}</h4>
+          <div>📍 ${u.location}</div>
+          <div class="uni-fee">💰 ${u.tuition}</div>
+          <div><strong>Popular Programs:</strong> ${u.courses}</div>
+          <a class="uni-link" href="${u.link}" target="_blank" rel="noopener">Visit Website →</a>
+          <div style="margin-top:.6rem">
+            <button class="btn btn-primary" onclick="scrollToSection('booking')">Apply Now</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ----- COUNTRY CHIPS -----
+    document.addEventListener('DOMContentLoaded', () => {
+      // initial
+      renderUniversities('usa');
+
+      // chips
+      const chips = document.querySelectorAll('#countryChips .chip');
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chips.forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          const country = chip.getAttribute('data-country');
+          renderUniversities(country);
+        });
+      });
+    });
+
+    // ----- CTAs -----
+    function openUSVisaForm(){
+      window.open('https://docs.google.com/forms/d/e/1FAIpQLSdsNa-ETo-eOpivTbkSGXogDY8m9vwuExrxyetQAqhzl9Cczw/viewform','_blank');
+    }
+    function openBookingForm(){
+      window.open('https://docs.google.com/forms/d/e/1FAIpQLSdEz32e5MHkmzEqNwTrh8wwxZl2qE7IV4eqKttTR5qB2EZ6LA/viewform','_blank');
+    }
+    function openQuickAppForm(){
+      window.open('https://docs.google.com/forms/d/e/1FAIpQLSeOw-GWaM8P8qRQWR-aj7hUJibNXh_aE5QvIs5yPC-l3pHSIg/viewform','_blank');
+      closeQuickApplication();
+    }
+    function openVolunteerForm(){
+      window.open('https://docs.google.com/forms/d/e/1FAIpQLSerNSSG-quo4677-mkFU0MpoM44y5cifBc71KKnuI8jF-wvSg/viewform','_blank');
+    }
+
+    // ----- Quick App Modal -----
+    function openQuickApplication(){
+      document.getElementById('quickAppModal').style.display='flex';
+    }
+    function closeQuickApplication(){
+      document.getElementById('quickAppModal').style.display='none';
+    }
+    window.openQuickApplication=openQuickApplication;
+    window.closeQuickApplication=closeQuickApplication;
+    window.openQuickAppForm=openQuickAppForm;
+    window.openUSVisaForm=openUSVisaForm;
+    window.openBookingForm=openBookingForm;
+    window.openVolunteerForm=openVolunteerForm;
+
+    // smooth scroll helper
+    function scrollToSection(id){
+      const el=document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    window.scrollToSection=scrollToSection;
+  </script>
+</body>
 </html>
