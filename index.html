@@ -3,61 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Primary Meta Tags -->
-    <title>WeGuideAbroad - Best Study Abroad Consultants in Nizamabad | USA, UK, Canada, Europe</title>
-    <meta name="title" content="WeGuideAbroad - Best Study Abroad Consultants in Nizamabad">
-    <meta name="description" content="WeGuideAbroad - Top study abroad consultant in Nizamabad, Telangana. Expert guidance for USA, UK, Canada, Australia, Europe universities. US visa slots, admissions, free consultation. Call +91-8712290029">
-    <meta name="keywords" content="WeGuideAbroad, study abroad consultants Nizamabad, study abroad Telangana, overseas education Nizamabad, US visa slots, study in USA, study in UK, study in Canada, study in Europe, education consultants near me, weguideabroad.com">
-    <meta name="author" content="WeGuideAbroad">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.weguideabroad.com/">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.weguideabroad.com/">
-    <meta property="og:title" content="WeGuideAbroad - Study Abroad Consultants">
-    <meta property="og:description" content="Expert guidance for studying abroad in USA, UK, Canada, Australia & Europe. Free consultation, visa assistance, university admissions.">
-    <meta property="og:image" content="https://www.weguideabroad.com/images/logo.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.weguideabroad.com/">
-    <meta property="twitter:title" content="WeGuideAbroad - Study Abroad Consultants">
-    <meta property="twitter:description" content="Expert guidance for studying abroad in USA, UK, Canada, Australia & Europe.">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    
-    <!-- JSON-LD Schema Markup -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "EducationalOrganization",
-      "name": "WeGuideAbroad",
-      "description": "Study abroad consultants providing expert guidance for international education",
-      "url": "https://www.weguideabroad.com",
-      "logo": "https://www.weguideabroad.com/images/logo.jpg",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Street Number 3",
-        "addressLocality": "Nizamabad",
-        "addressRegion": "Telangana",
-        "postalCode": "503003",
-        "addressCountry": "IN"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-8712290029",
-        "contactType": "Customer Service",
-        "email": "weguideabroad@gmail.com"
-      },
-      "sameAs": [
-        "https://www.facebook.com/weguideabroad"
-      ]
-    }
-    </script>
-
+    <title>WeGuideAbroad - Best Study Abroad Consultants in Nizamabad</title>
     <style>
         * {
             margin: 0;
@@ -88,7 +34,6 @@
             background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
         }
 
-        /* Header */
         header {
             background: linear-gradient(135deg, var(--primary-teal) 0%, var(--accent-navy) 100%);
             color: white;
@@ -176,7 +121,6 @@
             transform: translateY(-2px);
         }
 
-        /* Hero Section */
         .hero {
             margin-top: 90px;
             background: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-orange) 50%, var(--accent-navy) 100%);
@@ -277,7 +221,6 @@
             box-shadow: 0 8px 30px rgba(255,255,255,0.5);
         }
 
-        /* Services Section */
         .services {
             padding: 5rem 0;
             background: linear-gradient(180deg, var(--white) 0%, var(--bg-light) 100%);
@@ -352,7 +295,6 @@
             color: var(--text-light);
         }
 
-        /* Countries & Universities Section */
         .countries-section {
             padding: 5rem 0;
             background: linear-gradient(180deg, var(--bg-light) 0%, var(--white) 100%);
@@ -486,7 +428,6 @@
             transform: translateX(5px);
         }
 
-        /* Booking Sections */
         .booking-section {
             padding: 5rem 0;
         }
@@ -501,7 +442,6 @@
             border: 2px solid rgba(255, 138, 61, 0.2);
         }
 
-        /* Footer */
         footer {
             background: var(--text-dark);
             color: white;
@@ -545,7 +485,6 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -568,7 +507,7 @@
             background: white;
             padding: 3rem;
             border-radius: 25px;
-            max-width: 500px;
+            max-width: 600px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
@@ -587,6 +526,131 @@
             cursor: pointer;
             color: var(--text-dark);
             line-height: 1;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-orange);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-teal);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-orange));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 188, 212, 0.4);
+        }
+
+        /* New styles for enhanced university display */
+        .country-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary-teal), var(--accent-navy));
+            color: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 188, 212, 0.3);
+        }
+
+        .country-flag {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .country-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .country-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.2);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .university-portal-link {
+            display: block;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-orange), #FF6B35);
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(255, 138, 61, 0.4);
+        }
+
+        .university-portal-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 138, 61, 0.6);
         }
 
         @media (max-width: 768px) {
@@ -610,16 +674,37 @@
             .cta-buttons {
                 flex-direction: column;
             }
+
+            .modal-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .country-stats {
+                gap: 1rem;
+            }
+
+            .stat {
+                min-width: 120px;
+                padding: 0.8rem 1rem;
+            }
+
+            .stat-value {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav class="container">
             <div class="logo">
                 <div class="logo-img">
-                    <img src="https://scontent.frix7-1.fna.fbcdn.net/v/t39.30808-1/471970098_122178630160248311_5869127534819111534_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=108&ccb=1-7&_nc_sid=f4b9fd&_nc_ohc=pqHM1qLxb60Q7kNvgFuNSzy&_nc_zt=24&_nc_ht=scontent.frix7-1.fna&_nc_gid=ASdLdD8uu_fWAUATF-Zsvat&oh=00_AYD8zBxpLZ-Xj7n_J5mYOiVuC7r1SLEVDgqmQmWtF7cw1A&oe=6751D2FB" alt="WeGuideAbroad Logo">
+                    <!-- Your company logo -->
+                    <div style="background: white; width: 100%; height: 100%; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5px; font-size: 0.6rem; font-weight: bold; color: var(--primary-teal); text-align: center;">
+                        <div>We Guide</div>
+                        <div>Abroad</div>
+                        <div style="font-size: 0.4rem; margin-top: 2px;">The Right Path & Place</div>
+                    </div>
                 </div>
                 <span>WeGuideAbroad</span>
             </div>
@@ -632,7 +717,6 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content container">
             <h1>Your Gateway to Global Education</h1>
@@ -644,7 +728,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
             <h2 class="section-title">Our Premium Services</h2>
@@ -689,7 +772,6 @@
         </div>
     </section>
 
-    <!-- Universities Section -->
     <section id="universities" class="countries-section">
         <div class="container">
             <h2 class="section-title">Top Universities Worldwide</h2>
@@ -703,16 +785,24 @@
                 <button class="country-btn" onclick="filterCountry('italy')">🇮🇹 Italy</button>
                 <button class="country-btn" onclick="filterCountry('netherlands')">🇳🇱 Netherlands</button>
                 <button class="country-btn" onclick="filterCountry('sweden')">🇸🇪 Sweden</button>
-                <button class="country-btn" onclick="filterCountry('latvia')">🇱🇻 Latvia</button>
-                <button class="country-btn" onclick="filterCountry('poland')">🇵🇱 Poland</button>
-                <button class="country-btn" onclick="filterCountry('ireland')">🇮🇪 Ireland</button>
+                <button class="country-btn" onclick="filterCountry('switzerland')">🇨🇭 Switzerland</button>
+                <button class="country-btn" onclick="filterCountry('singapore')">🇸🇬 Singapore</button>
+                <button class="country-btn" onclick="filterCountry('japan')">🇯🇵 Japan</button>
+                <button class="country-btn" onclick="filterCountry('south-korea')">🇰🇷 South Korea</button>
+                <button class="country-btn" onclick="filterCountry('new-zealand')">🇳🇿 New Zealand</button>
+                <button class="country-btn" onclick="filterCountry('denmark')">🇩🇰 Denmark</button>
+                <button class="country-btn" onclick="filterCountry('norway')">🇳🇴 Norway</button>
+                <button class="country-btn" onclick="filterCountry('finland')">🇫🇮 Finland</button>
+                <button class="country-btn" onclick="filterCountry('spain')">🇪🇸 Spain</button>
+                <button class="country-btn" onclick="filterCountry('austria')">🇦🇹 Austria</button>
+                <button class="country-btn" onclick="filterCountry('belgium')">🇧🇪 Belgium</button>
             </div>
-            <div id="universityContainer"></div>
+            <div id="countryHeader"></div>
+            <div id="universityContainer" class="university-grid"></div>
         </div>
     </section>
 
-    <!-- US Visa Slot Booking -->
-    <section id="us-visa" class="booking-section" style="background: var(--bg-cream);">
+    <section id="us-visa" class="booking-section" style="background: var(--bg-light);">
         <div class="container">
             <h2 class="section-title">US Visa Slot Booking Service</h2>
             <div class="booking-container">
@@ -722,7 +812,6 @@
         </div>
     </section>
 
-    <!-- Consultation Booking -->
     <section id="booking" class="booking-section">
         <div class="container">
             <h2 class="section-title">Book Your Free Consultation</h2>
@@ -733,7 +822,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
@@ -767,12 +855,12 @@
                         <li>🇬🇧 United Kingdom</li>
                         <li>🇨🇦 Canada</li>
                         <li>🇦🇺 Australia</li>
-                        <li>🇪🇺 Europe (15+ countries)</li>
+                        <li>🇪🇺 Europe (20+ countries)</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 WeGuideAbroad. All rights reserved. | <a href="#" style="color: var(--primary-teal);">Privacy Policy</a> | <a href="#" style="color: var(--primary-teal);">Terms of Service</a></p>
+                <p>&copy; 2025 WeGuideAbroad. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -781,5 +869,1023 @@
     <div id="quickAppModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeQuickApplication()">&times;</span>
-            <h2 style="color: var(--primary-teal);">Quick Application</h2>
-            <p style="text-align: center; margin-bottom: 2rem; color: var(--primary-green);">Start your study
+            <h2 style="color: var(--primary-teal); margin-bottom: 1.5rem;">Quick Application</h2>
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="qaName" required>
+            </div>
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" id="qaEmail" required>
+            </div>
+            <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" id="qaPhone" required>
+            </div>
+            <div class="form-group">
+                <label>Preferred Country *</label>
+                <select id="qaCountry">
+                    <option value="">Select Country</option>
+                    <option value="usa">USA</option>
+                    <option value="uk">UK</option>
+                    <option value="canada">Canada</option>
+                    <option value="australia">Australia</option>
+                    <option value="germany">Germany</option>
+                    <option value="switzerland">Switzerland</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Course Level *</label>
+                <select id="qaCourse">
+                    <option value="">Select Level</option>
+                    <option value="bachelor">Bachelor's</option>
+                    <option value="master">Master's</option>
+                    <option value="phd">PhD</option>
+                    <option value="diploma">Diploma</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Message</label>
+                <textarea id="qaMessage"></textarea>
+            </div>
+            <button class="submit-btn" onclick="submitQuickApp()">Submit Application</button>
+        </div>
+    </div>
+
+    <!-- US Visa Modal -->
+    <div id="usVisaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeUSVisaForm()">&times;</span>
+            <h2 style="color: var(--primary-teal); margin-bottom: 1.5rem;">US Visa Slot Booking</h2>
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="uvName" required>
+            </div>
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" id="uvEmail" required>
+            </div>
+            <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" id="uvPhone" required>
+            </div>
+            <div class="form-group">
+                <label>Visa Type *</label>
+                <select id="uvType">
+                    <option value="">Select Visa Type</option>
+                    <option value="f1">F1 Student Visa</option>
+                    <option value="f2">F2 Dependent Visa</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Preferred Date</label>
+                <input type="date" id="uvDate">
+            </div>
+            <div class="form-group">
+                <label>Additional Information</label>
+                <textarea id="uvMessage"></textarea>
+            </div>
+            <button class="submit-btn" onclick="submitUSVisa()">Book Slot</button>
+        </div>
+    </div>
+
+    <!-- Consultation Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeBookingForm()">&times;</span>
+            <h2 style="color: var(--primary-teal); margin-bottom: 1.5rem;">Free Consultation Booking</h2>
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="cbName" required>
+            </div>
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" id="cbEmail" required>
+            </div>
+            <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" id="cbPhone" required>
+            </div>
+            <div class="form-group">
+                <label>Preferred Country *</label>
+                <select id="cbCountry">
+                    <option value="">Select Country</option>
+                    <option value="usa">USA</option>
+                    <option value="uk">UK</option>
+                    <option value="canada">Canada</option>
+                    <option value="australia">Australia</option>
+                    <option value="germany">Germany</option>
+                    <option value="switzerland">Switzerland</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Preferred Time</label>
+                <input type="datetime-local" id="cbTime">
+            </div>
+            <div class="form-group">
+                <label>Your Questions</label>
+                <textarea id="cbMessage"></textarea>
+            </div>
+            <button class="submit-btn" onclick="submitConsultation()">Book Consultation</button>
+        </div>
+    </div>
+
+    <!-- Volunteer Form Modal -->
+    <div id="volunteerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeVolunteerForm()">&times;</span>
+            <h2 style="color: var(--primary-teal); margin-bottom: 1.5rem;">Join as Volunteer</h2>
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="vName" required>
+            </div>
+            <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" id="vEmail" required>
+            </div>
+            <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" id="vPhone" required>
+            </div>
+            <div class="form-group">
+                <label>Country of Residence *</label>
+                <input type="text" id="vCountry" required>
+            </div>
+            <div class="form-group">
+                <label>City or Region *</label>
+                <input type="text" id="vCity" required>
+            </div>
+            <div class="form-group">
+                <label>University / Institution Name</label>
+                <input type="text" id="vUniversity">
+            </div>
+            <div class="form-group">
+                <label>Course / Major</label>
+                <input type="text" id="vCourse">
+            </div>
+            <div class="form-group">
+                <label>Year of Study</label>
+                <select id="vYear">
+                    <option value="">Select Year</option>
+                    <option value="1st">1st Year</option>
+                    <option value="2nd">2nd Year</option>
+                    <option value="3rd">3rd Year</option>
+                    <option value="4th">4th Year</option>
+                    <option value="masters">Master's</option>
+                    <option value="phd">PhD</option>
+                    <option value="graduated">Graduated</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>How many years have you been living in this country?</label>
+                <input type="number" id="vYears" min="0" max="50">
+            </div>
+            <div class="form-group">
+                <label>Are you volunteering for free or expecting payment?</label>
+                <select id="vPayment">
+                    <option value="">Select Option</option>
+                    <option value="free">Volunteering for free</option>
+                    <option value="paid">Expecting payment</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Languages you can speak</label>
+                <input type="text" id="vLanguages" placeholder="e.g., English, Hindi, French">
+            </div>
+            <div class="form-group">
+                <label>Any additional comments or questions?</label>
+                <textarea id="vComments"></textarea>
+            </div>
+            <button class="submit-btn" onclick="submitVolunteer()">Submit Application</button>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced University Data with More Countries
+        const universities = {
+            usa: [
+                {
+                    name: "University of California, Berkeley",
+                    location: "Berkeley, California",
+                    ranking: "QS World Ranking #10",
+                    courses: "Computer Science, Engineering, Business, Data Science",
+                    fee: "$45,000/year",
+                    intakes: "Fall (August), Spring (January)",
+                    portal: "https://www.berkeley.edu"
+                },
+                {
+                    name: "MIT",
+                    location: "Cambridge, Massachusetts",
+                    ranking: "QS World Ranking #1",
+                    courses: "Engineering, Computer Science, AI, Robotics",
+                    fee: "$55,000/year",
+                    intakes: "Fall (September)",
+                    portal: "https://www.mit.edu"
+                },
+                {
+                    name: "Stanford University",
+                    location: "Stanford, California",
+                    ranking: "QS World Ranking #3",
+                    courses: "Business, Engineering, Medicine, Law",
+                    fee: "$56,000/year",
+                    intakes: "Fall (September)",
+                    portal: "https://www.stanford.edu"
+                },
+                {
+                    name: "Harvard University",
+                    location: "Cambridge, Massachusetts",
+                    ranking: "QS World Ranking #5",
+                    courses: "Law, Medicine, Business, Arts & Sciences",
+                    fee: "$54,000/year",
+                    intakes: "Fall (September)",
+                    portal: "https://www.harvard.edu"
+                }
+            ],
+            uk: [
+                {
+                    name: "University of Oxford",
+                    location: "Oxford, England",
+                    ranking: "QS World Ranking #2",
+                    courses: "Law, Medicine, Engineering, Business",
+                    fee: "£28,000/year",
+                    intakes: "Michaelmas (October)",
+                    portal: "https://www.ox.ac.uk"
+                },
+                {
+                    name: "University of Cambridge",
+                    location: "Cambridge, England",
+                    ranking: "QS World Ranking #4",
+                    courses: "Natural Sciences, Engineering, Computer Science",
+                    fee: "£30,000/year",
+                    intakes: "Michaelmas (October)",
+                    portal: "https://www.cam.ac.uk"
+                },
+                {
+                    name: "Imperial College London",
+                    location: "London, England",
+                    ranking: "QS World Ranking #6",
+                    courses: "Engineering, Medicine, Business, Science",
+                    fee: "£35,000/year",
+                    intakes: "September, January",
+                    portal: "https://www.imperial.ac.uk"
+                }
+            ],
+            canada: [
+                {
+                    name: "University of Toronto",
+                    location: "Toronto, Ontario",
+                    ranking: "QS World Ranking #21",
+                    courses: "Computer Science, Engineering, Business, Medicine",
+                    fee: "CAD $55,000/year",
+                    intakes: "Fall (September), Winter (January)",
+                    portal: "https://www.utoronto.ca"
+                },
+                {
+                    name: "University of British Columbia",
+                    location: "Vancouver, BC",
+                    ranking: "QS World Ranking #34",
+                    courses: "Business, Engineering, Arts, Sciences",
+                    fee: "CAD $45,000/year",
+                    intakes: "September, January, May",
+                    portal: "https://www.ubc.ca"
+                },
+                {
+                    name: "McGill University",
+                    location: "Montreal, Quebec",
+                    ranking: "QS World Ranking #27",
+                    courses: "Engineering, Medicine, Law, Arts",
+                    fee: "CAD $42,000/year",
+                    intakes: "Fall (September)",
+                    portal: "https://www.mcgill.ca"
+                }
+            ],
+            australia: [
+                {
+                    name: "Australian National University",
+                    location: "Canberra, ACT",
+                    ranking: "QS World Ranking #27",
+                    courses: "Science, Engineering, Politics, Law",
+                    fee: "AUD $45,000/year",
+                    intakes: "February, July",
+                    portal: "https://www.anu.edu.au"
+                },
+                {
+                    name: "University of Melbourne",
+                    location: "Melbourne, Victoria",
+                    ranking: "QS World Ranking #14",
+                    courses: "Business, Medicine, Arts, Engineering",
+                    fee: "AUD $50,000/year",
+                    intakes: "February, July",
+                    portal: "https://www.unimelb.edu.au"
+                },
+                {
+                    name: "University of Sydney",
+                    location: "Sydney, NSW",
+                    ranking: "QS World Ranking #19",
+                    courses: "Business, Law, Medicine, Engineering",
+                    fee: "AUD $48,000/year",
+                    intakes: "February, July",
+                    portal: "https://www.sydney.edu.au"
+                }
+            ],
+            germany: [
+                {
+                    name: "Technical University of Munich",
+                    location: "Munich, Bavaria",
+                    ranking: "QS World Ranking #37",
+                    courses: "Engineering, Computer Science, Natural Sciences",
+                    fee: "€0/year (Public), Semester fee €150",
+                    intakes: "Winter (October), Summer (April)",
+                    portal: "https://www.tum.de"
+                },
+                {
+                    name: "Ludwig Maximilian University",
+                    location: "Munich, Bavaria",
+                    ranking: "QS World Ranking #54",
+                    courses: "Medicine, Law, Economics, Sciences",
+                    fee: "€0/year (Public), Semester fee €140",
+                    intakes: "Winter (October), Summer (April)",
+                    portal: "https://www.lmu.de"
+                },
+                {
+                    name: "Heidelberg University",
+                    location: "Heidelberg, Baden-Württemberg",
+                    ranking: "QS World Ranking #65",
+                    courses: "Medicine, Natural Sciences, Law, Humanities",
+                    fee: "€0/year (Public), Semester fee €170",
+                    intakes: "Winter (October), Summer (April)",
+                    portal: "https://www.uni-heidelberg.de"
+                }
+            ],
+            switzerland: [
+                {
+                    name: "ETH Zurich",
+                    location: "Zurich, Switzerland",
+                    ranking: "QS World Ranking #7",
+                    courses: "Engineering, Computer Science, Architecture, Natural Sciences",
+                    fee: "CHF 1,298/semester",
+                    intakes: "Autumn (September), Spring (February)",
+                    portal: "https://ethz.ch"
+                },
+                {
+                    name: "EPFL",
+                    location: "Lausanne, Switzerland",
+                    ranking: "QS World Ranking #16",
+                    courses: "Engineering, Computer Science, Life Sciences, Architecture",
+                    fee: "CHF 1,266/semester",
+                    intakes: "Autumn (September), Spring (February)",
+                    portal: "https://www.epfl.ch"
+                },
+                {
+                    name: "University of Zurich",
+                    location: "Zurich, Switzerland",
+                    ranking: "QS World Ranking #83",
+                    courses: "Medicine, Law, Economics, Arts",
+                    fee: "CHF 1,568/semester",
+                    intakes: "Autumn (September), Spring (February)",
+                    portal: "https://www.uzh.ch"
+                },
+                {
+                    name: "University of Geneva",
+                    location: "Geneva, Switzerland",
+                    ranking: "QS World Ranking #125",
+                    courses: "International Relations, Medicine, Law, Sciences",
+                    fee: "CHF 1,000/semester",
+                    intakes: "Autumn (September), Spring (February)",
+                    portal: "https://www.unige.ch"
+                }
+            ],
+            singapore: [
+                {
+                    name: "National University of Singapore",
+                    location: "Singapore",
+                    ranking: "QS World Ranking #8",
+                    courses: "Engineering, Business, Computing, Medicine",
+                    fee: "SGD 38,200/year",
+                    intakes: "August, January",
+                    portal: "https://www.nus.edu.sg"
+                },
+                {
+                    name: "Nanyang Technological University",
+                    location: "Singapore",
+                    ranking: "QS World Ranking #19",
+                    courses: "Engineering, Business, Science, Arts",
+                    fee: "SGD 36,830/year",
+                    intakes: "August",
+                    portal: "https://www.ntu.edu.sg"
+                }
+            ],
+            japan: [
+                {
+                    name: "University of Tokyo",
+                    location: "Tokyo, Japan",
+                    ranking: "QS World Ranking #28",
+                    courses: "Engineering, Science, Medicine, Arts",
+                    fee: "¥535,800/year",
+                    intakes: "April, September",
+                    portal: "https://www.u-tokyo.ac.jp"
+                },
+                {
+                    name: "Kyoto University",
+                    location: "Kyoto, Japan",
+                    ranking: "QS World Ranking #46",
+                    courses: "Engineering, Science, Medicine, Agriculture",
+                    fee: "¥535,800/year",
+                    intakes: "April",
+                    portal: "https://www.kyoto-u.ac.jp"
+                }
+            ],
+            "south-korea": [
+                {
+                    name: "Seoul National University",
+                    location: "Seoul, South Korea",
+                    ranking: "QS World Ranking #41",
+                    courses: "Engineering, Business, Medicine, Arts",
+                    fee: "₩6,698,000/year",
+                    intakes: "March, September",
+                    portal: "https://en.snu.ac.kr"
+                },
+                {
+                    name: "KAIST",
+                    location: "Daejeon, South Korea",
+                    ranking: "QS World Ranking #56",
+                    courses: "Engineering, Science, Business, IT",
+                    fee: "₩8,960,000/year",
+                    intakes: "March, September",
+                    portal: "https://www.kaist.ac.kr"
+                }
+            ],
+            "new-zealand": [
+                {
+                    name: "University of Auckland",
+                    location: "Auckland, New Zealand",
+                    ranking: "QS World Ranking #68",
+                    courses: "Business, Engineering, Medicine, Arts",
+                    fee: "NZ$41,000/year",
+                    intakes: "February, July",
+                    portal: "https://www.auckland.ac.nz"
+                },
+                {
+                    name: "University of Otago",
+                    location: "Dunedin, New Zealand",
+                    ranking: "QS World Ranking #217",
+                    courses: "Medicine, Health Sciences, Business, Arts",
+                    fee: "NZ$37,000/year",
+                    intakes: "February, July",
+                    portal: "https://www.otago.ac.nz"
+                }
+            ],
+            denmark: [
+                {
+                    name: "University of Copenhagen",
+                    location: "Copenhagen, Denmark",
+                    ranking: "QS World Ranking #82",
+                    courses: "Science, Health, Humanities, Social Sciences",
+                    fee: "DKK 75,000-120,000/year",
+                    intakes: "September, February",
+                    portal: "https://www.ku.dk"
+                },
+                {
+                    name: "Technical University of Denmark",
+                    location: "Kongens Lyngby, Denmark",
+                    ranking: "QS World Ranking #104",
+                    courses: "Engineering, Technology, Science",
+                    fee: "DKK 120,000/year",
+                    intakes: "September, February",
+                    portal: "https://www.dtu.dk"
+                }
+            ],
+            norway: [
+                {
+                    name: "University of Oslo",
+                    location: "Oslo, Norway",
+                    ranking: "QS World Ranking #117",
+                    courses: "Medicine, Law, Humanities, Social Sciences",
+                    fee: "No tuition fees (semester fee NOK 600)",
+                    intakes: "August, January",
+                    portal: "https://www.uio.no"
+                },
+                {
+                    name: "Norwegian University of Science and Technology",
+                    location: "Trondheim, Norway",
+                    ranking: "QS World Ranking #352",
+                    courses: "Engineering, Technology, Natural Sciences",
+                    fee: "No tuition fees (semester fee NOK 600)",
+                    intakes: "August, January",
+                    portal: "https://www.ntnu.no"
+                }
+            ],
+            finland: [
+                {
+                    name: "University of Helsinki",
+                    location: "Helsinki, Finland",
+                    ranking: "QS World Ranking #106",
+                    courses: "Science, Medicine, Arts, Social Sciences",
+                    fee: "€13,000-18,000/year",
+                    intakes: "August, January",
+                    portal: "https://www.helsinki.fi"
+                },
+                {
+                    name: "Aalto University",
+                    location: "Espoo, Finland",
+                    ranking: "QS World Ranking #116",
+                    courses: "Engineering, Business, Arts, Design",
+                    fee: "€12,000-15,000/year",
+                    intakes: "August, January",
+                    portal: "https://www.aalto.fi"
+                }
+            ],
+            spain: [
+                {
+                    name: "University of Barcelona",
+                    location: "Barcelona, Spain",
+                    ranking: "QS World Ranking #168",
+                    courses: "Medicine, Law, Economics, Arts",
+                    fee: "€2,000-4,000/year",
+                    intakes: "September, February",
+                    portal: "https://www.ub.edu"
+                },
+                {
+                    name: "Complutense University of Madrid",
+                    location: "Madrid, Spain",
+                    ranking: "QS World Ranking #226",
+                    courses: "Medicine, Law, Humanities, Social Sciences",
+                    fee: "€2,000-4,500/year",
+                    intakes: "September, February",
+                    portal: "https://www.ucm.es"
+                }
+            ],
+            austria: [
+                {
+                    name: "University of Vienna",
+                    location: "Vienna, Austria",
+                    ranking: "QS World Ranking #151",
+                    courses: "Humanities, Social Sciences, Natural Sciences",
+                    fee: "€726/semester",
+                    intakes: "October, March",
+                    portal: "https://www.univie.ac.at"
+                },
+                {
+                    name: "Vienna University of Technology",
+                    location: "Vienna, Austria",
+                    ranking: "QS World Ranking #180",
+                    courses: "Engineering, Architecture, Computer Science",
+                    fee: "€726/semester",
+                    intakes: "October, March",
+                    portal: "https://www.tuwien.at"
+                }
+            ],
+            belgium: [
+                {
+                    name: "KU Leuven",
+                    location: "Leuven, Belgium",
+                    ranking: "QS World Ranking #61",
+                    courses: "Engineering, Medicine, Law, Arts",
+                    fee: "€922-6,000/year",
+                    intakes: "September, February",
+                    portal: "https://www.kuleuven.be"
+                },
+                {
+                    name: "Ghent University",
+                    location: "Ghent, Belgium",
+                    ranking: "QS World Ranking #143",
+                    courses: "Medicine, Engineering, Sciences, Arts",
+                    fee: "€922-6,000/year",
+                    intakes: "September, February",
+                    portal: "https://www.ugent.be"
+                }
+            ]
+        };
+
+        // Country Information
+        const countryInfo = {
+            usa: {
+                flag: "🇺🇸",
+                name: "United States",
+                stats: {
+                    students: "1.1M+",
+                    universities: "4,000+",
+                    workPermit: "3 years OPT"
+                }
+            },
+            uk: {
+                flag: "🇬🇧",
+                name: "United Kingdom",
+                stats: {
+                    students: "679,970",
+                    universities: "160+",
+                    workPermit: "2 years Graduate Route"
+                }
+            },
+            canada: {
+                flag: "🇨🇦",
+                name: "Canada",
+                stats: {
+                    students: "642,480",
+                    universities: "223+",
+                    workPermit: "3 years PGWP"
+                }
+            },
+            australia: {
+                flag: "🇦🇺",
+                name: "Australia",
+                stats: {
+                    students: "738,107",
+                    universities: "43+",
+                    workPermit: "4 years post-study"
+                }
+            },
+            germany: {
+                flag: "🇩🇪",
+                name: "Germany",
+                stats: {
+                    students: "350,000+",
+                    universities: "400+",
+                    workPermit: "18 months post-study"
+                }
+            },
+            switzerland: {
+                flag: "🇨🇭",
+                name: "Switzerland",
+                stats: {
+                    students: "50,000+",
+                    universities: "12+",
+                    workPermit: "6 months job search"
+                }
+            },
+            singapore: {
+                flag: "🇸🇬",
+                name: "Singapore",
+                stats: {
+                    students: "65,000+",
+                    universities: "6 autonomous",
+                    workPermit: "1 year for job search"
+                }
+            },
+            japan: {
+                flag: "🇯🇵",
+                name: "Japan",
+                stats: {
+                    students: "228,000+",
+                    universities: "780+",
+                    workPermit: "Unlimited with job offer"
+                }
+            },
+            "south-korea": {
+                flag: "🇰🇷",
+                name: "South Korea",
+                stats: {
+                    students: "160,000+",
+                    universities: "370+",
+                    workPermit: "D-10 job seeker visa"
+                }
+            },
+            "new-zealand": {
+                flag: "🇳🇿",
+                name: "New Zealand",
+                stats: {
+                    students: "35,000+",
+                    universities: "8+",
+                    workPermit: "3 years post-study"
+                }
+            },
+            denmark: {
+                flag: "🇩🇰",
+                name: "Denmark",
+                stats: {
+                    students: "35,000+",
+                    universities: "8+",
+                    workPermit: "3 years for job search"
+                }
+            },
+            norway: {
+                flag: "🇳🇴",
+                name: "Norway",
+                stats: {
+                    students: "15,000+",
+                    universities: "10+",
+                    workPermit: "1 year job seeker"
+                }
+            },
+            finland: {
+                flag: "🇫🇮",
+                name: "Finland",
+                stats: {
+                    students: "20,000+",
+                    universities: "13+",
+                    workPermit: "2 years post-study"
+                }
+            },
+            spain: {
+                flag: "🇪🇸",
+                name: "Spain",
+                stats: {
+                    students: "75,000+",
+                    universities: "76+",
+                    workPermit: "1 year for job search"
+                }
+            },
+            austria: {
+                flag: "🇦🇹",
+                name: "Austria",
+                stats: {
+                    students: "65,000+",
+                    universities: "22+",
+                    workPermit: "1 year job seeker"
+                }
+            },
+            belgium: {
+                flag: "🇧🇪",
+                name: "Belgium",
+                stats: {
+                    students: "55,000+",
+                    universities: "20+",
+                    workPermit: "1 year for job search"
+                }
+            }
+        };
+
+        // Scroll to section
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const offset = 90;
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({
+                    top: elementPosition - offset,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Filter universities by country
+        function filterCountry(country) {
+            // Update active button
+            document.querySelectorAll('.country-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Display country header
+            const header = document.getElementById('countryHeader');
+            const info = countryInfo[country];
+            
+            if (info) {
+                header.innerHTML = `
+                    <div class="country-header">
+                        <div class="country-flag">${info.flag}</div>
+                        <h2 class="country-title">${info.name}</h2>
+                        <p>Explore top universities in ${info.name} with detailed information about courses, fees, and intakes</p>
+                        <div class="country-stats">
+                            <div class="stat">
+                                <div class="stat-value">${info.stats.students}</div>
+                                <div class="stat-label">International Students</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">${info.stats.universities}</div>
+                                <div class="stat-label">Universities</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">${info.stats.workPermit}</div>
+                                <div class="stat-label">Work Permit</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Display universities
+            const container = document.getElementById('universityContainer');
+            const unis = universities[country] || [];
+            
+            if (unis.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: var(--text-light); font-size: 1.2rem;">Universities coming soon for this country!</p>';
+                return;
+            }
+
+            container.innerHTML = unis.map(uni => `
+                <div class="university-card">
+                    <h3 class="uni-name">${uni.name}</h3>
+                    <div class="uni-info">
+                        <span class="uni-label">📍 Location:</span>
+                        <span class="uni-value">${uni.location}</span>
+                    </div>
+                    <div class="uni-info">
+                        <span class="uni-label">🏆 Ranking:</span>
+                        <span class="uni-value">${uni.ranking}</span>
+                    </div>
+                    <div class="uni-courses">
+                        <strong>📚 Popular Courses:</strong><br>
+                        ${uni.courses}
+                    </div>
+                    <div class="uni-fee">💰 ${uni.fee}</div>
+                    <div class="uni-intakes">📅 Intakes: ${uni.intakes}</div>
+                    <a href="${uni.portal}" target="_blank" class="uni-link">Visit University Portal →</a>
+                    <a href="#booking" class="uni-link" onclick="scrollToSection('booking')">Apply Now →</a>
+                </div>
+            `).join('');
+        }
+
+        // Modal Functions
+        function openQuickApplication() {
+            document.getElementById('quickAppModal').classList.add('active');
+        }
+
+        function closeQuickApplication() {
+            document.getElementById('quickAppModal').classList.remove('active');
+        }
+
+        function openUSVisaForm() {
+            document.getElementById('usVisaModal').classList.add('active');
+        }
+
+        function closeUSVisaForm() {
+            document.getElementById('usVisaModal').classList.remove('active');
+        }
+
+        function openBookingForm() {
+            document.getElementById('bookingModal').classList.add('active');
+        }
+
+        function closeBookingForm() {
+            document.getElementById('bookingModal').classList.remove('active');
+        }
+
+        function openVolunteerForm() {
+            document.getElementById('volunteerModal').classList.add('active');
+        }
+
+        function closeVolunteerForm() {
+            document.getElementById('volunteerModal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+            }
+        }
+
+        // Form Submissions
+        function submitQuickApp() {
+            const name = document.getElementById('qaName').value;
+            const email = document.getElementById('qaEmail').value;
+            const phone = document.getElementById('qaPhone').value;
+            const country = document.getElementById('qaCountry').value;
+            const course = document.getElementById('qaCourse').value;
+            const message = document.getElementById('qaMessage').value;
+
+            if (!name || !email || !phone || !country || !course) {
+                alert('Please fill in all required fields!');
+                return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address!');
+                return;
+            }
+
+            alert(`Thank you ${name}! Your application has been submitted. We'll contact you soon at ${email}.`);
+            closeQuickApplication();
+            
+            // Reset form
+            document.getElementById('qaName').value = '';
+            document.getElementById('qaEmail').value = '';
+            document.getElementById('qaPhone').value = '';
+            document.getElementById('qaCountry').value = '';
+            document.getElementById('qaCourse').value = '';
+            document.getElementById('qaMessage').value = '';
+        }
+
+        function submitUSVisa() {
+            const name = document.getElementById('uvName').value;
+            const email = document.getElementById('uvEmail').value;
+            const phone = document.getElementById('uvPhone').value;
+            const type = document.getElementById('uvType').value;
+            const date = document.getElementById('uvDate').value;
+            const message = document.getElementById('uvMessage').value;
+
+            if (!name || !email || !phone || !type) {
+                alert('Please fill in all required fields!');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address!');
+                return;
+            }
+
+            alert(`Thank you ${name}! Your US Visa slot booking request has been submitted. Our team will contact you within 24 hours.`);
+            closeUSVisaForm();
+            
+            // Reset form
+            document.getElementById('uvName').value = '';
+            document.getElementById('uvEmail').value = '';
+            document.getElementById('uvPhone').value = '';
+            document.getElementById('uvType').value = '';
+            document.getElementById('uvDate').value = '';
+            document.getElementById('uvMessage').value = '';
+        }
+
+        function submitConsultation() {
+            const name = document.getElementById('cbName').value;
+            const email = document.getElementById('cbEmail').value;
+            const phone = document.getElementById('cbPhone').value;
+            const country = document.getElementById('cbCountry').value;
+            const time = document.getElementById('cbTime').value;
+            const message = document.getElementById('cbMessage').value;
+
+            if (!name || !email || !phone || !country) {
+                alert('Please fill in all required fields!');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address!');
+                return;
+            }
+
+            alert(`Thank you ${name}! Your free consultation has been booked. We'll reach out to you shortly to confirm the time.`);
+            closeBookingForm();
+            
+            // Reset form
+            document.getElementById('cbName').value = '';
+            document.getElementById('cbEmail').value = '';
+            document.getElementById('cbPhone').value = '';
+            document.getElementById('cbCountry').value = '';
+            document.getElementById('cbTime').value = '';
+            document.getElementById('cbMessage').value = '';
+        }
+
+        function submitVolunteer() {
+            const name = document.getElementById('vName').value;
+            const email = document.getElementById('vEmail').value;
+            const phone = document.getElementById('vPhone').value;
+            const country = document.getElementById('vCountry').value;
+            const city = document.getElementById('vCity').value;
+            const university = document.getElementById('vUniversity').value;
+            const course = document.getElementById('vCourse').value;
+            const year = document.getElementById('vYear').value;
+            const years = document.getElementById('vYears').value;
+            const payment = document.getElementById('vPayment').value;
+            const languages = document.getElementById('vLanguages').value;
+            const comments = document.getElementById('vComments').value;
+
+            if (!name || !email || !phone || !country || !city) {
+                alert('Please fill in all required fields!');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address!');
+                return;
+            }
+
+            alert(`Thank you ${name}! Your volunteer application has been submitted. We appreciate your interest in helping students achieve their dreams!`);
+            closeVolunteerForm();
+            
+            // Reset form
+            document.getElementById('vName').value = '';
+            document.getElementById('vEmail').value = '';
+            document.getElementById('vPhone').value = '';
+            document.getElementById('vCountry').value = '';
+            document.getElementById('vCity').value = '';
+            document.getElementById('vUniversity').value = '';
+            document.getElementById('vCourse').value = '';
+            document.getElementById('vYear').value = '';
+            document.getElementById('vYears').value = '';
+            document.getElementById('vPayment').value = '';
+            document.getElementById('vLanguages').value = '';
+            document.getElementById('vComments').value = '';
+        }
+
+        // Initialize with USA universities
+        window.onload = function() {
+            filterCountry('usa');
+        };
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 90;
+                    const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                    window.scrollTo({
+                        top: elementPosition - offset,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
