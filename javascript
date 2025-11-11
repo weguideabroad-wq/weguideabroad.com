@@ -1,5 +1,15 @@
+// =============================================
+// EMAIL CONFIGURATION - UPDATED WITH YOUR CODES!
+// =============================================
 const emailConfig = {
-    serviceID: "PASTE_SERVICE_ID_HERE",
-    templateID: "PASTE_TEMPLATE_ID_HERE", 
-    publicKey: "PASTE_PUBLIC_KEY_HERE"
+    serviceID: "service_vzy1wsf",
+    templateID: "template_b0pag1h", 
+    publicKey: "a0cQWBUH6S6nPloAi"
 };
+
+// Initialize EmailJS
+(function() {
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init("a0cQWBUH6S6nPloAi");
+    }
+})();
