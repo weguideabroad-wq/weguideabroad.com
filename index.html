@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeGuideAbroad - Best Study Abroad Consultants in Nizamabad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -24,6 +25,7 @@
             --white: #FFFFFF;
             --success: #10b981;
             --shadow-color: rgba(0, 188, 212, 0.15);
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
         body {
@@ -244,7 +246,7 @@
             background: white;
             padding: 2.5rem;
             border-radius: 20px;
-            box-shadow: 0 4px 25px var(--shadow-color);
+            box-shadow: var(--card-shadow);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             animation: fadeIn 0.5s ease-out;
             border: 2px solid transparent;
@@ -344,7 +346,7 @@
             border: 2px solid rgba(0, 188, 212, 0.2);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 20px var(--shadow-color);
+            box-shadow: var(--card-shadow);
         }
 
         .university-card::before {
@@ -647,6 +649,113 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* New Features */
+        .ai-recommendation {
+            background: linear-gradient(135deg, var(--primary-teal), var(--accent-navy));
+            color: white;
+            padding: 4rem 0;
+            margin: 3rem 0;
+            border-radius: 25px;
+            text-align: center;
+        }
+
+        .testimonials {
+            padding: 5rem 0;
+            background: var(--bg-light);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .author-info h4 {
+            color: var(--accent-navy);
+            margin-bottom: 0.3rem;
+        }
+
+        .author-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .stats-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-orange));
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-card {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .ai-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 font-size: 0.85rem;
@@ -685,6 +794,10 @@
             .stat-value {
                 font-size: 1.5rem;
             }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -693,7 +806,6 @@
         <nav class="container">
             <div class="logo">
                 <div class="logo-img">
-                    <!-- Your company logo -->
                     <div style="background: white; width: 100%; height: 100%; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 5px; font-size: 0.6rem; font-weight: bold; color: var(--primary-teal); text-align: center;">
                         <div>We Guide</div>
                         <div>Abroad</div>
@@ -706,6 +818,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#universities">Universities</a></li>
+                <li><a href="#testimonials">Success Stories</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -722,47 +835,78 @@
         </div>
     </section>
 
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-description">Students Guided</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-description">Countries</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-description">Visa Success Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-description">Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="services" class="services">
         <div class="container">
             <h2 class="section-title">Our Premium Services</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">🇺🇸</div>
+                    <div class="service-icon"><i class="fas fa-passport"></i></div>
                     <h3>US Visa Slot Booking</h3>
                     <p>Fast-track US F1/F2 visa appointments with expert assistance for students and dependents</p>
                     <button class="btn btn-primary" onclick="scrollToSection('us-visa')" style="margin-top: 1rem;">Book Now</button>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🎯</div>
+                    <div class="service-icon"><i class="fas fa-university"></i></div>
                     <h3>University Selection</h3>
                     <p>AI-powered matching to find your perfect university based on profile and preferences</p>
-                    <button class="btn btn-primary" onclick="scrollToSection('booking')" style="margin-top: 1rem;">Get Started</button>
+                    <button class="btn btn-primary" onclick="openAIRecommendation()" style="margin-top: 1rem;">Get AI Recommendations</button>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">📝</div>
+                    <div class="service-icon"><i class="fas fa-file-alt"></i></div>
                     <h3>Application Support</h3>
                     <p>End-to-end application help including SOPs, LORs, essays, and documentation</p>
                     <button class="btn btn-primary" onclick="openQuickApplication()" style="margin-top: 1rem;">Apply Now</button>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">✈️</div>
+                    <div class="service-icon"><i class="fas fa-plane-departure"></i></div>
                     <h3>Pre-Departure Services</h3>
                     <p>Complete guidance for visa processing, accommodation, and travel arrangements</p>
                     <button class="btn btn-primary" onclick="scrollToSection('booking')" style="margin-top: 1rem;">Learn More</button>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">💼</div>
+                    <div class="service-icon"><i class="fas fa-briefcase"></i></div>
                     <h3>Career Counseling</h3>
                     <p>Expert career guidance aligned with global job markets and industry trends</p>
                     <button class="btn btn-primary" onclick="scrollToSection('booking')" style="margin-top: 1rem;">Consult Now</button>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🤝</div>
+                    <div class="service-icon"><i class="fas fa-hands-helping"></i></div>
                     <h3>Volunteer Program</h3>
                     <p>Join our mission to help students achieve their study abroad dreams</p>
                     <button class="btn btn-primary" onclick="openVolunteerForm()" style="margin-top: 1rem;">Join Us</button>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="ai-recommendation">
+        <div class="container">
+            <h2 style="margin-bottom: 1rem;">Get Personalized University Recommendations</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Our AI system matches your profile with the best universities worldwide</p>
+            <button class="btn btn-secondary" onclick="openAIRecommendation()">Try Our AI Tool</button>
         </div>
     </section>
 
@@ -775,6 +919,7 @@
                 <button class="country-btn" onclick="filterCountry('canada')">🇨🇦 Canada</button>
                 <button class="country-btn" onclick="filterCountry('australia')">🇦🇺 Australia</button>
                 <button class="country-btn" onclick="filterCountry('germany')">🇩🇪 Germany</button>
+                <button class="country-btn" onclick="filterCountry('latvia')">🇱🇻 Latvia</button>
                 <button class="country-btn" onclick="filterCountry('france')">🇫🇷 France</button>
                 <button class="country-btn" onclick="filterCountry('italy')">🇮🇹 Italy</button>
                 <button class="country-btn" onclick="filterCountry('netherlands')">🇳🇱 Netherlands</button>
@@ -784,15 +929,53 @@
                 <button class="country-btn" onclick="filterCountry('japan')">🇯🇵 Japan</button>
                 <button class="country-btn" onclick="filterCountry('south-korea')">🇰🇷 South Korea</button>
                 <button class="country-btn" onclick="filterCountry('new-zealand')">🇳🇿 New Zealand</button>
-                <button class="country-btn" onclick="filterCountry('denmark')">🇩🇰 Denmark</button>
-                <button class="country-btn" onclick="filterCountry('norway')">🇳🇴 Norway</button>
-                <button class="country-btn" onclick="filterCountry('finland')">🇫🇮 Finland</button>
-                <button class="country-btn" onclick="filterCountry('spain')">🇪🇸 Spain</button>
-                <button class="country-btn" onclick="filterCountry('austria')">🇦🇹 Austria</button>
-                <button class="country-btn" onclick="filterCountry('belgium')">🇧🇪 Belgium</button>
             </div>
             <div id="countryHeader"></div>
             <div id="universityContainer" class="university-grid"></div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Student Success Stories</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "WeGuideAbroad helped me get into my dream university in Canada. Their guidance on the application process and visa was invaluable!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RK</div>
+                        <div class="author-info">
+                            <h4>Rahul Kumar</h4>
+                            <p>University of Toronto, Canada</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The AI recommendation tool matched me with perfect universities in Germany that I hadn't even considered. Got admission with scholarship!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PS</div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>Technical University of Munich, Germany</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "US visa slot booking service saved me months of waiting. The team was professional and got me an appointment within 2 weeks!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AS</div>
+                        <div class="author-info">
+                            <h4>Ankit Singh</h4>
+                            <p>New York University, USA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -829,894 +1012,9 @@
                     <ul>
                         <li><a href="#services">Our Services</a></li>
                         <li><a href="#universities">Universities</a></li>
+                        <li><a href="#testimonials">Success Stories</a></li>
                         <li><a href="#us-visa">US Visa Booking</a></li>
                         <li><a href="#booking">Book Consultation</a></li>
                         <li><a href="#" onclick="openVolunteerForm(); return false;">Join as Volunteer</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <ul>
-                        <li>📧 <a href="mailto:weguideabroad@gmail.com">weguideabroad@gmail.com</a></li>
-                        <li>📱 <a href="tel:+918712290029">+91 8712290029</a></li>
-                        <li>🌐 <a href="https://www.weguideabroad.com">www.weguideabroad.com</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Study Destinations</h3>
-                    <ul>
-                        <li>🇺🇸 United States</li>
-                        <li>🇬🇧 United Kingdom</li>
-                        <li>🇨🇦 Canada</li>
-                        <li>🇦🇺 Australia</li>
-                        <li>🇪🇺 Europe (20+ countries)</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 WeGuideAbroad. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Add EmailJS for sending emails -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
-    <!-- Quick Application Modal -->
-    <div id="quickAppModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeQuickApplication()">&times;</span>
-            <h2 style="color: var(--primary-teal); margin-bottom: 1.5rem;">Quick Application</h2>
-            <div class="form-group">
-                <label>Full Name *</label>
-                <input type="text" id="qaName" required>
-            </div>
-            <div class="form-group">
-                <label>Email *</label>
-                <input type="email" id="qaEmail" required>
-            </div>
-            <div class="form-group">
-                <label>Phone Number *</label>
-                <input type="tel" id="qaPhone" required>
-            </div>
-            <div class="form-group">
-                <label>Preferred Country *</label>
-                <select id="qaCountry">
-                    <option value="">Select Country</option>
-                    <option value="usa">USA</option>
-                    <option value="uk">UK</option>
-                    <option value="canada">Canada</option>
-                    <option value="australia">Australia</option>
-                    <option value="germany">Germany</option>
-                    <option value="switzerland">Switzerland</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Course Level *</label>
-                <select id="qaCourse">
-                    <option value="">Select Level</option>
-                    <option value="bachelor">Bachelor's</option>
-                    <option value="master">Master's</option>
-                    <option value="phd">PhD</option>
-                    <option value="diploma">Diploma</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Message</label>
-                <textarea id="qaMessage"></textarea>
-            </div>
-            <button class="submit-btn" onclick="submitQuickApp()">Submit Application</button>
-        </div>
-    </div>
-
-    <!-- US Visa Modal -->
-    <div id="usVisaModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeUSVisaForm()">&times;</span>
-            <h2 style="color: var(--primary-teal); margin-bottom: 1.5rem;">US Visa Slot Booking</h2>
-            <div class="form-group">
-                <label>Full Name *</label>
-                <input type="text" id="uvName" required>
-            </div>
-            <div class="form-group">
-                <label>Email *</label>
-                <input type="email" id="uvEmail" required>
-            </div>
-            <div class="form-group">
-                <label>Phone Number *</label>
-                <input type="tel" id="uvPhone" required>
-            </div>
-            <div class="form-group">
-                <label>Visa Type *</label>
-                <select id="uvType">
-                    <option value="">Select Visa Type</option>
-                    <option value="f1">F1 Student Visa</option>
-                    <option value="f2">F2 Dependent Visa</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Preferred Date</label>
-                <input type="date" id="uvDate">
-            </div>
-            <div class="form-group">
-                <label>Additional Information</label>
-                <textarea id="uvMessage"></textarea>
-            </div>
-            <button class="submit-btn" onclick="submitUSVisa()">Book Slot</button>
-        </div>
-    </div>
-
-    <!-- Consultation Booking Modal -->
-    <div id="bookingModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeBookingForm()">&times;</span>
-            <h2 style="color: var(--primary-teal); margin-bottom: 1.5rem;">Free Consultation Booking</h2>
-            <div class="form-group">
-                <label>Full Name *</label>
-                <input type="text" id="cbName" required>
-            </div>
-            <div class="form-group">
-                <label>Email *</label>
-                <input type="email" id="cbEmail" required>
-            </div>
-            <div class="form-group">
-                <label>Phone Number *</label>
-                <input type="tel" id="cbPhone" required>
-            </div>
-            <div class="form-group">
-                <label>Preferred Country *</label>
-                <select id="cbCountry">
-                    <option value="">Select Country</option>
-                    <option value="usa">USA</option>
-                    <option value="uk">UK</option>
-                    <option value="canada">Canada</option>
-                    <option value="australia">Australia</option>
-                    <option value="germany">Germany</option>
-                    <option value="switzerland">Switzerland</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Preferred Time</label>
-                <input type="datetime-local" id="cbTime">
-            </div>
-            <div class="form-group">
-                <label>Your Questions</label>
-                <textarea id="cbMessage"></textarea>
-            </div>
-            <button class="submit-btn" onclick="submitConsultation()">Book Consultation</button>
-        </div>
-    </div>
-
-    <!-- Volunteer Form Modal -->
-    <div id="volunteerModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeVolunteerForm()">&times;</span>
-            <h2 style="color: var(--primary-teal); margin-bottom: 1.5rem;">Join as Volunteer</h2>
-            <div class="form-group">
-                <label>Full Name *</label>
-                <input type="text" id="vName" required>
-            </div>
-            <div class="form-group">
-                <label>Email Address *</label>
-                <input type="email" id="vEmail" required>
-            </div>
-            <div class="form-group">
-                <label>Phone Number *</label>
-                <input type="tel" id="vPhone" required>
-            </div>
-            <div class="form-group">
-                <label>Country of Residence *</label>
-                <input type="text" id="vCountry" required>
-            </div>
-            <div class="form-group">
-                <label>City or Region *</label>
-                <input type="text" id="vCity" required>
-            </div>
-            <div class="form-group">
-                <label>University / Institution Name</label>
-                <input type="text" id="vUniversity">
-            </div>
-            <div class="form-group">
-                <label>Course / Major</label>
-                <input type="text" id="vCourse">
-            </div>
-            <div class="form-group">
-                <label>Year of Study</label>
-                <select id="vYear">
-                    <option value="">Select Year</option>
-                    <option value="1st">1st Year</option>
-                    <option value="2nd">2nd Year</option>
-                    <option value="3rd">3rd Year</option>
-                    <option value="4th">4th Year</option>
-                    <option value="masters">Master's</option>
-                    <option value="phd">PhD</option>
-                    <option value="graduated">Graduated</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>How many years have you been living in this country?</label>
-                <input type="number" id="vYears" min="0" max="50">
-            </div>
-            <div class="form-group">
-                <label>Are you volunteering for free or expecting payment?</label>
-                <select id="vPayment">
-                    <option value="">Select Option</option>
-                    <option value="free">Volunteering for free</option>
-                    <option value="paid">Expecting payment</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Languages you can speak</label>
-                <input type="text" id="vLanguages" placeholder="e.g., English, Hindi, French">
-            </div>
-            <div class="form-group">
-                <label>Any additional comments or questions?</label>
-                <textarea id="vComments"></textarea>
-            </div>
-            <button class="submit-btn" onclick="submitVolunteer()">Submit Application</button>
-        </div>
-    </div>
-
-    <!-- Admin button to view submissions -->
-    <button onclick="viewSubmissions()" style="position: fixed; bottom: 100px; right: 20px; background: #ff4757; color: white; border: none; padding: 12px 16px; border-radius: 8px; z-index: 1000; font-weight: bold; box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4); cursor: pointer;">
-        📧 View Submissions (Admin)
-    </button>
-
-    <script>
-        // =============================================
-        // EMAIL CONFIGURATION - UPDATE THESE 3 VALUES!
-        // =============================================
-        const emailConfig = {
-            serviceID: "YOUR_SERVICE_ID_HERE",      // From EmailJS dashboard
-            templateID: "YOUR_TEMPLATE_ID_HERE",    // From EmailJS dashboard  
-            publicKey: "YOUR_PUBLIC_KEY_HERE"       // From EmailJS dashboard
-        };
-
-        // Initialize EmailJS
-        (function() {
-            if (typeof emailjs !== 'undefined') {
-                emailjs.init(emailConfig.publicKey);
-            }
-        })();
-
-        // Form Data Storage
-        const formSubmissions = {
-            quickApplications: [],
-            visaBookings: [],
-            consultations: [],
-            volunteerApplications: [],
-            aiRecommendations: [],
-            documentUploads: []
-        };
-
-        // Function to send emails
-        async function sendFormSubmission(submission) {
-            try {
-                console.log('Sending email for:', submission.type);
-                
-                const templateParams = {
-                    to_email: "weguideabroad@gmail.com",
-                    from_name: "WeGuideAbroad Website Form",
-                    subject: `New ${submission.type} - ${submission.data.name || 'Unknown User'}`,
-                    submission_type: submission.type,
-                    student_name: submission.data.name || 'Not provided',
-                    student_email: submission.data.email || 'Not provided',
-                    student_phone: submission.data.phone || 'Not provided',
-                    submission_details: JSON.stringify(submission.data, null, 2),
-                    timestamp: new Date().toLocaleString('en-IN', { 
-                        timeZone: 'Asia/Kolkata',
-                        dateStyle: 'full',
-                        timeStyle: 'medium'
-                    }),
-                    total_submissions: Object.values(formSubmissions).flat().length
-                };
-
-                const response = await emailjs.send(
-                    emailConfig.serviceID,
-                    emailConfig.templateID,
-                    templateParams
-                );
-
-                console.log('Email sent successfully');
-                return true;
-                
-            } catch (error) {
-                console.error('Email failed to send:', error);
-                storeSubmissionLocally(submission);
-                return false;
-            }
-        }
-
-        // Store submissions if email fails
-        function storeSubmissionLocally(submission) {
-            try {
-                const stored = localStorage.getItem('pendingSubmissions') || '[]';
-                const pending = JSON.parse(stored);
-                pending.push({
-                    ...submission,
-                    storedAt: new Date().toISOString()
-                });
-                localStorage.setItem('pendingSubmissions', JSON.stringify(pending));
-                console.log('Submission stored locally');
-            } catch (e) {
-                console.error('Failed to store locally:', e);
-            }
-        }
-
-        // Send all submissions (for admin button)
-        async function sendAllSubmissionsToEmail() {
-            try {
-                const adminBtn = document.querySelector('[onclick*="viewSubmissions"]');
-                const originalText = adminBtn.textContent;
-                adminBtn.innerHTML = '<div class="loading"></div> Sending...';
-                adminBtn.disabled = true;
-
-                const totalSubmissions = Object.values(formSubmissions).flat().length;
-                
-                if (totalSubmissions === 0) {
-                    alert('No submissions to send!');
-                    adminBtn.textContent = originalText;
-                    adminBtn.disabled = false;
-                    return;
-                }
-
-                const templateParams = {
-                    to_email: "weguideabroad@gmail.com",
-                    from_name: "WeGuideAbroad Website",
-                    subject: `Complete Submissions Report - ${new Date().toLocaleDateString()}`,
-                    total_submissions: totalSubmissions,
-                    submissions_summary: `
-        Quick Applications: ${formSubmissions.quickApplications.length}
-        Visa Bookings: ${formSubmissions.visaBookings.length}
-        Consultations: ${formSubmissions.consultations.length}
-        Volunteer Applications: ${formSubmissions.volunteerApplications.length}
-        AI Recommendations: ${formSubmissions.aiRecommendations.length}
-                    `.trim(),
-                    all_submissions: JSON.stringify(formSubmissions, null, 2),
-                    timestamp: new Date().toLocaleString('en-IN', { 
-                        timeZone: 'Asia/Kolkata',
-                        dateStyle: 'full',
-                        timeStyle: 'medium'
-                    })
-                };
-
-                const response = await emailjs.send(
-                    emailConfig.serviceID,
-                    emailConfig.templateID,
-                    templateParams
-                );
-
-                adminBtn.innerHTML = '✓ Email Sent!';
-                adminBtn.style.background = 'var(--success)';
-                
-                setTimeout(() => {
-                    adminBtn.textContent = originalText;
-                    adminBtn.style.background = '';
-                    adminBtn.disabled = false;
-                }, 3000);
-
-                console.log('All submissions emailed successfully');
-                return true;
-                
-            } catch (error) {
-                console.error('Failed to send all submissions:', error);
-                downloadSubmissionsAsJSON(formSubmissions);
-                return false;
-            }
-        }
-
-        // Download as JSON file
-        function downloadSubmissionsAsJSON(submissions) {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(
-                JSON.stringify(submissions, null, 2)
-            );
-            const downloadAnchor = document.createElement('a');
-            downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", `weguideabroad-submissions-${new Date().getTime()}.json`);
-            document.body.appendChild(downloadAnchor);
-            downloadAnchor.click();
-            downloadAnchor.remove();
-            
-            alert('Email failed! Submissions downloaded as JSON file instead.');
-        }
-
-        // View submissions function
-        function viewSubmissions() {
-            const totalSubmissions = Object.values(formSubmissions).flat().length;
-            const summary = `
-        📊 Submission Summary:
-        • Quick Applications: ${formSubmissions.quickApplications.length}
-        • Visa Bookings: ${formSubmissions.visaBookings.length}
-        • Consultations: ${formSubmissions.consultations.length}
-        • Volunteer Applications: ${formSubmissions.volunteerApplications.length}
-        • AI Recommendations: ${formSubmissions.aiRecommendations.length}
-        • Total: ${totalSubmissions} submissions
-            `.trim();
-            
-            if (totalSubmissions > 0) {
-                const shouldEmail = confirm(`${summary}\n\nDo you want to email these submissions to weguideabroad@gmail.com?`);
-                if (shouldEmail) {
-                    sendAllSubmissionsToEmail();
-                } else {
-                    downloadSubmissionsAsJSON(formSubmissions);
-                }
-            } else {
-                alert('No submissions found yet!');
-            }
-        }
-
-        // Enhanced form submission functions
-        async function submitQuickApp() {
-            const name = document.getElementById('qaName').value.trim();
-            const email = document.getElementById('qaEmail').value.trim();
-            const phone = document.getElementById('qaPhone').value.trim();
-            const country = document.getElementById('qaCountry').value;
-            const course = document.getElementById('qaCourse').value;
-            const message = document.getElementById('qaMessage').value.trim();
-
-            if (!name || !email || !phone || !country || !course) {
-                alert('Please fill in all required fields!');
-                return;
-            }
-
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address!');
-                return;
-            }
-
-            const submitBtn = document.querySelector('#quickAppModal .submit-btn');
-            const originalText = submitBtn.textContent;
-            submitBtn.innerHTML = '<div class="loading"></div> Submitting...';
-            submitBtn.disabled = true;
-
-            const submission = {
-                timestamp: new Date().toISOString(),
-                type: 'Quick Application',
-                data: { name, email, phone, country, course, message }
-            };
-            
-            formSubmissions.quickApplications.push(submission);
-
-            const emailSent = await sendFormSubmission(submission);
-
-            if (emailSent) {
-                submitBtn.innerHTML = '✓ Submitted!';
-                setTimeout(() => {
-                    alert(`Thank you ${name}! Your application has been submitted. We'll contact you soon at ${email}.`);
-                    closeQuickApplication();
-                    
-                    document.getElementById('qaName').value = '';
-                    document.getElementById('qaEmail').value = '';
-                    document.getElementById('qaPhone').value = '';
-                    document.getElementById('qaCountry').value = '';
-                    document.getElementById('qaCourse').value = '';
-                    document.getElementById('qaMessage').value = '';
-                    
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }, 1000);
-            } else {
-                alert(`Thank you ${name}! Your application has been submitted (offline mode). We'll contact you soon.`);
-                closeQuickApplication();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
-        }
-
-        async function submitUSVisa() {
-            const name = document.getElementById('uvName').value.trim();
-            const email = document.getElementById('uvEmail').value.trim();
-            const phone = document.getElementById('uvPhone').value.trim();
-            const type = document.getElementById('uvType').value;
-            const date = document.getElementById('uvDate').value;
-            const message = document.getElementById('uvMessage').value.trim();
-
-            if (!name || !email || !phone || !type) {
-                alert('Please fill in all required fields!');
-                return;
-            }
-
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address!');
-                return;
-            }
-
-            const submitBtn = document.querySelector('#usVisaModal .submit-btn');
-            const originalText = submitBtn.textContent;
-            submitBtn.innerHTML = '<div class="loading"></div> Booking...';
-            submitBtn.disabled = true;
-
-            const submission = {
-                timestamp: new Date().toISOString(),
-                type: 'US Visa Booking',
-                data: { name, email, phone, type, date, message }
-            };
-            
-            formSubmissions.visaBookings.push(submission);
-
-            const emailSent = await sendFormSubmission(submission);
-
-            if (emailSent) {
-                submitBtn.innerHTML = '✓ Booked!';
-                setTimeout(() => {
-                    alert(`Thank you ${name}! Your US Visa slot booking request has been submitted. Our team will contact you within 24 hours.`);
-                    closeUSVisaForm();
-                    
-                    document.getElementById('uvName').value = '';
-                    document.getElementById('uvEmail').value = '';
-                    document.getElementById('uvPhone').value = '';
-                    document.getElementById('uvType').value = '';
-                    document.getElementById('uvDate').value = '';
-                    document.getElementById('uvMessage').value = '';
-                    
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }, 1000);
-            } else {
-                alert(`Thank you ${name}! Your booking has been submitted (offline mode). We'll contact you soon.`);
-                closeUSVisaForm();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
-        }
-
-        async function submitConsultation() {
-            const name = document.getElementById('cbName').value.trim();
-            const email = document.getElementById('cbEmail').value.trim();
-            const phone = document.getElementById('cbPhone').value.trim();
-            const country = document.getElementById('cbCountry').value;
-            const time = document.getElementById('cbTime').value;
-            const message = document.getElementById('cbMessage').value.trim();
-
-            if (!name || !email || !phone || !country) {
-                alert('Please fill in all required fields!');
-                return;
-            }
-
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address!');
-                return;
-            }
-
-            const submitBtn = document.querySelector('#bookingModal .submit-btn');
-            const originalText = submitBtn.textContent;
-            submitBtn.innerHTML = '<div class="loading"></div> Booking...';
-            submitBtn.disabled = true;
-
-            const submission = {
-                timestamp: new Date().toISOString(),
-                type: 'Consultation Booking',
-                data: { name, email, phone, country, time, message }
-            };
-            
-            formSubmissions.consultations.push(submission);
-
-            const emailSent = await sendFormSubmission(submission);
-
-            if (emailSent) {
-                submitBtn.innerHTML = '✓ Booked!';
-                setTimeout(() => {
-                    alert(`Thank you ${name}! Your free consultation has been booked. We'll reach out to you shortly to confirm the time.`);
-                    closeBookingForm();
-                    
-                    document.getElementById('cbName').value = '';
-                    document.getElementById('cbEmail').value = '';
-                    document.getElementById('cbPhone').value = '';
-                    document.getElementById('cbCountry').value = '';
-                    document.getElementById('cbTime').value = '';
-                    document.getElementById('cbMessage').value = '';
-                    
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }, 1000);
-            } else {
-                alert(`Thank you ${name}! Your consultation has been booked (offline mode). We'll contact you soon.`);
-                closeBookingForm();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
-        }
-
-        async function submitVolunteer() {
-            const name = document.getElementById('vName').value.trim();
-            const email = document.getElementById('vEmail').value.trim();
-            const phone = document.getElementById('vPhone').value.trim();
-            const country = document.getElementById('vCountry').value.trim();
-            const city = document.getElementById('vCity').value.trim();
-            const university = document.getElementById('vUniversity').value.trim();
-            const course = document.getElementById('vCourse').value.trim();
-            const year = document.getElementById('vYear').value;
-            const years = document.getElementById('vYears').value;
-            const payment = document.getElementById('vPayment').value;
-            const languages = document.getElementById('vLanguages').value.trim();
-            const comments = document.getElementById('vComments').value.trim();
-
-            if (!name || !email || !phone || !country || !city) {
-                alert('Please fill in all required fields!');
-                return;
-            }
-
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address!');
-                return;
-            }
-
-            const submitBtn = document.querySelector('#volunteerModal .submit-btn');
-            const originalText = submitBtn.textContent;
-            submitBtn.innerHTML = '<div class="loading"></div> Submitting...';
-            submitBtn.disabled = true;
-
-            const submission = {
-                timestamp: new Date().toISOString(),
-                type: 'Volunteer Application',
-                data: { 
-                    name, email, phone, country, city, university, 
-                    course, year, years, payment, languages, comments 
-                }
-            };
-            
-            formSubmissions.volunteerApplications.push(submission);
-
-            const emailSent = await sendFormSubmission(submission);
-
-            if (emailSent) {
-                submitBtn.innerHTML = '✓ Submitted!';
-                setTimeout(() => {
-                    alert(`Thank you ${name}! Your volunteer application has been submitted. We appreciate your interest in helping students achieve their dreams!`);
-                    closeVolunteerForm();
-                    
-                    document.getElementById('vName').value = '';
-                    document.getElementById('vEmail').value = '';
-                    document.getElementById('vPhone').value = '';
-                    document.getElementById('vCountry').value = '';
-                    document.getElementById('vCity').value = '';
-                    document.getElementById('vUniversity').value = '';
-                    document.getElementById('vCourse').value = '';
-                    document.getElementById('vYear').value = '';
-                    document.getElementById('vYears').value = '';
-                    document.getElementById('vPayment').value = '';
-                    document.getElementById('vLanguages').value = '';
-                    document.getElementById('vComments').value = '';
-                    
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }, 1000);
-            } else {
-                alert(`Thank you ${name}! Your volunteer application has been submitted (offline mode). We appreciate your interest!`);
-                closeVolunteerForm();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
-        }
-
-        // =============================================
-        // UNIVERSITY DATA & EXISTING FUNCTIONS
-        // =============================================
-
-        // University Data
-        const universities = {
-            usa: [
-                {
-                    name: "University of California, Berkeley",
-                    location: "Berkeley, California",
-                    ranking: "QS World Ranking #10",
-                    courses: "Computer Science, Engineering, Business, Data Science",
-                    fee: "$45,000/year",
-                    intakes: "Fall (August), Spring (January)",
-                    portal: "https://www.berkeley.edu"
-                },
-                {
-                    name: "MIT",
-                    location: "Cambridge, Massachusetts",
-                    ranking: "QS World Ranking #1",
-                    courses: "Engineering, Computer Science, AI, Robotics",
-                    fee: "$55,000/year",
-                    intakes: "Fall (September)",
-                    portal: "https://www.mit.edu"
-                },
-                {
-                    name: "Stanford University",
-                    location: "Stanford, California",
-                    ranking: "QS World Ranking #3",
-                    courses: "Business, Engineering, Medicine, Law",
-                    fee: "$56,000/year",
-                    intakes: "Fall (September)",
-                    portal: "https://www.stanford.edu"
-                }
-            ],
-            // ... (other countries data remains the same)
-            switzerland: [
-                {
-                    name: "ETH Zurich",
-                    location: "Zurich, Switzerland",
-                    ranking: "QS World Ranking #7",
-                    courses: "Engineering, Computer Science, Architecture, Natural Sciences",
-                    fee: "CHF 1,298/semester",
-                    intakes: "Autumn (September), Spring (February)",
-                    portal: "https://ethz.ch"
-                },
-                {
-                    name: "EPFL",
-                    location: "Lausanne, Switzerland",
-                    ranking: "QS World Ranking #16",
-                    courses: "Engineering, Computer Science, Life Sciences, Architecture",
-                    fee: "CHF 1,266/semester",
-                    intakes: "Autumn (September), Spring (February)",
-                    portal: "https://www.epfl.ch"
-                }
-            ]
-        };
-
-        // Country Information
-        const countryInfo = {
-            usa: {
-                flag: "🇺🇸",
-                name: "United States",
-                stats: {
-                    students: "1.1M+",
-                    universities: "4,000+",
-                    workPermit: "3 years OPT"
-                }
-            },
-            switzerland: {
-                flag: "🇨🇭",
-                name: "Switzerland",
-                stats: {
-                    students: "50,000+",
-                    universities: "12+",
-                    workPermit: "6 months job search"
-                }
-            }
-            // ... (other countries info)
-        };
-
-        // Scroll to section
-        function scrollToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                const offset = 90;
-                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-                window.scrollTo({
-                    top: elementPosition - offset,
-                    behavior: 'smooth'
-                });
-            }
-        }
-
-        // Filter universities by country
-        function filterCountry(country) {
-            // Update active button
-            document.querySelectorAll('.country-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-
-            // Display country header
-            const header = document.getElementById('countryHeader');
-            const info = countryInfo[country];
-            
-            if (info) {
-                header.innerHTML = `
-                    <div class="country-header">
-                        <div class="country-flag">${info.flag}</div>
-                        <h2 class="country-title">${info.name}</h2>
-                        <p>Explore top universities in ${info.name} with detailed information about courses, fees, and intakes</p>
-                        <div class="country-stats">
-                            <div class="stat">
-                                <div class="stat-value">${info.stats.students}</div>
-                                <div class="stat-label">International Students</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">${info.stats.universities}</div>
-                                <div class="stat-label">Universities</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">${info.stats.workPermit}</div>
-                                <div class="stat-label">Work Permit</div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }
-
-            // Display universities
-            const container = document.getElementById('universityContainer');
-            const unis = universities[country] || [];
-            
-            if (unis.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: var(--text-light); font-size: 1.2rem;">Universities coming soon for this country!</p>';
-                return;
-            }
-
-            container.innerHTML = unis.map(uni => `
-                <div class="university-card">
-                    <h3 class="uni-name">${uni.name}</h3>
-                    <div class="uni-info">
-                        <span class="uni-label">📍 Location:</span>
-                        <span class="uni-value">${uni.location}</span>
-                    </div>
-                    <div class="uni-info">
-                        <span class="uni-label">🏆 Ranking:</span>
-                        <span class="uni-value">${uni.ranking}</span>
-                    </div>
-                    <div class="uni-courses">
-                        <strong>📚 Popular Courses:</strong><br>
-                        ${uni.courses}
-                    </div>
-                    <div class="uni-fee">💰 ${uni.fee}</div>
-                    <div class="uni-intakes">📅 Intakes: ${uni.intakes}</div>
-                    <a href="${uni.portal}" target="_blank" class="uni-link">Visit University Portal →</a>
-                    <a href="#booking" class="uni-link" onclick="scrollToSection('booking')">Apply Now →</a>
-                </div>
-            `).join('');
-        }
-
-        // Modal Functions
-        function openQuickApplication() {
-            document.getElementById('quickAppModal').classList.add('active');
-        }
-
-        function closeQuickApplication() {
-            document.getElementById('quickAppModal').classList.remove('active');
-        }
-
-        function openUSVisaForm() {
-            document.getElementById('usVisaModal').classList.add('active');
-        }
-
-        function closeUSVisaForm() {
-            document.getElementById('usVisaModal').classList.remove('active');
-        }
-
-        function openBookingForm() {
-            document.getElementById('bookingModal').classList.add('active');
-        }
-
-        function closeBookingForm() {
-            document.getElementById('bookingModal').classList.remove('active');
-        }
-
-        function openVolunteerForm() {
-            document.getElementById('volunteerModal').classList.add('active');
-        }
-
-        function closeVolunteerForm() {
-            document.getElementById('volunteerModal').classList.remove('active');
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.classList.remove('active');
-            }
-        }
-
-        // Initialize with USA universities
-        window.onload = function() {
-            filterCountry('usa');
-        };
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offset = 90;
-                    const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
-                    window.scrollTo({
-                        top: elementPosition - offset,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
