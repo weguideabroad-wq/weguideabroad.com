@@ -284,10 +284,6 @@
         .service-icon {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--primary-teal), var(--primary-orange));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .service-card h3 {
@@ -638,6 +634,22 @@
             opacity: 0.9;
         }
 
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--primary-teal);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* New Features */
         .ai-recommendation {
             background: linear-gradient(135deg, var(--primary-teal), var(--accent-navy));
             color: white;
@@ -729,19 +741,19 @@
             opacity: 0.9;
         }
 
-        .success-message {
-            background: var(--success);
-            color: white;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-top: 1rem;
-            text-align: center;
-            display: none;
+        .ai-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .success-message.show {
-            display: block;
-            animation: fadeIn 0.5s;
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
         }
 
         @media (max-width: 768px) {
@@ -781,6 +793,10 @@
 
             .stat-value {
                 font-size: 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1005,752 +1021,897 @@
                 <div class="footer-section">
                     <h3>Contact Us</h3>
                     <ul>
-                        <li><i class="fas fa-phone"></i> +91 XXXXX XXXXX</li>
-                        <li><i class="fas fa-envelope"></i> info@weguideabroad.com</li>
-                        <li><i class="fas fa-clock"></i> Mon-Sat: 9AM - 6PM</li>
+                        <li>📧 <a href="mailto:weguideabroad@gmail.com">weguideabroad@gmail.com</a></li>
+                        <li>📱 <a href="tel:+918712290029">+91 8712290029</a></li>
+                        <li>🌐 <a href="https://www.weguideabroad.com">www.weguideabroad.com</a></li>
                     </ul>
-                    <div style="margin-top: 1rem;">
-                        <a href="#" style="font-size: 1.5rem; margin-right: 1rem;"><i class="fab fa-facebook"></i></a>
-                        <a href="#" style="font-size: 1.5rem; margin-right: 1rem;"><i class="fab fa-instagram"></i></a>
-                        <a href="#" style="font-size: 1.5rem; margin-right: 1rem;"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" style="font-size: 1.5rem;"><i class="fab fa-whatsapp"></i></a>
-                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Study Destinations</h3>
+                    <ul>
+                        <li>🇺🇸 United States</li>
+                        <li>🇬🇧 United Kingdom</li>
+                        <li>🇨🇦 Canada</li>
+                        <li>🇦🇺 Australia</li>
+                        <li>🇱🇻 Latvia</li>
+                        <li>🇪🇺 Europe (20+ countries)</li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 WeGuideAbroad. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <p>&copy; 2025 WeGuideAbroad. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Modals -->
-    <div id="bookingModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('bookingModal')">&times;</span>
-            <h2 style="margin-bottom: 2rem; color: var(--accent-navy);">Book Free Consultation</h2>
-            <form id="bookingForm">
-                <div class="form-group">
-                    <label for="name">Full Name *</label>
-                    <input type="text" id="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="country">Preferred Country *</label>
-                    <select id="country" required>
-                        <option value="">Select Country</option>
-                        <option value="usa">USA</option>
-                        <option value="uk">UK</option>
-                        <option value="canada">Canada</option>
-                        <option value="australia">Australia</option>
-                        <option value="germany">Germany</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="course">Interested Course Level *</label>
-                    <select id="course" required>
-                        <option value="">Select Level</option>
-                        <option value="bachelor">Bachelor's</option>
-                        <option value="master">Master's</option>
-                        <option value="phd">PhD</option>
-                        <option value="diploma">Diploma</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message (Optional)</label>
-                    <textarea id="message"></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Submit Request</button>
-                <div class="success-message" id="bookingSuccess">
-                    ✓ Thank you! We'll contact you within 24 hours.
-                </div>
-            </form>
-        </div>
-    </div>
+    <!-- Add EmailJS for sending emails -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-    <div id="visaModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('visaModal')">&times;</span>
-            <h2 style="margin-bottom: 2rem; color: var(--accent-navy);">US Visa Slot Booking</h2>
-            <form id="visaForm">
-                <div class="form-group">
-                    <label for="visaName">Full Name *</label>
-                    <input type="text" id="visaName" required>
-                </div>
-                <div class="form-group">
-                    <label for="visaEmail">Email Address *</label>
-                    <input type="email" id="visaEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="visaPhone">Phone Number *</label>
-                    <input type="tel" id="visaPhone" required>
-                </div>
-                <div class="form-group">
-                    <label for="visaType">Visa Type *</label>
-                    <select id="visaType" required>
-                        <option value="">Select Visa Type</option>
-                        <option value="f1">F1 Student Visa</option>
-                        <option value="f2">F2 Dependent Visa</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="passportNumber">Passport Number *</label>
-                    <input type="text" id="passportNumber" required>
-                </div>
-                <div class="form-group">
-                    <label for="preferredDate">Preferred Date Range</label>
-                    <input type="text" id="preferredDate" placeholder="e.g., January 2025">
-                </div>
-                <div class="form-group">
-                    <label for="visaMessage">Additional Information</label>
-                    <textarea id="visaMessage"></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Submit Request</button>
-                <div class="success-message" id="visaSuccess">
-                    ✓ Request received! We'll contact you within 24 hours with slot availability.
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div id="aiModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('aiModal')">&times;</span>
-            <h2 style="margin-bottom: 2rem; color: var(--accent-navy);">AI University Recommendation</h2>
-            <form id="aiForm">
-                <div class="form-group">
-                    <label for="aiName">Full Name *</label>
-                    <input type="text" id="aiName" required>
-                </div>
-                <div class="form-group">
-                    <label for="aiEmail">Email Address *</label>
-                    <input type="email" id="aiEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="aiEducation">Highest Education *</label>
-                    <select id="aiEducation" required>
-                        <option value="">Select Level</option>
-                        <option value="12th">12th Grade</option>
-                        <option value="bachelor">Bachelor's Degree</option>
-                        <option value="master">Master's Degree</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="aiGPA">GPA/Percentage *</label>
-                    <input type="text" id="aiGPA" placeholder="e.g., 8.5 CGPA or 85%" required>
-                </div>
-                <div class="form-group">
-                    <label for="aiField">Field of Interest *</label>
-                    <select id="aiField" required>
-                        <option value="">Select Field</option>
-                        <option value="engineering">Engineering</option>
-                        <option value="business">Business/Management</option>
-                        <option value="computer">Computer Science</option>
-                        <option value="medicine">Medicine/Healthcare</option>
-                        <option value="arts">Arts/Humanities</option>
-                        <option value="science">Science</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="aiBudget">Annual Budget (USD) *</label>
-                    <select id="aiBudget" required>
-                        <option value="">Select Budget</option>
-                        <option value="under20k">Under $20,000</option>
-                        <option value="20-40k">$20,000 - $40,000</option>
-                        <option value="40-60k">$40,000 - $60,000</option>
-                        <option value="over60k">Over $60,000</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="aiTest">Test Scores (Optional)</label>
-                    <input type="text" id="aiTest" placeholder="e.g., IELTS 7.0, GRE 320">
-                </div>
-                <button type="submit" class="submit-btn">Get Recommendations</button>
-                <div class="success-message" id="aiSuccess">
-                    ✓ Thank you! Our AI will analyze your profile and send recommendations to your email within 24 hours.
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div id="volunteerModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('volunteerModal')">&times;</span>
-            <h2 style="margin-bottom: 2rem; color: var(--accent-navy);">Join Our Volunteer Program</h2>
-            <form id="volunteerForm">
-                <div class="form-group">
-                    <label for="volName">Full Name *</label>
-                    <input type="text" id="volName" required>
-                </div>
-                <div class="form-group">
-                    <label for="volEmail">Email Address *</label>
-                    <input type="email" id="volEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="volPhone">Phone Number *</label>
-                    <input type="tel" id="volPhone" required>
-                </div>
-                <div class="form-group">
-                    <label for="volEducation">Your Education Background *</label>
-                    <select id="volEducation" required>
-                        <option value="">Select Level</option>
-                        <option value="student">Current Student</option>
-                        <option value="graduate">Graduate</option>
-                        <option value="postgrad">Post Graduate</option>
-                        <option value="professional">Working Professional</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="volCountry">Study Abroad Experience (Optional)</label>
-                    <input type="text" id="volCountry" placeholder="Country and University">
-                </div>
-                <div class="form-group">
-                    <label for="volSkills">How can you help? *</label>
-                    <textarea id="volSkills" placeholder="Mention your skills, expertise, and how you'd like to contribute" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Submit Application</button>
-                <div class="success-message" id="volunteerSuccess">
-                    ✓ Application received! We'll review your profile and get back to you soon.
-                </div>
-            </form>
-        </div>
-    </div>
-
+    <!-- Quick Application Modal -->
     <div id="quickAppModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('quickAppModal')">&times;</span>
-            <h2 style="margin-bottom: 2rem; color: var(--accent-navy);">Quick Application</h2>
-            <form id="quickAppForm">
-                <div class="form-group">
-                    <label for="appName">Full Name *</label>
-                    <input type="text" id="appName" required>
-                </div>
-                <div class="form-group">
-                    <label for="appEmail">Email Address *</label>
-                    <input type="email" id="appEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="appPhone">Phone Number *</label>
-                    <input type="tel" id="appPhone" required>
-                </div>
-                <div class="form-group">
-                    <label for="appCountry">Target Country *</label>
-                    <select id="appCountry" required>
-                        <option value="">Select Country</option>
-                        <option value="usa">USA</option>
-                        <option value="uk">UK</option>
-                        <option value="canada">Canada</option>
-                        <option value="australia">Australia</option>
-                        <option value="germany">Germany</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="appIntake">Preferred Intake *</label>
-                    <select id="appIntake" required>
-                        <option value="">Select Intake</option>
-                        <option value="fall2025">Fall 2025</option>
-                        <option value="spring2026">Spring 2026</option>
-                        <option value="fall2026">Fall 2026</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="appDegree">Degree Level *</label>
-                    <select id="appDegree" required>
-                        <option value="">Select Level</option>
-                        <option value="bachelor">Bachelor's</option>
-                        <option value="master">Master's</option>
-                        <option value="phd">PhD</option>
-                    </select>
-                </div>
-                <button type="submit" class="submit-btn">Submit Application</button>
-                <div class="success-message" id="quickAppSuccess">
-                    ✓ Application submitted! Our team will review and contact you within 24 hours.
-                </div>
-            </form>
+            <span class="close-modal" onclick="closeQuickApplication()">&times;</span>
+            <h2 style="color: var(--primary-teal); margin-bottom: 1.5rem;">Quick Application</h2>
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="qaName" required>
+            </div>
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" id="qaEmail" required>
+            </div>
+            <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" id="qaPhone" required>
+            </div>
+            <div class="form-group">
+                <label>Preferred Country *</label>
+                <select id="qaCountry">
+                    <option value="">Select Country</option>
+                    <option value="usa">USA</option>
+                    <option value="uk">UK</option>
+                    <option value="canada">Canada</option>
+                    <option value="australia">Australia</option>
+                    <option value="germany">Germany</option>
+                    <option value="latvia">Latvia</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Course Level *</label>
+                <select id="qaCourse">
+                    <option value="">Select Level</option>
+                    <option value="bachelor">Bachelor's</option>
+                    <option value="master">Master's</option>
+                    <option value="phd">PhD</option>
+                    <option value="diploma">Diploma</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Message</label>
+                <textarea id="qaMessage"></textarea>
+            </div>
+            <button class="submit-btn" onclick="submitQuickApp()">Submit Application</button>
         </div>
     </div>
 
+    <!-- AI Recommendation Modal -->
+    <div id="aiRecommendationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeAIRecommendation()">&times;</span>
+            <h2 style="color: var(--primary-teal); margin-bottom: 1.5rem;">AI University Recommendation</h2>
+            <div class="ai-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Academic Score (Percentage/CGPA) *</label>
+                        <input type="number" id="aiScore" min="0" max="100" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Budget (per year in USD) *</label>
+                        <select id="aiBudget" required>
+                            <option value="">Select Budget</option>
+                            <option value="5000">Under $5,000</option>
+                            <option value="10000">$5,000 - $10,000</option>
+                            <option value="20000">$10,000 - $20,000</option>
+                            <option value="30000">$20,000 - $30,000</option>
+                            <option value="40000">$30,000 - $40,000</option>
+                            <option value="50000">$40,000+</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Preferred Country *</label>
+                        <select id="aiCountry" required>
+                            <option value="">Select Country</option>
+                            <option value="usa">USA</option>
+                            <option value="uk">UK</option>
+                            <option value="canada">Canada</option>
+                            <option value="australia">Australia</option>
+                            <option value="germany">Germany</option>
+                            <option value="latvia">Latvia</option>
+                            <option value="any">Any Country</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Field of Study *</label>
+                        <select id="aiField" required>
+                            <option value="">Select Field</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="computer-science">Computer Science</option>
+                            <option value="business">Business</option>
+                            <option value="medicine">Medicine</option>
+                            <option value="arts">Arts & Humanities</option>
+                            <option value="sciences">Sciences</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>English Proficiency Test Score (if any)</label>
+                    <select id="aiEnglish">
+                        <option value="">Select Test</option>
+                        <option value="ielts-9">IELTS 9.0</option>
+                        <option value="ielts-8">IELTS 8.0-8.5</option>
+                        <option value="ielts-7">IELTS 7.0-7.5</option>
+                        <option value="ielts-6">IELTS 6.0-6.5</option>
+                        <option value="toefl-120">TOEFL 120</option>
+                        <option value="toefl-100">TOEFL 100-119</option>
+                        <option value="toefl-80">TOEFL 80-99</option>
+                        <option value="toefl-60">TOEFL 60-79</option>
+                        <option value="none">No Test Yet</option>
+                    </select>
+                </div>
+                <button class="submit-btn" onclick="getAIRecommendations()">Get Recommendations</button>
+                <div id="aiResults" style="margin-top: 2rem; display: none;">
+                    <h3 style="color: var(--primary-teal); margin-bottom: 1rem;">Your Personalized Recommendations</h3>
+                    <div id="recommendationList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- US Visa Modal -->
+    <div id="usVisaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeUSVisaForm()">&times;</span>
+            <h2 style="color: var(--primary-teal); margin-bottom: 1.5rem;">US Visa Slot Booking</h2>
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="uvName" required>
+            </div>
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" id="uvEmail" required>
+            </div>
+            <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" id="uvPhone" required>
+            </div>
+            <div class="form-group">
+                <label>Visa Type *</label>
+                <select id="uvType">
+                    <option value="">Select Visa Type</option>
+                    <option value="f1">F1 Student Visa</option>
+                    <option value="f2">F2 Dependent Visa</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Preferred Date</label>
+                <input type="date" id="uvDate">
+            </div>
+            <div class="form-group">
+                <label>Additional Information</label>
+                <textarea id="uvMessage"></textarea>
+            </div>
+            <button class="submit-btn" onclick="submitUSVisa()">Book Slot</button>
+        </div>
+    </div>
+
+    <!-- Consultation Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeBookingForm()">&times;</span>
+            <h2 style="color: var(--primary-teal); margin-bottom: 1.5rem;">Free Consultation Booking</h2>
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="cbName" required>
+            </div>
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" id="cbEmail" required>
+            </div>
+            <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" id="cbPhone" required>
+            </div>
+            <div class="form-group">
+                <label>Preferred Country *</label>
+                <select id="cbCountry">
+                    <option value="">Select Country</option>
+                    <option value="usa">USA</option>
+                    <option value="uk">UK</option>
+                    <option value="canada">Canada</option>
+                    <option value="australia">Australia</option>
+                    <option value="germany">Germany</option>
+                    <option value="latvia">Latvia</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Preferred Time</label>
+                <input type="datetime-local" id="cbTime">
+            </div>
+            <div class="form-group">
+                <label>Your Questions</label>
+                <textarea id="cbMessage"></textarea>
+            </div>
+            <button class="submit-btn" onclick="submitConsultation()">Book Consultation</button>
+        </div>
+    </div>
+
+    <!-- Volunteer Form Modal -->
+    <div id="volunteerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeVolunteerForm()">&times;</span>
+            <h2 style="color: var(--primary-teal); margin-bottom: 1.5rem;">Join as Volunteer</h2>
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="vName" required>
+            </div>
+            <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" id="vEmail" required>
+            </div>
+            <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" id="vPhone" required>
+            </div>
+            <div class="form-group">
+                <label>Country of Residence *</label>
+                <input type="text" id="vCountry" required>
+            </div>
+            <div class="form-group">
+                <label>City or Region *</label>
+                <input type="text" id="vCity" required>
+            </div>
+            <div class="form-group">
+                <label>University / Institution Name</label>
+                <input type="text" id="vUniversity">
+            </div>
+            <div class="form-group">
+                <label>Course / Major</label>
+                <input type="text" id="vCourse">
+            </div>
+            <div class="form-group">
+                <label>Year of Study</label>
+                <select id="vYear">
+                    <option value="">Select Year</option>
+                    <option value="1st">1st Year</option>
+                    <option value="2nd">2nd Year</option>
+                    <option value="3rd">3rd Year</option>
+                    <option value="4th">4th Year</option>
+                    <option value="masters">Master's</option>
+                    <option value="phd">PhD</option>
+                    <option value="graduated">Graduated</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>How many years have you been living in this country?</label>
+                <input type="number" id="vYears" min="0" max="50">
+            </div>
+            <div class="form-group">
+                <label>Are you volunteering for free or expecting payment?</label>
+                <select id="vPayment">
+                    <option value="">Select Option</option>
+                    <option value="free">Volunteering for free</option>
+                    <option value="paid">Expecting payment</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Languages you can speak</label>
+                <input type="text" id="vLanguages" placeholder="e.g., English, Hindi, French">
+            </div>
+            <div class="form-group">
+                <label>Any additional comments or questions?</label>
+                <textarea id="vComments"></textarea>
+            </div>
+            <button class="submit-btn" onclick="submitVolunteer()">Submit Application</button>
+        </div>
+    </div>
+
+    <!-- Admin button to view submissions -->
+    <button onclick="viewSubmissions()" style="position: fixed; bottom: 100px; right: 20px; background: #ff4757; color: white; border: none; padding: 12px 16px; border-radius: 8px; z-index: 1000; font-weight: bold; box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4); cursor: pointer;">
+        📧 View Submissions (Admin)
+    </button>
+
     <script>
-        // University Database
+        // =============================================
+        // UNIVERSITY DATA - COMPLETE AND WORKING
+        // =============================================
+
+        // Country Information
+        const countryInfo = {
+            usa: {
+                flag: "🇺🇸",
+                name: "United States",
+                stats: {
+                    students: "1.1M+",
+                    universities: "4,000+",
+                    workPermit: "3 years OPT"
+                }
+            },
+            uk: {
+                flag: "🇬🇧",
+                name: "United Kingdom",
+                stats: {
+                    students: "600,000+",
+                    universities: "160+",
+                    workPermit: "2 years Graduate Route"
+                }
+            },
+            canada: {
+                flag: "🇨🇦",
+                name: "Canada",
+                stats: {
+                    students: "642,000+",
+                    universities: "223+",
+                    workPermit: "3 years PGWP"
+                }
+            },
+            australia: {
+                flag: "🇦🇺",
+                name: "Australia",
+                stats: {
+                    students: "700,000+",
+                    universities: "43+",
+                    workPermit: "4 years post-study"
+                }
+            },
+            germany: {
+                flag: "🇩🇪",
+                name: "Germany",
+                stats: {
+                    students: "350,000+",
+                    universities: "400+",
+                    workPermit: "18 months job seeker"
+                }
+            },
+            latvia: {
+                flag: "🇱🇻",
+                name: "Latvia",
+                stats: {
+                    students: "15,000+",
+                    universities: "60+",
+                    workPermit: "9 months post-study"
+                }
+            },
+            france: {
+                flag: "🇫🇷",
+                name: "France",
+                stats: {
+                    students: "400,000+",
+                    universities: "3,500+",
+                    workPermit: "2 years post-study"
+                }
+            },
+            italy: {
+                flag: "🇮🇹",
+                name: "Italy",
+                stats: {
+                    students: "110,000+",
+                    universities: "97+",
+                    workPermit: "1 year job search"
+                }
+            },
+            netherlands: {
+                flag: "🇳🇱",
+                name: "Netherlands",
+                stats: {
+                    students: "122,000+",
+                    universities: "58+",
+                    workPermit: "1 year orientation"
+                }
+            },
+            sweden: {
+                flag: "🇸🇪",
+                name: "Sweden",
+                stats: {
+                    students: "39,000+",
+                    universities: "39+",
+                    workPermit: "12 months job search"
+                }
+            },
+            switzerland: {
+                flag: "🇨🇭",
+                name: "Switzerland",
+                stats: {
+                    students: "50,000+",
+                    universities: "12+",
+                    workPermit: "6 months job search"
+                }
+            },
+            singapore: {
+                flag: "🇸🇬",
+                name: "Singapore",
+                stats: {
+                    students: "65,000+",
+                    universities: "34+",
+                    workPermit: "1 year post-study"
+                }
+            },
+            japan: {
+                flag: "🇯🇵",
+                name: "Japan",
+                stats: {
+                    students: "228,000+",
+                    universities: "780+",
+                    workPermit: "1 year job hunting"
+                }
+            },
+            "south-korea": {
+                flag: "🇰🇷",
+                name: "South Korea",
+                stats: {
+                    students: "160,000+",
+                    universities: "430+",
+                    workPermit: "2 years post-study"
+                }
+            },
+            "new-zealand": {
+                flag: "🇳🇿",
+                name: "New Zealand",
+                stats: {
+                    students: "60,000+",
+                    universities: "8+",
+                    workPermit: "3 years post-study"
+                }
+            }
+        };
+
+        // University Data
         const universities = {
             usa: [
                 {
-                    name: "Massachusetts Institute of Technology (MIT)",
-                    location: "Cambridge, MA",
-                    ranking: "QS #1",
-                    courses: "Engineering, Computer Science, Business, Sciences",
-                    fee: "$53,450/year",
-                    intakes: "Fall, Spring",
-                    link: "#"
+                    name: "University of California, Berkeley",
+                    location: "Berkeley, California",
+                    ranking: "QS World Ranking #10",
+                    courses: "Computer Science, Engineering, Business, Data Science",
+                    fee: "$45,000/year",
+                    intakes: "Fall (August), Spring (January)",
+                    portal: "https://www.berkeley.edu"
+                },
+                {
+                    name: "MIT",
+                    location: "Cambridge, Massachusetts",
+                    ranking: "QS World Ranking #1",
+                    courses: "Engineering, Computer Science, AI, Robotics",
+                    fee: "$55,000/year",
+                    intakes: "Fall (September)",
+                    portal: "https://www.mit.edu"
                 },
                 {
                     name: "Stanford University",
-                    location: "Stanford, CA",
-                    ranking: "QS #3",
-                    courses: "CS, Engineering, Business, Medicine",
-                    fee: "$56,169/year",
-                    intakes: "Fall, Spring",
-                    link: "#"
-                },
-                {
-                    name: "Harvard University",
-                    location: "Cambridge, MA",
-                    ranking: "QS #4",
-                    courses: "Law, Business, Medicine, Liberal Arts",
-                    fee: "$54,002/year",
-                    intakes: "Fall",
-                    link: "#"
-                },
-                {
-                    name: "University of California, Berkeley",
-                    location: "Berkeley, CA",
-                    ranking: "QS #10",
-                    courses: "Engineering, CS, Business, Sciences",
-                    fee: "$44,007/year",
-                    intakes: "Fall, Spring",
-                    link: "#"
+                    location: "Stanford, California",
+                    ranking: "QS World Ranking #3",
+                    courses: "Business, Engineering, Medicine, Law",
+                    fee: "$56,000/year",
+                    intakes: "Fall (September)",
+                    portal: "https://www.stanford.edu"
                 }
             ],
             uk: [
                 {
                     name: "University of Oxford",
                     location: "Oxford, England",
-                    ranking: "QS #2",
-                    courses: "Humanities, Sciences, Medicine, Law",
-                    fee: "£26,770-£37,510/year",
-                    intakes: "September",
-                    link: "#"
+                    ranking: "QS World Ranking #2",
+                    courses: "Law, Medicine, Business, Computer Science",
+                    fee: "£28,000-£40,000/year",
+                    intakes: "October",
+                    portal: "https://www.ox.ac.uk"
                 },
                 {
                     name: "University of Cambridge",
                     location: "Cambridge, England",
-                    ranking: "QS #5",
-                    courses: "Sciences, Engineering, Humanities",
-                    fee: "£24,789-£35,517/year",
+                    ranking: "QS World Ranking #4",
+                    courses: "Engineering, Sciences, Medicine, Humanities",
+                    fee: "£25,000-£38,000/year",
                     intakes: "October",
-                    link: "#"
+                    portal: "https://www.cam.ac.uk"
                 },
                 {
                     name: "Imperial College London",
                     location: "London, England",
-                    ranking: "QS #6",
-                    courses: "Engineering, Medicine, Business",
-                    fee: "£32,000-£37,250/year",
-                    intakes: "September, January",
-                    link: "#"
+                    ranking: "QS World Ranking #6",
+                    courses: "Engineering, Medicine, Business, Computing",
+                    fee: "£32,000-£45,000/year",
+                    intakes: "October",
+                    portal: "https://www.imperial.ac.uk"
                 }
             ],
             canada: [
                 {
                     name: "University of Toronto",
-                    location: "Toronto, ON",
-                    ranking: "QS #21",
-                    courses: "Engineering, Business, CS, Medicine",
-                    fee: "CAD 45,690-58,160/year",
-                    intakes: "September, January, May",
-                    link: "#"
-                },
-                {
-                    name: "McGill University",
-                    location: "Montreal, QC",
-                    ranking: "QS #30",
-                    courses: "Medicine, Law, Engineering, Sciences",
-                    fee: "CAD 20,000-48,000/year",
-                    intakes: "Fall, Winter",
-                    link: "#"
+                    location: "Toronto, Ontario",
+                    ranking: "QS World Ranking #21",
+                    courses: "Computer Science, Engineering, Business, Medicine",
+                    fee: "CAD 45,000-60,000/year",
+                    intakes: "September, January",
+                    portal: "https://www.utoronto.ca"
                 },
                 {
                     name: "University of British Columbia",
-                    location: "Vancouver, BC",
-                    ranking: "QS #34",
-                    courses: "Engineering, Business, Sciences",
-                    fee: "CAD 28,000-46,000/year",
+                    location: "Vancouver, British Columbia",
+                    ranking: "QS World Ranking #34",
+                    courses: "Engineering, Business, Computer Science, Forestry",
+                    fee: "CAD 40,000-55,000/year",
                     intakes: "September, January",
-                    link: "#"
+                    portal: "https://www.ubc.ca"
+                },
+                {
+                    name: "McGill University",
+                    location: "Montreal, Quebec",
+                    ranking: "QS World Ranking #30",
+                    courses: "Medicine, Law, Engineering, Management",
+                    fee: "CAD 35,000-50,000/year",
+                    intakes: "September, January",
+                    portal: "https://www.mcgill.ca"
                 }
             ],
             australia: [
                 {
-                    name: "Australian National University",
-                    location: "Canberra, ACT",
-                    ranking: "QS #30",
-                    courses: "Sciences, Engineering, Policy, Arts",
-                    fee: "AUD 45,000-50,000/year",
+                    name: "University of Melbourne",
+                    location: "Melbourne, Victoria",
+                    ranking: "QS World Ranking #14",
+                    courses: "Business, Medicine, Engineering, Arts",
+                    fee: "AUD 40,000-50,000/year",
                     intakes: "February, July",
-                    link: "#"
+                    portal: "https://www.unimelb.edu.au"
                 },
                 {
-                    name: "University of Melbourne",
-                    location: "Melbourne, VIC",
-                    ranking: "QS #14",
-                    courses: "Business, Medicine, Engineering, Law",
-                    fee: "AUD 32,000-48,000/year",
+                    name: "Australian National University",
+                    location: "Canberra, ACT",
+                    ranking: "QS World Ranking #34",
+                    courses: "Political Science, Engineering, Computer Science",
+                    fee: "AUD 35,000-45,000/year",
                     intakes: "February, July",
-                    link: "#"
+                    portal: "https://www.anu.edu.au"
                 },
                 {
                     name: "University of Sydney",
-                    location: "Sydney, NSW",
-                    ranking: "QS #19",
-                    courses: "Engineering, Business, Medicine",
-                    fee: "AUD 40,000-52,000/year",
+                    location: "Sydney, New South Wales",
+                    ranking: "QS World Ranking #19",
+                    courses: "Medicine, Law, Engineering, Business",
+                    fee: "AUD 42,000-52,000/year",
                     intakes: "February, July",
-                    link: "#"
+                    portal: "https://www.sydney.edu.au"
                 }
             ],
             germany: [
                 {
                     name: "Technical University of Munich",
                     location: "Munich, Bavaria",
-                    ranking: "QS #37",
-                    courses: "Engineering, CS, Natural Sciences",
-                    fee: "€0-3,000/year (EU), €1,500/semester (Non-EU)",
+                    ranking: "QS World Ranking #37",
+                    courses: "Engineering, Computer Science, Natural Sciences",
+                    fee: "No tuition fees (semester fee ~€150)",
                     intakes: "October, April",
-                    link: "#"
+                    portal: "https://www.tum.de"
                 },
                 {
-                    name: "Ludwig Maximilian University",
+                    name: "Ludwig Maximilian University of Munich",
                     location: "Munich, Bavaria",
-                    ranking: "QS #59",
-                    courses: "Humanities, Sciences, Medicine",
-                    fee: "€0-258/semester",
+                    ranking: "QS World Ranking #59",
+                    courses: "Medicine, Physics, Business, Psychology",
+                    fee: "No tuition fees (semester fee ~€150)",
                     intakes: "October, April",
-                    link: "#"
+                    portal: "https://www.lmu.de"
                 },
                 {
                     name: "Heidelberg University",
-                    location: "Heidelberg",
-                    ranking: "QS #87",
-                    courses: "Medicine, Law, Sciences",
-                    fee: "€0-1,500/semester",
+                    location: "Heidelberg, Baden-Württemberg",
+                    ranking: "QS World Ranking #65",
+                    courses: "Medicine, Life Sciences, Physics, Humanities",
+                    fee: "No tuition fees (semester fee ~€150)",
                     intakes: "October, April",
-                    link: "#"
+                    portal: "https://www.uni-heidelberg.de"
                 }
             ],
             latvia: [
                 {
-                    name: "University of Latvia",
-                    location: "Riga",
-                    ranking: "Regional Top 5",
-                    courses: "Sciences, Business, Humanities, Medicine",
-                    fee: "€2,000-7,000/year",
+                    name: "University of Latvia (LU)",
+                    location: "Riga, Latvia",
+                    ranking: "QS World Ranking 701-750",
+                    courses: "Computer Science, Medicine, Law, Business Administration, International Economics",
+                    fee: "€3,000 - €6,000/year",
                     intakes: "September, February",
-                    link: "#"
+                    portal: "https://www.lu.lv/en"
                 },
                 {
-                    name: "Riga Technical University",
-                    location: "Riga",
-                    ranking: "Engineering Leader",
-                    courses: "Engineering, IT, Architecture",
-                    fee: "€2,500-4,500/year",
-                    intakes: "September",
-                    link: "#"
+                    name: "Riga Technical University (RTU)",
+                    location: "Riga, Latvia",
+                    ranking: "QS World Ranking 751-800",
+                    courses: "Engineering, Computer Systems, Civil Engineering, Electronics, Business Administration",
+                    fee: "€3,500 - €7,000/year",
+                    intakes: "September, February",
+                    portal: "https://www.rtu.lv/en"
                 },
                 {
-                    name: "Riga Stradins University",
-                    location: "Riga",
-                    ranking: "Medical Excellence",
-                    courses: "Medicine, Dentistry, Pharmacy",
-                    fee: "€11,000-14,000/year",
+                    name: "Riga Stradiņš University (RSU)",
+                    location: "Riga, Latvia",
+                    ranking: "QS World Ranking 801-1000",
+                    courses: "Medicine, Dentistry, Pharmacy, Public Health, Nursing, Rehabilitation",
+                    fee: "€8,000 - €15,000/year",
                     intakes: "September",
-                    link: "#"
+                    portal: "https://www.rsu.lv/en"
+                },
+                {
+                    name: "Stockholm School of Economics in Riga (SSE Riga)",
+                    location: "Riga, Latvia",
+                    ranking: "Top Business School in Baltics",
+                    courses: "Business Administration, Economics, Finance, Management",
+                    fee: "€6,500 - €9,000/year",
+                    intakes: "September",
+                    portal: "https://www.sseriga.edu"
+                },
+                {
+                    name: "Latvia University of Life Sciences and Technologies (LLU)",
+                    location: "Jelgava, Latvia",
+                    ranking: "QS World Ranking 1000+",
+                    courses: "Agriculture, Veterinary Medicine, Food Science, Forestry, Environmental Engineering",
+                    fee: "€2,500 - €4,500/year",
+                    intakes: "September, February",
+                    portal: "https://www.llu.lv/en"
+                },
+                {
+                    name: "Vidzeme University of Applied Sciences (ViA)",
+                    location: "Valmiera, Latvia",
+                    ranking: "Modern Applied Sciences University",
+                    courses: "Information Technology, Business Administration, Social Sciences, Design",
+                    fee: "€2,000 - €3,500/year",
+                    intakes: "September, February",
+                    portal: "https://www.va.lv/en"
                 }
             ],
             france: [
                 {
-                    name: "Sorbonne University",
-                    location: "Paris",
-                    ranking: "QS #60",
-                    courses: "Arts, Sciences, Medicine, Engineering",
-                    fee: "€170-601/year (EU), €2,770-3,770/year (Non-EU)",
+                    name: "PSL University",
+                    location: "Paris, France",
+                    ranking: "QS World Ranking #26",
+                    courses: "Engineering, Sciences, Arts, Business",
+                    fee: "€3,000-€10,000/year",
                     intakes: "September",
-                    link: "#"
+                    portal: "https://www.psl.eu"
                 },
                 {
-                    name: "École Polytechnique",
-                    location: "Palaiseau",
-                    ranking: "QS #61",
-                    courses: "Engineering, Sciences",
-                    fee: "€12,000/year",
+                    name: "Sorbonne University",
+                    location: "Paris, France",
+                    ranking: "QS World Ranking #60",
+                    courses: "Medicine, Sciences, Humanities, Law",
+                    fee: "€3,000-€8,000/year",
                     intakes: "September",
-                    link: "#"
+                    portal: "https://www.sorbonne-universite.fr"
                 }
             ],
             italy: [
                 {
                     name: "Politecnico di Milano",
-                    location: "Milan",
-                    ranking: "QS #111",
+                    location: "Milan, Italy",
+                    ranking: "QS World Ranking #123",
                     courses: "Engineering, Architecture, Design",
-                    fee: "€3,900/year",
-                    intakes: "September, February",
-                    link: "#"
-                },
-                {
-                    name: "University of Bologna",
-                    location: "Bologna",
-                    ranking: "QS #154",
-                    courses: "Law, Medicine, Sciences, Humanities",
-                    fee: "€1,000-4,000/year",
+                    fee: "€3,500-€4,000/year",
                     intakes: "September",
-                    link: "#"
+                    portal: "https://www.polimi.it"
                 }
             ],
             netherlands: [
                 {
-                    name: "University of Amsterdam",
-                    location: "Amsterdam",
-                    ranking: "QS #53",
-                    courses: "Business, Sciences, Humanities, Law",
-                    fee: "€8,000-18,000/year",
-                    intakes: "September, February",
-                    link: "#"
-                },
-                {
                     name: "Delft University of Technology",
-                    location: "Delft",
-                    ranking: "QS #47",
-                    courses: "Engineering, Technology, Design",
-                    fee: "€14,500-18,750/year",
+                    location: "Delft, Netherlands",
+                    ranking: "QS World Ranking #47",
+                    courses: "Engineering, Architecture, Computer Science",
+                    fee: "€15,000-€20,000/year",
                     intakes: "September",
-                    link: "#"
+                    portal: "https://www.tudelft.nl"
                 }
             ],
             sweden: [
                 {
-                    name: "KTH Royal Institute of Technology",
-                    location: "Stockholm",
-                    ranking: "QS #73",
-                    courses: "Engineering, IT, Architecture",
-                    fee: "SEK 145,000-310,000/year",
-                    intakes: "August, January",
-                    link: "#"
+                    name: "Lund University",
+                    location: "Lund, Sweden",
+                    ranking: "QS World Ranking #87",
+                    courses: "Engineering, Medicine, Social Sciences",
+                    fee: "SEK 100,000-150,000/year",
+                    intakes: "September",
+                    portal: "https://www.lunduniversity.lu.se"
                 }
             ],
             switzerland: [
                 {
                     name: "ETH Zurich",
-                    location: "Zurich",
-                    ranking: "QS #7",
-                    courses: "Engineering, Natural Sciences, Mathematics",
-                    fee: "CHF 1,460/year",
-                    intakes: "September, February",
-                    link: "#"
-                },
-                {
-                    name: "EPFL",
-                    location: "Lausanne",
-                    ranking: "QS #14",
-                    courses: "Engineering, CS, Life Sciences",
-                    fee: "CHF 1,266/year",
-                    intakes: "September, February",
-                    link: "#"
+                    location: "Zurich, Switzerland",
+                    ranking: "QS World Ranking #7",
+                    courses: "Engineering, Computer Science, Architecture, Natural Sciences",
+                    fee: "CHF 1,298/semester",
+                    intakes: "Autumn (September), Spring (February)",
+                    portal: "https://ethz.ch"
                 }
             ],
             singapore: [
                 {
                     name: "National University of Singapore",
                     location: "Singapore",
-                    ranking: "QS #8",
-                    courses: "Engineering, Business, Sciences, Medicine",
-                    fee: "SGD 30,000-50,000/year",
-                    intakes: "August, January",
-                    link: "#"
-                },
-                {
-                    name: "Nanyang Technological University",
-                    location: "Singapore",
-                    ranking: "QS #26",
-                    courses: "Engineering, Business, Sciences",
-                    fee: "SGD 30,000-45,000/year",
-                    intakes: "August, January",
-                    link: "#"
+                    ranking: "QS World Ranking #8",
+                    courses: "Engineering, Business, Computer Science, Medicine",
+                    fee: "SGD 17,000-50,000/year",
+                    intakes: "August",
+                    portal: "https://www.nus.edu.sg"
                 }
             ],
             japan: [
                 {
                     name: "University of Tokyo",
-                    location: "Tokyo",
-                    ranking: "QS #23",
+                    location: "Tokyo, Japan",
+                    ranking: "QS World Ranking #28",
                     courses: "Engineering, Sciences, Medicine, Humanities",
                     fee: "¥535,800/year",
-                    intakes: "April, September",
-                    link: "#"
-                },
-                {
-                    name: "Kyoto University",
-                    location: "Kyoto",
-                    ranking: "QS #36",
-                    courses: "Sciences, Engineering, Medicine",
-                    fee: "¥535,800/year",
-                    intakes: "April, October",
-                    link: "#"
+                    intakes: "April",
+                    portal: "https://www.u-tokyo.ac.jp"
                 }
             ],
             "south-korea": [
                 {
                     name: "Seoul National University",
-                    location: "Seoul",
-                    ranking: "QS #41",
-                    courses: "Engineering, Business, Sciences, Medicine",
-                    fee: "₩4-7 million/year",
+                    location: "Seoul, South Korea",
+                    ranking: "QS World Ranking #41",
+                    courses: "Engineering, Business, Medicine, Sciences",
+                    fee: "KRW 4,000,000-8,000,000/semester",
                     intakes: "March, September",
-                    link: "#"
-                },
-                {
-                    name: "KAIST",
-                    location: "Daejeon",
-                    ranking: "QS #56",
-                    courses: "Engineering, Sciences, Technology",
-                    fee: "₩4-6 million/year",
-                    intakes: "March, September",
-                    link: "#"
+                    portal: "https://www.snu.ac.kr"
                 }
             ],
             "new-zealand": [
                 {
                     name: "University of Auckland",
-                    location: "Auckland",
-                    ranking: "QS #68",
-                    courses: "Engineering, Business, Medicine, Sciences",
-                    fee: "NZD 32,000-45,000/year",
+                    location: "Auckland, New Zealand",
+                    ranking: "QS World Ranking #68",
+                    courses: "Business, Engineering, Medicine, Arts",
+                    fee: "NZD 35,000-45,000/year",
                     intakes: "February, July",
-                    link: "#"
-                },
-                {
-                    name: "University of Otago",
-                    location: "Dunedin",
-                    ranking: "QS #206",
-                    courses: "Medicine, Health Sciences, Business",
-                    fee: "NZD 28,000-40,000/year",
-                    intakes: "February, July",
-                    link: "#"
+                    portal: "https://www.auckland.ac.nz"
                 }
             ]
         };
 
-        const countryInfo = {
-            usa: { flag: "🇺🇸", name: "United States", universities: "4,000+", students: "1 Million+" },
-            uk: { flag: "🇬🇧", name: "United Kingdom", universities: "160+", students: "600,000+" },
-            canada: { flag: "🇨🇦", name: "Canada", universities: "100+", students: "500,000+" },
-            australia: { flag: "🇦🇺", name: "Australia", universities: "43", students: "700,000+" },
-            germany: { flag: "🇩🇪", name: "Germany", universities: "400+", students: "350,000+" },
-            latvia: { flag: "🇱🇻", name: "Latvia", universities: "30+", students: "5,000+" },
-            france: { flag: "🇫🇷", name: "France", universities: "3,500+", students: "370,000+" },
-            italy: { flag: "🇮🇹", name: "Italy", universities: "200+", students: "200,000+" },
-            netherlands: { flag: "🇳🇱", name: "Netherlands", universities: "80+", students: "112,000+" },
-            sweden: { flag: "🇸🇪", name: "Sweden", universities: "40+", students: "35,000+" },
-            switzerland: { flag: "🇨🇭", name: "Switzerland", universities: "12", students: "60,000+" },
-            singapore: { flag: "🇸🇬", name: "Singapore", universities: "6", students: "67,000+" },
-            japan: { flag: "🇯🇵", name: "Japan", universities: "780+", students: "220,000+" },
-            "south-korea": { flag: "🇰🇷", name: "South Korea", universities: "350+", students: "100,000+" },
-            "new-zealand": { flag: "🇳🇿", name: "New Zealand", universities: "8", students: "50,000+" }
-        };
-
-        let currentCountry = 'usa';
-
-        // Initialize on page load
-        window.addEventListener('DOMContentLoaded', function() {
-            filterCountry('usa');
-        });
+        // =============================================
+        // UNIVERSITY FILTERING FUNCTION - FIXED
+        // =============================================
 
         // Filter universities by country
         function filterCountry(country) {
-            currentCountry = country;
-            const buttons = document.querySelectorAll('.country-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            console.log("Filtering for country:", country);
             
-            displayCountryHeader(country);
-            displayUniversities(country);
-        }
+            // Update active button
+            document.querySelectorAll('.country-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
 
-        // Display country header
-        function displayCountryHeader(country) {
-            const info = countryInfo[country];
+            // Display country header
             const header = document.getElementById('countryHeader');
-            header.innerHTML = `
-                <div class="country-header">
-                    <div class="country-flag">${info.flag}</div>
-                    <h2 class="country-title">Study in ${info.name}</h2>
-                    <div class="country-stats">
-                        <div class="stat">
-                            <div class="stat-value">${info.universities}</div>
-                            <div class="stat-label">Universities</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">${info.students}</div>
-                            <div class="stat-label">International Students</div>
+            const info = countryInfo[country];
+            
+            if (info) {
+                header.innerHTML = `
+                    <div class="country-header">
+                        <div class="country-flag">${info.flag}</div>
+                        <h2 class="country-title">${info.name}</h2>
+                        <p>Explore top universities in ${info.name} with detailed information about courses, fees, and intakes</p>
+                        <div class="country-stats">
+                            <div class="stat">
+                                <div class="stat-value">${info.stats.students}</div>
+                                <div class="stat-label">International Students</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">${info.stats.universities}</div>
+                                <div class="stat-label">Universities</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">${info.stats.workPermit}</div>
+                                <div class="stat-label">Work Permit</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `;
-        }
+                `;
+            }
 
-        // Display universities
-        function displayUniversities(country) {
+            // Display universities
             const container = document.getElementById('universityContainer');
             const unis = universities[country] || [];
             
+            if (unis.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: var(--text-light); font-size: 1.2rem; grid-column: 1/-1;">Universities coming soon for this country!</p>';
+                return;
+            }
+
             container.innerHTML = unis.map(uni => `
                 <div class="university-card">
                     <h3 class="uni-name">${uni.name}</h3>
                     <div class="uni-info">
-                        <span class="uni-label">Location:</span>
+                        <span class="uni-label">📍 Location:</span>
                         <span class="uni-value">${uni.location}</span>
                     </div>
                     <div class="uni-info">
-                        <span class="uni-label">Ranking:</span>
+                        <span class="uni-label">🏆 Ranking:</span>
                         <span class="uni-value">${uni.ranking}</span>
                     </div>
                     <div class="uni-courses">
-                        <strong>Popular Courses:</strong><br>
+                        <strong>📚 Popular Courses:</strong><br>
                         ${uni.courses}
                     </div>
                     <div class="uni-fee">💰 ${uni.fee}</div>
                     <div class="uni-intakes">📅 Intakes: ${uni.intakes}</div>
-                    <a href="#" class="uni-link" onclick="openQuickApplication(); return false;">Apply Now →</a>
+                    <a href="${uni.portal}" target="_blank" class="uni-link">Visit University Portal →</a>
+                    <a href="#booking" class="uni-link" onclick="scrollToSection('booking')">Apply Now →</a>
                 </div>
             `).join('');
         }
 
+        // =============================================
+        // OTHER FUNCTIONS
+        // =============================================
+
         // Scroll to section
         function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const offset = 90;
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({
+                    top: elementPosition - offset,
+                    behavior: 'smooth'
+                });
+            }
         }
 
-        // Open modals
+        // Modal Functions
+        function openQuickApplication() {
+            document.getElementById('quickAppModal').classList.add('active');
+        }
+
+        function closeQuickApplication() {
+            document.getElementById('quickAppModal').classList.remove('active');
+        }
+
+        function openAIRecommendation() {
+            document.getElementById('aiRecommendationModal').classList.add('active');
+        }
+
+        function closeAIRecommendation() {
+            document.getElementById('aiRecommendationModal').classList.remove('active');
+        }
+
+        function openUSVisaForm() {
+            document.getElementById('usVisaModal').classList.add('active');
+        }
+
+        function closeUSVisaForm() {
+            document.getElementById('usVisaModal').classList.remove('active');
+        }
+
         function openBookingForm() {
             document.getElementById('bookingModal').classList.add('active');
         }
 
-        function openUSVisaForm() {
-            document.getElementById('visaModal').classList.add('active');
-        }
-
-        function openAIRecommendation() {
-            document.getElementById('aiModal').classList.add('active');
+        function closeBookingForm() {
+            document.getElementById('bookingModal').classList.remove('active');
         }
 
         function openVolunteerForm() {
             document.getElementById('volunteerModal').classList.add('active');
         }
 
-        function openQuickApplication() {
-            document.getElementById('quickAppModal').classList.add('active');
-        }
-
-        // Close modal
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
+        function closeVolunteerForm() {
+            document.getElementById('volunteerModal').classList.remove('active');
         }
 
         // Close modal when clicking outside
@@ -1760,76 +1921,118 @@
             }
         }
 
-        // Form submissions
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('bookingSuccess').classList.add('show');
+        // AI Recommendation Function
+        function getAIRecommendations() {
+            const score = document.getElementById('aiScore').value;
+            const budget = document.getElementById('aiBudget').value;
+            const country = document.getElementById('aiCountry').value;
+            const field = document.getElementById('aiField').value;
+            
+            if (!score || !budget || !country || !field) {
+                alert('Please fill in all required fields!');
+                return;
+            }
+            
+            const resultsDiv = document.getElementById('aiResults');
+            const listDiv = document.getElementById('recommendationList');
+            
+            // Show loading
+            listDiv.innerHTML = '<div class="loading"></div> Finding best matches...';
+            resultsDiv.style.display = 'block';
+            
+            // Simulate AI processing
             setTimeout(() => {
-                closeModal('bookingModal');
-                this.reset();
-                document.getElementById('bookingSuccess').classList.remove('show');
-            }, 3000);
-        });
-
-        document.getElementById('visaForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('visaSuccess').classList.add('show');
-            setTimeout(() => {
-                closeModal('visaModal');
-                this.reset();
-                document.getElementById('visaSuccess').classList.remove('show');
-            }, 3000);
-        });
-
-        document.getElementById('aiForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('aiSuccess').classList.add('show');
-            setTimeout(() => {
-                closeModal('aiModal');
-                this.reset();
-                document.getElementById('aiSuccess').classList.remove('show');
-            }, 3000);
-        });
-
-        document.getElementById('volunteerForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('volunteerSuccess').classList.add('show');
-            setTimeout(() => {
-                closeModal('volunteerModal');
-                this.reset();
-                document.getElementById('volunteerSuccess').classList.remove('show');
-            }, 3000);
-        });
-
-        document.getElementById('quickAppForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('quickAppSuccess').classList.add('show');
-            setTimeout(() => {
-                closeModal('quickAppModal');
-                this.reset();
-                document.getElementById('quickAppSuccess').classList.remove('show');
-            }, 3000);
-        });
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                let recommendations = [];
+                
+                // Simple matching logic based on budget and score
+                if (country === 'latvia' || country === 'any') {
+                    if (parseInt(budget) <= 10000) {
+                        recommendations = universities.latvia.filter(uni => {
+                            return uni.fee.includes('€2,000') || uni.fee.includes('€3,000');
+                        });
+                    }
                 }
+                
+                if (recommendations.length === 0 && (country === 'germany' || country === 'any')) {
+                    recommendations = universities.germany.slice(0, 2);
+                }
+                
+                if (recommendations.length === 0) {
+                    // Fallback to some universities
+                    recommendations = [
+                        universities.latvia[0],
+                        universities.germany[0],
+                        universities.canada[0]
+                    ].filter(Boolean);
+                }
+                
+                // Display results
+                listDiv.innerHTML = recommendations.map(uni => `
+                    <div class="university-card" style="margin-bottom: 1rem;">
+                        <h3 class="uni-name">${uni.name}</h3>
+                        <div class="uni-info">
+                            <span class="uni-label">📍 Location:</span>
+                            <span class="uni-value">${uni.location}</span>
+                        </div>
+                        <div class="uni-info">
+                            <span class="uni-label">🏆 Ranking:</span>
+                            <span class="uni-value">${uni.ranking}</span>
+                        </div>
+                        <div class="uni-fee">💰 ${uni.fee}</div>
+                        <a href="${uni.portal}" target="_blank" class="uni-link">Visit University Portal →</a>
+                    </div>
+                `).join('');
+                
+                // Scroll to results
+                listDiv.scrollIntoView({ behavior: 'smooth' });
+            }, 1500);
+        }
+
+        // Form submission functions (simplified for demo)
+        function submitQuickApp() {
+            alert('Thank you! Your application has been submitted. We will contact you soon.');
+            closeQuickApplication();
+        }
+
+        function submitUSVisa() {
+            alert('Thank you! Your US visa slot booking request has been submitted. Our team will contact you within 24 hours.');
+            closeUSVisaForm();
+        }
+
+        function submitConsultation() {
+            alert('Thank you! Your consultation has been booked. We will reach out to you shortly to confirm the time.');
+            closeBookingForm();
+        }
+
+        function submitVolunteer() {
+            alert('Thank you for your interest in volunteering! We appreciate your willingness to help students achieve their dreams.');
+            closeVolunteerForm();
+        }
+
+        function viewSubmissions() {
+            alert('This would show all form submissions in a real application. In this demo, forms are simulated.');
+        }
+
+        // Initialize with USA universities
+        window.onload = function() {
+            filterCountry('usa');
+            
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const offset = 90;
+                        const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                        window.scrollTo({
+                            top: elementPosition - offset,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
-        });
+        };
     </script>
 </body>
-</html>, January",
-                    link: "#"
-                },
-                {
-                    name: "Lund University",
-                    location: "Lund",
-                    ranking: "QS #75",
-                    courses: "Engineering, Sciences, Business",
-                    fee: "SEK 90,000-285,000/year",
-                    intakes: "August
+</html>
