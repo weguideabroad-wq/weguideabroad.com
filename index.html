@@ -308,10 +308,12 @@
             flex-wrap: wrap;
             justify-content: center;
             margin-bottom: 3rem;
+            overflow-x: auto;
+            padding: 1rem 0;
         }
 
         .country-btn {
-            padding: 0.9rem 2rem;
+            padding: 0.9rem 1.5rem;
             background: white;
             border: 2px solid var(--primary-teal);
             color: var(--accent-navy);
@@ -319,8 +321,9 @@
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             box-shadow: 0 3px 12px var(--shadow-color);
+            white-space: nowrap;
         }
 
         .country-btn:hover,
@@ -341,7 +344,7 @@
         .university-card {
             background: white;
             border-radius: 20px;
-            padding: 2.5rem;
+            padding: 2rem;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 2px solid rgba(0, 188, 212, 0.2);
             position: relative;
@@ -371,25 +374,29 @@
         }
 
         .uni-name {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--accent-navy);
             margin-bottom: 1rem;
             font-weight: 700;
+            line-height: 1.3;
         }
 
         .uni-info {
             margin-bottom: 0.8rem;
+            display: flex;
+            flex-wrap: wrap;
         }
 
         .uni-label {
             font-weight: 700;
             color: var(--text-dark);
             display: inline-block;
-            min-width: 100px;
+            min-width: 120px;
         }
 
         .uni-value {
             color: var(--text-light);
+            flex: 1;
         }
 
         .uni-courses {
@@ -398,13 +405,17 @@
             border-radius: 12px;
             margin: 1rem 0;
             border-left: 4px solid var(--primary-orange);
+            font-size: 0.95rem;
         }
 
         .uni-fee {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--success);
             font-weight: 700;
             margin: 1rem 0;
+            padding: 0.8rem;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 10px;
         }
 
         .uni-intakes {
@@ -414,19 +425,25 @@
             border-radius: 10px;
             margin: 1rem 0;
             font-weight: 600;
+            display: inline-block;
         }
 
         .uni-link {
             display: inline-block;
             margin-top: 1rem;
+            margin-right: 1rem;
             color: var(--primary-teal);
             text-decoration: none;
             font-weight: 700;
             transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--primary-teal);
+            border-radius: 8px;
         }
 
         .uni-link:hover {
-            color: var(--primary-orange);
+            color: white;
+            background: var(--primary-teal);
             transform: translateX(5px);
         }
 
@@ -756,6 +773,74 @@
             gap: 1.5rem;
         }
 
+        /* Country-Specific Sections */
+        .country-info-section {
+            margin: 3rem 0;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .country-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 15px;
+        }
+
+        .info-card h3 {
+            color: var(--primary-teal);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .country-details {
+            margin-top: 2rem;
+        }
+
+        .detail-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-label {
+            font-weight: 700;
+            color: var(--accent-navy);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .detail-value {
+            color: var(--text-light);
+        }
+
+        .search-box {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--primary-teal);
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.2);
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 font-size: 0.85rem;
@@ -797,6 +882,31 @@
 
             .form-row {
                 grid-template-columns: 1fr;
+            }
+
+            .uni-label {
+                min-width: 100px;
+            }
+
+            .country-btn {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .uni-info {
+                flex-direction: column;
+            }
+            
+            .uni-label {
+                min-width: auto;
+                margin-bottom: 0.3rem;
+            }
+            
+            .country-btn {
+                padding: 0.7rem 1rem;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -913,24 +1023,37 @@
     <section id="universities" class="countries-section">
         <div class="container">
             <h2 class="section-title">Top Universities Worldwide</h2>
+            
+            <div class="search-box">
+                <input type="text" id="universitySearch" class="search-input" placeholder="Search universities by name, country, or course..." onkeyup="searchUniversities()">
+            </div>
+            
             <div class="country-filter">
-                <button class="country-btn active" onclick="filterCountry('usa')">🇺🇸 USA</button>
+                <button class="country-btn active" onclick="filterCountry('dubai')">🇦🇪 Dubai/UAE</button>
+                <button class="country-btn" onclick="filterCountry('usa')">🇺🇸 USA</button>
                 <button class="country-btn" onclick="filterCountry('uk')">🇬🇧 UK</button>
                 <button class="country-btn" onclick="filterCountry('canada')">🇨🇦 Canada</button>
                 <button class="country-btn" onclick="filterCountry('australia')">🇦🇺 Australia</button>
+                <button class="country-btn" onclick="filterCountry('newzealand')">🇳🇿 New Zealand</button>
                 <button class="country-btn" onclick="filterCountry('germany')">🇩🇪 Germany</button>
-                <button class="country-btn" onclick="filterCountry('latvia')">🇱🇻 Latvia</button>
-                <button class="country-btn" onclick="filterCountry('france')">🇫🇷 France</button>
-                <button class="country-btn" onclick="filterCountry('italy')">🇮🇹 Italy</button>
-                <button class="country-btn" onclick="filterCountry('netherlands')">🇳🇱 Netherlands</button>
+                <button class="country-btn" onclick="filterCountry('ireland')">🇮🇪 Ireland</button>
+                <button class="country-btn" onclick="filterCountry('finland')">🇫🇮 Finland</button>
                 <button class="country-btn" onclick="filterCountry('sweden')">🇸🇪 Sweden</button>
+                <button class="country-btn" onclick="filterCountry('netherlands')">🇳🇱 Netherlands</button>
+                <button class="country-btn" onclick="filterCountry('hungary')">🇭🇺 Hungary</button>
+                <button class="country-btn" onclick="filterCountry('italy')">🇮🇹 Italy</button>
+                <button class="country-btn" onclick="filterCountry('france')">🇫🇷 France</button>
+                <button class="country-btn" onclick="filterCountry('spain')">🇪🇸 Spain</button>
                 <button class="country-btn" onclick="filterCountry('switzerland')">🇨🇭 Switzerland</button>
                 <button class="country-btn" onclick="filterCountry('singapore')">🇸🇬 Singapore</button>
                 <button class="country-btn" onclick="filterCountry('japan')">🇯🇵 Japan</button>
-                <button class="country-btn" onclick="filterCountry('south-korea')">🇰🇷 South Korea</button>
-                <button class="country-btn" onclick="filterCountry('new-zealand')">🇳🇿 New Zealand</button>
+                <button class="country-btn" onclick="filterCountry('latvia')">🇱🇻 Latvia</button>
+                <button class="country-btn" onclick="filterCountry('poland')">🇵🇱 Poland</button>
+                <button class="country-btn" onclick="filterCountry('czech')">🇨🇿 Czech Republic</button>
             </div>
+            
             <div id="countryHeader"></div>
+            <div id="countryInfoSection"></div>
             <div id="universityContainer" class="university-grid"></div>
         </div>
     </section>
@@ -1044,9 +1167,7 @@
         </div>
     </footer>
 
-    <!-- Add EmailJS for sending emails -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
+    <!-- Modals (same as before) -->
     <!-- Quick Application Modal -->
     <div id="quickAppModal" class="modal">
         <div class="modal-content">
@@ -1320,26 +1441,46 @@
         </div>
     </div>
 
-    <!-- Admin button to view submissions -->
-    <button onclick="viewSubmissions()" style="position: fixed; bottom: 100px; right: 20px; background: #ff4757; color: white; border: none; padding: 12px 16px; border-radius: 8px; z-index: 1000; font-weight: bold; box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4); cursor: pointer;">
-        📧 View Submissions (Admin)
-    </button>
-
     <script>
         // =============================================
-        // UNIVERSITY DATA - COMPLETE AND WORKING
+        // COMPLETE UNIVERSITY DATABASE
         // =============================================
 
-        // Country Information
+        // Country Information with Post-Study Work Visa Details
         const countryInfo = {
+            dubai: {
+                flag: "🇦🇪",
+                name: "Dubai / UAE",
+                stats: {
+                    students: "90,000+",
+                    universities: "65+",
+                    workPermit: "Depends on job offer"
+                },
+                visaDetails: {
+                    bachelor: "Student visa converts to work visa with job offer from sponsoring company",
+                    master: "Student visa converts to work visa with job offer from sponsoring company",
+                    jobSeeker: "No formal job seeker visa; must secure employment for residence permit",
+                    prPathway: "Through long-term employment (usually 5+ years)"
+                },
+                popularCourses: "Business, Engineering, Tourism, IT, Finance",
+                costOfLiving: "AED 3,000-5,000/month"
+            },
             usa: {
                 flag: "🇺🇸",
-                name: "United States",
+                name: "United States of America",
                 stats: {
                     students: "1.1M+",
                     universities: "4,000+",
-                    workPermit: "3 years OPT"
-                }
+                    workPermit: "3 years OPT (STEM)"
+                },
+                visaDetails: {
+                    bachelor: "12 months OPT after graduation",
+                    master: "12 months OPT (24 additional months for STEM)",
+                    jobSeeker: "No job seeker visa; OPT period used to find job",
+                    prPathway: "H-1B lottery → Employment-based Green Card"
+                },
+                popularCourses: "Computer Science, Business, Engineering, Data Science",
+                costOfLiving: "$1,200-2,500/month"
             },
             uk: {
                 flag: "🇬🇧",
@@ -1348,7 +1489,15 @@
                     students: "600,000+",
                     universities: "160+",
                     workPermit: "2 years Graduate Route"
-                }
+                },
+                visaDetails: {
+                    bachelor: "2 years Graduate Route visa",
+                    master: "2 years Graduate Route visa",
+                    jobSeeker: "Graduate Route allows job search without sponsorship",
+                    prPathway: "Skilled Worker visa (5 years) → Indefinite Leave to Remain"
+                },
+                popularCourses: "Business, Law, Medicine, Engineering, Arts",
+                costOfLiving: "£1,000-1,800/month"
             },
             canada: {
                 flag: "🇨🇦",
@@ -1357,7 +1506,15 @@
                     students: "642,000+",
                     universities: "223+",
                     workPermit: "3 years PGWP"
-                }
+                },
+                visaDetails: {
+                    bachelor: "1-3 years PGWP (depends on program length)",
+                    master: "Up to 3 years PGWP",
+                    jobSeeker: "PGWP allows full-time work without job offer",
+                    prPathway: "Express Entry (Canadian Experience Class)"
+                },
+                popularCourses: "Computer Science, Business, Engineering, Healthcare",
+                costOfLiving: "CAD 1,200-2,000/month"
             },
             australia: {
                 flag: "🇦🇺",
@@ -1366,7 +1523,32 @@
                     students: "700,000+",
                     universities: "43+",
                     workPermit: "4 years post-study"
-                }
+                },
+                visaDetails: {
+                    bachelor: "2 years post-study work visa",
+                    master: "3 years post-study work visa",
+                    jobSeeker: "Temporary Graduate visa allows work and job search",
+                    prPathway: "Skilled Independent visa (189) or State Nominated (190)"
+                },
+                popularCourses: "Business, IT, Engineering, Healthcare, Hospitality",
+                costOfLiving: "AUD 1,500-2,500/month"
+            },
+            newzealand: {
+                flag: "🇳🇿",
+                name: "New Zealand",
+                stats: {
+                    students: "60,000+",
+                    universities: "8+",
+                    workPermit: "3 years post-study"
+                },
+                visaDetails: {
+                    bachelor: "Up to 3 years post-study work visa",
+                    master: "Up to 3 years post-study work visa",
+                    jobSeeker: "Post-study work visa allows job search",
+                    prPathway: "Skilled Migrant Category Resident Visa"
+                },
+                popularCourses: "Agriculture, IT, Tourism, Healthcare, Engineering",
+                costOfLiving: "NZD 1,200-2,000/month"
             },
             germany: {
                 flag: "🇩🇪",
@@ -1375,43 +1557,49 @@
                     students: "350,000+",
                     universities: "400+",
                     workPermit: "18 months job seeker"
-                }
+                },
+                visaDetails: {
+                    bachelor: "18-month job seeker visa after graduation",
+                    master: "18-month job seeker visa after graduation",
+                    jobSeeker: "18 months to find job related to qualification",
+                    prPathway: "Blue Card (21-33 months) → Permanent Residence"
+                },
+                popularCourses: "Engineering, Computer Science, Automotive, Renewable Energy",
+                costOfLiving: "€850-1,200/month"
             },
-            latvia: {
-                flag: "🇱🇻",
-                name: "Latvia",
+            ireland: {
+                flag: "🇮🇪",
+                name: "Ireland",
                 stats: {
-                    students: "15,000+",
-                    universities: "60+",
-                    workPermit: "9 months post-study"
-                }
-            },
-            france: {
-                flag: "🇫🇷",
-                name: "France",
-                stats: {
-                    students: "400,000+",
-                    universities: "3,500+",
+                    students: "35,000+",
+                    universities: "8+",
                     workPermit: "2 years post-study"
-                }
+                },
+                visaDetails: {
+                    bachelor: "1 year Third Level Graduate Programme",
+                    master: "2 years Third Level Graduate Programme",
+                    jobSeeker: "Graduate programme allows job search",
+                    prPathway: "Critical Skills Employment Permit → Stamp 4"
+                },
+                popularCourses: "Pharmaceuticals, IT, Business, Engineering",
+                costOfLiving: "€1,000-1,500/month"
             },
-            italy: {
-                flag: "🇮🇹",
-                name: "Italy",
+            finland: {
+                flag: "🇫🇮",
+                name: "Finland",
                 stats: {
-                    students: "110,000+",
-                    universities: "97+",
-                    workPermit: "1 year job search"
-                }
-            },
-            netherlands: {
-                flag: "🇳🇱",
-                name: "Netherlands",
-                stats: {
-                    students: "122,000+",
-                    universities: "58+",
-                    workPermit: "1 year orientation"
-                }
+                    students: "20,000+",
+                    universities: "13+",
+                    workPermit: "2 years post-study"
+                },
+                visaDetails: {
+                    bachelor: "1 year job seeker permit",
+                    master: "1 year job seeker permit",
+                    jobSeeker: "1 year to find work after studies",
+                    prPathway: "Continuous residence (4 years) → Permanent permit"
+                },
+                popularCourses: "IT, Engineering, Design, Environmental Sciences",
+                costOfLiving: "€700-1,200/month"
             },
             sweden: {
                 flag: "🇸🇪",
@@ -1420,7 +1608,100 @@
                     students: "39,000+",
                     universities: "39+",
                     workPermit: "12 months job search"
-                }
+                },
+                visaDetails: {
+                    bachelor: "12 months to seek employment",
+                    master: "12 months to seek employment",
+                    jobSeeker: "12-month job search visa",
+                    prPathway: "4 years of work → Permanent residence permit"
+                },
+                popularCourses: "Engineering, Computer Science, Business, Design",
+                costOfLiving: "SEK 8,000-12,000/month"
+            },
+            netherlands: {
+                flag: "🇳🇱",
+                name: "Netherlands",
+                stats: {
+                    students: "122,000+",
+                    universities: "58+",
+                    workPermit: "1 year orientation"
+                },
+                visaDetails: {
+                    bachelor: "1 year Orientation Year visa",
+                    master: "1 year Orientation Year visa",
+                    jobSeeker: "Orientation Year for job search",
+                    prPathway: "5 years continuous residence → Permanent permit"
+                },
+                popularCourses: "Agriculture, Engineering, Business, Art & Design",
+                costOfLiving: "€800-1,200/month"
+            },
+            hungary: {
+                flag: "🇭🇺",
+                name: "Hungary",
+                stats: {
+                    students: "32,000+",
+                    universities: "65+",
+                    workPermit: "9 months post-study"
+                },
+                visaDetails: {
+                    bachelor: "9 months to find job after studies",
+                    master: "9 months to find job after studies",
+                    jobSeeker: "9-month residence permit for job search",
+                    prPathway: "3 years legal residence → Permanent residence"
+                },
+                popularCourses: "Medicine, Dentistry, Engineering, Business",
+                costOfLiving: "€500-800/month"
+            },
+            italy: {
+                flag: "🇮🇹",
+                name: "Italy",
+                stats: {
+                    students: "110,000+",
+                    universities: "97+",
+                    workPermit: "1 year job search"
+                },
+                visaDetails: {
+                    bachelor: "1 year permit for job search",
+                    master: "1 year permit for job search",
+                    jobSeeker: "1-year permit to find employment",
+                    prPathway: "5 years legal residence → EU long-term residence"
+                },
+                popularCourses: "Fashion, Design, Architecture, Culinary Arts",
+                costOfLiving: "€700-1,200/month"
+            },
+            france: {
+                flag: "🇫🇷",
+                name: "France",
+                stats: {
+                    students: "400,000+",
+                    universities: "3,500+",
+                    workPermit: "2 years post-study"
+                },
+                visaDetails: {
+                    bachelor: "Temporary residence for job search (up to 1 year)",
+                    master: "Temporary residence for job search (up to 1 year)",
+                    jobSeeker: "Graduates get temporary permit for job search",
+                    prPathway: "5 years residence → Permanent residence card"
+                },
+                popularCourses: "Luxury Brands, Hospitality, Engineering, Business",
+                costOfLiving: "€800-1,200/month"
+            },
+            spain: {
+                flag: "🇪🇸",
+                name: "Spain",
+                stats: {
+                    students: "85,000+",
+                    universities: "84+",
+                    workPermit: "1 year post-study"
+                },
+                visaDetails: {
+                    bachelor: "1 year to seek work or start business",
+                    master: "1 year to seek work or start business",
+                    jobSeeker: "1-year residence permit for job search",
+                    prPathway: "5 years legal residence → Long-term EU residence"
+                },
+                popularCourses: "Tourism, Business, Spanish Language, Architecture",
+                costOfLiving: "€600-1,000/month"
             },
             switzerland: {
                 flag: "🇨🇭",
@@ -1429,7 +1710,15 @@
                     students: "50,000+",
                     universities: "12+",
                     workPermit: "6 months job search"
-                }
+                },
+                visaDetails: {
+                    bachelor: "6 months to find employment",
+                    master: "6 months to find employment",
+                    jobSeeker: "6-month job seeker visa",
+                    prPathway: "10 years continuous residence → Permanent permit"
+                },
+                popularCourses: "Hotel Management, Banking, Engineering, Pharmaceuticals",
+                costOfLiving: "CHF 1,200-2,000/month"
             },
             singapore: {
                 flag: "🇸🇬",
@@ -1438,7 +1727,15 @@
                     students: "65,000+",
                     universities: "34+",
                     workPermit: "1 year post-study"
-                }
+                },
+                visaDetails: {
+                    bachelor: "1 year Long-Term Visit Pass for job search",
+                    master: "1 year Long-Term Visit Pass for job search",
+                    jobSeeker: "Graduates get 1 year to find employment",
+                    prPathway: "Employment Pass → Permanent Residence (after 2-3 years)"
+                },
+                popularCourses: "Business, IT, Engineering, Hospitality",
+                costOfLiving: "SGD 1,000-2,000/month"
             },
             japan: {
                 flag: "🇯🇵",
@@ -1447,57 +1744,253 @@
                     students: "228,000+",
                     universities: "780+",
                     workPermit: "1 year job hunting"
-                }
+                },
+                visaDetails: {
+                    bachelor: "1 year job hunting visa",
+                    master: "1 year job hunting visa",
+                    jobSeeker: "Designated Activities visa for job search",
+                    prPathway: "10 years continuous residence → Permanent residency"
+                },
+                popularCourses: "Technology, Engineering, Business, Japanese Language",
+                costOfLiving: "¥80,000-120,000/month"
             },
-            "south-korea": {
-                flag: "🇰🇷",
-                name: "South Korea",
+            latvia: {
+                flag: "🇱🇻",
+                name: "Latvia",
                 stats: {
-                    students: "160,000+",
-                    universities: "430+",
-                    workPermit: "2 years post-study"
-                }
+                    students: "15,000+",
+                    universities: "60+",
+                    workPermit: "9 months post-study"
+                },
+                visaDetails: {
+                    bachelor: "9 months temporary residence for job search",
+                    master: "9 months temporary residence for job search",
+                    jobSeeker: "9 months to find employment after graduation",
+                    prPathway: "5 years temporary residence → Permanent residence"
+                },
+                popularCourses: "IT, Business, Medicine, Engineering, Tourism",
+                costOfLiving: "€500-800/month"
             },
-            "new-zealand": {
-                flag: "🇳🇿",
-                name: "New Zealand",
+            poland: {
+                flag: "🇵🇱",
+                name: "Poland",
                 stats: {
-                    students: "60,000+",
-                    universities: "8+",
-                    workPermit: "3 years post-study"
-                }
+                    students: "85,000+",
+                    universities: "400+",
+                    workPermit: "1 year post-study"
+                },
+                visaDetails: {
+                    bachelor: "1 year temporary residence for job search",
+                    master: "1 year temporary residence for job search",
+                    jobSeeker: "1 year to find employment after studies",
+                    prPathway: "5 years continuous residence → Permanent residence"
+                },
+                popularCourses: "Medicine, Engineering, IT, Business",
+                costOfLiving: "€400-700/month"
+            },
+            czech: {
+                flag: "🇨🇿",
+                name: "Czech Republic",
+                stats: {
+                    students: "50,000+",
+                    universities: "70+",
+                    workPermit: "9 months post-study"
+                },
+                visaDetails: {
+                    bachelor: "9 months to find employment",
+                    master: "9 months to find employment",
+                    jobSeeker: "9-month period after studies to seek work",
+                    prPathway: "5 years continuous residence → Permanent residence"
+                },
+                popularCourses: "Medicine, Engineering, IT, Business",
+                costOfLiving: "€400-700/month"
             }
         };
 
-        // University Data
+        // Complete University Database
         const universities = {
+            dubai: [
+                {
+                    name: "American University in Dubai (AUD)",
+                    location: "Dubai, UAE",
+                    ranking: "Top University in Dubai",
+                    courses: "Business Administration, Engineering, Architecture, Communication",
+                    fee: "AED 60,000–95,000/year",
+                    intakes: "Fall (Sept), Spring (Jan)",
+                    portal: "https://www.aud.edu/",
+                    contact: "info@aud.edu"
+                },
+                {
+                    name: "University of Wollongong in Dubai (UOWD)",
+                    location: "Dubai, UAE",
+                    ranking: "Australian University in Dubai",
+                    courses: "Computer Science, Business, Finance, Engineering",
+                    fee: "AED 50,000–85,000/year",
+                    intakes: "Sept, Jan, May",
+                    portal: "https://www.uowdubai.ac.ae/",
+                    contact: "Admissions page"
+                },
+                {
+                    name: "Middlesex University Dubai",
+                    location: "Dubai, UAE",
+                    ranking: "UK University in Dubai",
+                    courses: "Business, Law, Psychology, Media",
+                    fee: "AED 45,000–80,000/year",
+                    intakes: "Sept, Jan, May",
+                    portal: "https://www.mdx.ac.ae/",
+                    contact: "info@mdx.ac.ae"
+                },
+                {
+                    name: "Heriot-Watt University Dubai",
+                    location: "Dubai, UAE",
+                    ranking: "Scottish University in Dubai",
+                    courses: "Engineering, Business, Fashion, Construction",
+                    fee: "AED 50,000–90,000/year",
+                    intakes: "Sept, Jan",
+                    portal: "https://www.hw.ac.uk/dubai.htm",
+                    contact: "Dubai campus contact page"
+                },
+                {
+                    name: "Canadian University Dubai (CUD)",
+                    location: "Dubai, UAE",
+                    ranking: "Canadian Education in Dubai",
+                    courses: "Engineering, Architecture, Business, Communication",
+                    fee: "AED 35,000–70,000/year",
+                    intakes: "Sept, Jan",
+                    portal: "https://www.cud.ac.ae/",
+                    contact: "Admissions page"
+                },
+                {
+                    name: "University of Bradford (Dubai campus)",
+                    location: "Dubai, UAE",
+                    ranking: "UK University in Dubai",
+                    courses: "Business, Law, Engineering, Health",
+                    fee: "AED 40,000–75,000/year",
+                    intakes: "Sept, Jan",
+                    portal: "https://www.bradford.ac.uk/international/dubai/",
+                    contact: "Dubai campus contact page"
+                },
+                {
+                    name: "Curtin University Dubai",
+                    location: "Dubai, UAE",
+                    ranking: "Australian University in Dubai",
+                    courses: "Engineering, Business, Health Sciences",
+                    fee: "AED 45,000–85,000/year",
+                    intakes: "Sept, Jan, May",
+                    portal: "https://curtindubai.ac.ae/",
+                    contact: "Dubai contact page"
+                },
+                {
+                    name: "University of Dubai",
+                    location: "Dubai, UAE",
+                    ranking: "Government University in Dubai",
+                    courses: "Business, IT, Engineering, Law",
+                    fee: "AED 30,000–60,000/year",
+                    intakes: "Fall (Sept), Spring (Jan)",
+                    portal: "https://ud.ac.ae/",
+                    contact: "kkiyani@ud.ac.ae, gihussein@ud.ac.ae"
+                }
+            ],
             usa: [
+                {
+                    name: "Harvard University",
+                    location: "Cambridge, Massachusetts",
+                    ranking: "QS World Ranking #4",
+                    courses: "Law, Medicine, Business, Computer Science",
+                    fee: "$49,600–50,000/year",
+                    intakes: "Fall (Sept)",
+                    portal: "https://www.harvard.edu/",
+                    contact: "Admissions Office"
+                },
+                {
+                    name: "Massachusetts Institute of Technology (MIT)",
+                    location: "Cambridge, Massachusetts",
+                    ranking: "QS World Ranking #1",
+                    courses: "Engineering, Computer Science, AI, Robotics",
+                    fee: "$55,000–70,000/year",
+                    intakes: "Fall (Sept)",
+                    portal: "https://www.mit.edu/",
+                    contact: "Graduate Admissions"
+                },
+                {
+                    name: "Stanford University",
+                    location: "Stanford, California",
+                    ranking: "QS World Ranking #5",
+                    courses: "Business, Engineering, Medicine, Law",
+                    fee: "$55,000–65,000/year",
+                    intakes: "Fall (Sept)",
+                    portal: "https://www.stanford.edu/",
+                    contact: "Admissions Office"
+                },
                 {
                     name: "University of California, Berkeley",
                     location: "Berkeley, California",
                     ranking: "QS World Ranking #10",
                     courses: "Computer Science, Engineering, Business, Data Science",
-                    fee: "$45,000/year",
-                    intakes: "Fall (August), Spring (January)",
-                    portal: "https://www.berkeley.edu"
+                    fee: "$40,000–60,000/year",
+                    intakes: "Fall (Aug)",
+                    portal: "https://www.berkeley.edu/",
+                    contact: "International Admissions"
                 },
                 {
-                    name: "MIT",
-                    location: "Cambridge, Massachusetts",
-                    ranking: "QS World Ranking #1",
-                    courses: "Engineering, Computer Science, AI, Robotics",
-                    fee: "$55,000/year",
-                    intakes: "Fall (September)",
-                    portal: "https://www.mit.edu"
+                    name: "New York University (NYU)",
+                    location: "New York City, New York",
+                    ranking: "QS World Ranking #38",
+                    courses: "Business, Arts, Law, Medicine",
+                    fee: "$45,000–60,000/year",
+                    intakes: "Fall, Spring",
+                    portal: "https://www.nyu.edu/",
+                    contact: "Global Admissions"
                 },
                 {
-                    name: "Stanford University",
-                    location: "Stanford, California",
-                    ranking: "QS World Ranking #3",
-                    courses: "Business, Engineering, Medicine, Law",
-                    fee: "$56,000/year",
-                    intakes: "Fall (September)",
-                    portal: "https://www.stanford.edu"
+                    name: "Columbia University",
+                    location: "New York City, New York",
+                    ranking: "QS World Ranking #23",
+                    courses: "Business, Law, Journalism, Engineering",
+                    fee: "$55,000–65,000/year",
+                    intakes: "Fall (Sept)",
+                    portal: "https://www.columbia.edu/",
+                    contact: "Undergraduate Admissions"
+                },
+                {
+                    name: "University of Michigan",
+                    location: "Ann Arbor, Michigan",
+                    ranking: "QS World Ranking #33",
+                    courses: "Engineering, Business, Medicine, Law",
+                    fee: "$40,000–55,000/year",
+                    intakes: "Fall (Sept)",
+                    portal: "https://www.umich.edu/",
+                    contact: "Office of Admissions"
+                },
+                {
+                    name: "University of Illinois Urbana-Champaign",
+                    location: "Champaign, Illinois",
+                    ranking: "QS World Ranking #85",
+                    courses: "Engineering, Computer Science, Business",
+                    fee: "$30,000–50,000/year",
+                    intakes: "Fall, Spring",
+                    portal: "https://illinois.edu/",
+                    contact: "International Admissions"
+                },
+                {
+                    name: "University of Texas at Austin",
+                    location: "Austin, Texas",
+                    ranking: "QS World Ranking #58",
+                    courses: "Engineering, Business, Computer Science",
+                    fee: "$30,000–50,000/year",
+                    intakes: "Fall (Aug)",
+                    portal: "https://www.utexas.edu/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of California, Los Angeles (UCLA)",
+                    location: "Los Angeles, California",
+                    ranking: "QS World Ranking #29",
+                    courses: "Film, Business, Engineering, Medicine",
+                    fee: "$40,000–60,000/year",
+                    intakes: "Fall (Sept)",
+                    portal: "https://www.ucla.edu/",
+                    contact: "Undergraduate Admissions"
                 }
             ],
             uk: [
@@ -1506,27 +1999,100 @@
                     location: "Oxford, England",
                     ranking: "QS World Ranking #2",
                     courses: "Law, Medicine, Business, Computer Science",
-                    fee: "£28,000-£40,000/year",
-                    intakes: "October",
-                    portal: "https://www.ox.ac.uk"
+                    fee: "£25,000–40,000/year",
+                    intakes: "Oct (Michaelmas term)",
+                    portal: "https://www.ox.ac.uk/",
+                    contact: "Undergraduate Admissions"
                 },
                 {
                     name: "University of Cambridge",
                     location: "Cambridge, England",
-                    ranking: "QS World Ranking #4",
+                    ranking: "QS World Ranking #3",
                     courses: "Engineering, Sciences, Medicine, Humanities",
-                    fee: "£25,000-£38,000/year",
-                    intakes: "October",
-                    portal: "https://www.cam.ac.uk"
+                    fee: "£22,000–38,000/year",
+                    intakes: "Oct",
+                    portal: "https://www.cam.ac.uk/",
+                    contact: "International Admissions"
                 },
                 {
                     name: "Imperial College London",
                     location: "London, England",
                     ranking: "QS World Ranking #6",
                     courses: "Engineering, Medicine, Business, Computing",
-                    fee: "£32,000-£45,000/year",
-                    intakes: "October",
-                    portal: "https://www.imperial.ac.uk"
+                    fee: "£30,000–45,000/year",
+                    intakes: "Sept/Oct",
+                    portal: "https://www.imperial.ac.uk/",
+                    contact: "Undergraduate Admissions"
+                },
+                {
+                    name: "University College London (UCL)",
+                    location: "London, England",
+                    ranking: "QS World Ranking #9",
+                    courses: "Medicine, Law, Engineering, Architecture",
+                    fee: "£22,000–40,000/year",
+                    intakes: "Sept/Oct",
+                    portal: "https://www.ucl.ac.uk/",
+                    contact: "International Office"
+                },
+                {
+                    name: "London School of Economics (LSE)",
+                    location: "London, England",
+                    ranking: "QS World Ranking #45",
+                    courses: "Economics, Politics, Law, Business",
+                    fee: "£20,000–40,000/year",
+                    intakes: "Sept/Oct",
+                    portal: "https://www.lse.ac.uk/",
+                    contact: "Undergraduate Admissions"
+                },
+                {
+                    name: "King's College London",
+                    location: "London, England",
+                    ranking: "QS World Ranking #40",
+                    courses: "Medicine, Law, Psychiatry, Humanities",
+                    fee: "£18,000–40,000/year",
+                    intakes: "Sept/Oct",
+                    portal: "https://www.kcl.ac.uk/",
+                    contact: "International Admissions"
+                },
+                {
+                    name: "University of Manchester",
+                    location: "Manchester, England",
+                    ranking: "QS World Ranking #32",
+                    courses: "Business, Engineering, Medicine, Computer Science",
+                    fee: "£17,000–30,000/year",
+                    intakes: "Sept/Oct",
+                    portal: "https://www.manchester.ac.uk/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Edinburgh",
+                    location: "Edinburgh, Scotland",
+                    ranking: "QS World Ranking #22",
+                    courses: "Medicine, Law, Business, Informatics",
+                    fee: "£18,000–30,000/year",
+                    intakes: "Sept/Oct",
+                    portal: "https://www.ed.ac.uk/",
+                    contact: "International Admissions"
+                },
+                {
+                    name: "University of Warwick",
+                    location: "Coventry, England",
+                    ranking: "QS World Ranking #67",
+                    courses: "Business, Economics, Engineering, Law",
+                    fee: "£17,000–32,000/year",
+                    intakes: "Sept/Oct",
+                    portal: "https://warwick.ac.uk/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Glasgow",
+                    location: "Glasgow, Scotland",
+                    ranking: "QS World Ranking #76",
+                    courses: "Medicine, Engineering, Business, Law",
+                    fee: "£16,000–30,000/year",
+                    intakes: "Sept/Oct",
+                    portal: "https://www.gla.ac.uk/",
+                    contact: "International Admissions"
                 }
             ],
             canada: [
@@ -1535,27 +2101,100 @@
                     location: "Toronto, Ontario",
                     ranking: "QS World Ranking #21",
                     courses: "Computer Science, Engineering, Business, Medicine",
-                    fee: "CAD 45,000-60,000/year",
-                    intakes: "September, January",
-                    portal: "https://www.utoronto.ca"
+                    fee: "CAD 37,000–60,000/year",
+                    intakes: "Fall, Jan (some)",
+                    portal: "https://www.utoronto.ca/",
+                    contact: "International Admissions"
                 },
                 {
-                    name: "University of British Columbia",
+                    name: "University of British Columbia (UBC)",
                     location: "Vancouver, British Columbia",
                     ranking: "QS World Ranking #34",
                     courses: "Engineering, Business, Computer Science, Forestry",
-                    fee: "CAD 40,000-55,000/year",
-                    intakes: "September, January",
-                    portal: "https://www.ubc.ca"
+                    fee: "CAD 30,000–55,000/year",
+                    intakes: "Fall, Jan",
+                    portal: "https://www.ubc.ca/",
+                    contact: "International Student Advising"
                 },
                 {
                     name: "McGill University",
                     location: "Montreal, Quebec",
                     ranking: "QS World Ranking #30",
                     courses: "Medicine, Law, Engineering, Management",
-                    fee: "CAD 35,000-50,000/year",
-                    intakes: "September, January",
-                    portal: "https://www.mcgill.ca"
+                    fee: "CAD 40,000–70,000/year",
+                    intakes: "Fall (Sept)",
+                    portal: "https://www.mcgill.ca/",
+                    contact: "International Admissions"
+                },
+                {
+                    name: "McMaster University",
+                    location: "Hamilton, Ontario",
+                    ranking: "QS World Ranking #189",
+                    courses: "Health Sciences, Engineering, Business",
+                    fee: "CAD 28,000–45,000/year",
+                    intakes: "Fall (Sept)",
+                    portal: "https://www.mcmaster.ca/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Alberta",
+                    location: "Edmonton, Alberta",
+                    ranking: "QS World Ranking #111",
+                    courses: "Engineering, Business, Sciences, Medicine",
+                    fee: "CAD 25,000–40,000/year",
+                    intakes: "Fall (Sept)",
+                    portal: "https://www.ualberta.ca/",
+                    contact: "International Admissions"
+                },
+                {
+                    name: "University of Waterloo",
+                    location: "Waterloo, Ontario",
+                    ranking: "QS World Ranking #112",
+                    courses: "Computer Science, Engineering, Mathematics",
+                    fee: "CAD 30,000–50,000/year",
+                    intakes: "Fall (Sept)",
+                    portal: "https://uwaterloo.ca/",
+                    contact: "International Admissions"
+                },
+                {
+                    name: "Queen's University at Kingston",
+                    location: "Kingston, Ontario",
+                    ranking: "QS World Ranking #209",
+                    courses: "Business, Engineering, Law, Medicine",
+                    fee: "CAD 28,000–45,000/year",
+                    intakes: "Fall (Sept)",
+                    portal: "https://www.queensu.ca/",
+                    contact: "International Centre"
+                },
+                {
+                    name: "Western University",
+                    location: "London, Ontario",
+                    ranking: "QS World Ranking #114",
+                    courses: "Business, Medicine, Engineering, Law",
+                    fee: "CAD 28,000–45,000/year",
+                    intakes: "Fall (Sept)",
+                    portal: "https://www.uwo.ca/",
+                    contact: "International Admissions"
+                },
+                {
+                    name: "University of Ottawa",
+                    location: "Ottawa, Ontario",
+                    ranking: "QS World Ranking #237",
+                    courses: "Law, Medicine, Engineering, Social Sciences",
+                    fee: "CAD 25,000–40,000/year",
+                    intakes: "Fall (Sept)",
+                    portal: "https://www.uottawa.ca/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Simon Fraser University (SFU)",
+                    location: "Burnaby, British Columbia",
+                    ranking: "QS World Ranking #318",
+                    courses: "Business, Computer Science, Engineering",
+                    fee: "CAD 25,000–40,000/year",
+                    intakes: "Fall (Sept)",
+                    portal: "https://www.sfu.ca/",
+                    contact: "International Admissions"
                 }
             ],
             australia: [
@@ -1564,165 +2203,780 @@
                     location: "Melbourne, Victoria",
                     ranking: "QS World Ranking #14",
                     courses: "Business, Medicine, Engineering, Arts",
-                    fee: "AUD 40,000-50,000/year",
-                    intakes: "February, July",
-                    portal: "https://www.unimelb.edu.au"
+                    fee: "AUD 35,000–50,000+/year",
+                    intakes: "Semester 1 (Feb), Semester 2 (Jul)",
+                    portal: "https://www.unimelb.edu.au/",
+                    contact: "International Admissions"
                 },
                 {
-                    name: "Australian National University",
+                    name: "Australian National University (ANU)",
                     location: "Canberra, ACT",
                     ranking: "QS World Ranking #34",
                     courses: "Political Science, Engineering, Computer Science",
-                    fee: "AUD 35,000-45,000/year",
-                    intakes: "February, July",
-                    portal: "https://www.anu.edu.au"
+                    fee: "AUD 35,000–50,000/year",
+                    intakes: "Feb, Jul",
+                    portal: "https://www.anu.edu.au/",
+                    contact: "International Office"
                 },
                 {
                     name: "University of Sydney",
                     location: "Sydney, New South Wales",
                     ranking: "QS World Ranking #19",
                     courses: "Medicine, Law, Engineering, Business",
-                    fee: "AUD 42,000-52,000/year",
-                    intakes: "February, July",
-                    portal: "https://www.sydney.edu.au"
+                    fee: "AUD 35,000–50,000/year",
+                    intakes: "Feb, Jul",
+                    portal: "https://www.sydney.edu.au/",
+                    contact: "International Admissions"
+                },
+                {
+                    name: "UNSW Sydney",
+                    location: "Sydney, New South Wales",
+                    ranking: "QS World Ranking #19",
+                    courses: "Engineering, Business, Law, Arts",
+                    fee: "AUD 35,000–50,000/year",
+                    intakes: "Feb, Jul",
+                    portal: "https://www.unsw.edu.au/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Monash University",
+                    location: "Melbourne, Victoria",
+                    ranking: "QS World Ranking #42",
+                    courses: "Pharmacy, Engineering, Business, Medicine",
+                    fee: "AUD 30,000–45,000/year",
+                    intakes: "Feb, Jul",
+                    portal: "https://www.monash.edu/",
+                    contact: "International Admissions"
+                },
+                {
+                    name: "University of Queensland (UQ)",
+                    location: "Brisbane, Queensland",
+                    ranking: "QS World Ranking #43",
+                    courses: "Business, Engineering, Agriculture, Medicine",
+                    fee: "AUD 30,000–45,000/year",
+                    intakes: "Feb, Jul",
+                    portal: "https://www.uq.edu.au/",
+                    contact: "International Admissions"
+                },
+                {
+                    name: "University of Adelaide",
+                    location: "Adelaide, South Australia",
+                    ranking: "QS World Ranking #89",
+                    courses: "Wine Science, Engineering, Medicine, Business",
+                    fee: "AUD 28,000–42,000/year",
+                    intakes: "Feb, Jul",
+                    portal: "https://www.adelaide.edu.au/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Macquarie University",
+                    location: "Sydney, New South Wales",
+                    ranking: "QS World Ranking #130",
+                    courses: "Business, Linguistics, Environmental Science",
+                    fee: "AUD 28,000–45,000/year",
+                    intakes: "Feb, Jul",
+                    portal: "https://www.mq.edu.au/",
+                    contact: "International Admissions"
+                },
+                {
+                    name: "RMIT University",
+                    location: "Melbourne, Victoria",
+                    ranking: "QS World Ranking #140",
+                    courses: "Design, Engineering, Business, IT",
+                    fee: "AUD 25,000–40,000/year",
+                    intakes: "Feb, Jul",
+                    portal: "https://www.rmit.edu.au/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Western Australia (UWA)",
+                    location: "Perth, Western Australia",
+                    ranking: "QS World Ranking #72",
+                    courses: "Mining Engineering, Agriculture, Medicine",
+                    fee: "AUD 30,000–45,000/year",
+                    intakes: "Feb, Jul",
+                    portal: "https://www.uwa.edu.au/",
+                    contact: "International Admissions"
+                }
+            ],
+            newzealand: [
+                {
+                    name: "University of Auckland",
+                    location: "Auckland, New Zealand",
+                    ranking: "QS World Ranking #68",
+                    courses: "Business, Engineering, Medicine, Arts",
+                    fee: "NZD 32,000–55,000/year",
+                    intakes: "Feb, Jul",
+                    portal: "https://www.auckland.ac.nz/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Otago",
+                    location: "Dunedin, New Zealand",
+                    ranking: "QS World Ranking #206",
+                    courses: "Medicine, Dentistry, Pharmacy, Law",
+                    fee: "NZD 32,000–60,000/year",
+                    intakes: "Feb, Jul",
+                    portal: "https://www.otago.ac.nz/",
+                    contact: "International Admissions"
+                },
+                {
+                    name: "Victoria University of Wellington",
+                    location: "Wellington, New Zealand",
+                    ranking: "QS World Ranking #241",
+                    courses: "Law, Humanities, Business, Science",
+                    fee: "NZD 30,000–50,000/year",
+                    intakes: "Feb, Jul",
+                    portal: "https://www.wgtn.ac.nz/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Canterbury",
+                    location: "Christchurch, New Zealand",
+                    ranking: "QS World Ranking #256",
+                    courses: "Engineering, Forestry, Business, Arts",
+                    fee: "NZD 30,000–50,000/year",
+                    intakes: "Feb, Jul",
+                    portal: "https://www.canterbury.ac.nz/",
+                    contact: "International Admissions"
+                },
+                {
+                    name: "Massey University",
+                    location: "Palmerston North, New Zealand",
+                    ranking: "QS World Ranking #239",
+                    courses: "Aviation, Agriculture, Business, Design",
+                    fee: "NZD 28,000–45,000/year",
+                    intakes: "Feb, Jul",
+                    portal: "https://www.massey.ac.nz/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Waikato",
+                    location: "Hamilton, New Zealand",
+                    ranking: "QS World Ranking #331",
+                    courses: "Computer Science, Management, Law, Education",
+                    fee: "NZD 28,000–40,000/year",
+                    intakes: "Feb, Jul",
+                    portal: "https://www.waikato.ac.nz/",
+                    contact: "International Admissions"
+                },
+                {
+                    name: "Auckland University of Technology (AUT)",
+                    location: "Auckland, New Zealand",
+                    ranking: "QS World Ranking #407",
+                    courses: "Health Sciences, Business, Design, Engineering",
+                    fee: "NZD 30,000–45,000/year",
+                    intakes: "Feb, Jul",
+                    portal: "https://www.aut.ac.nz/",
+                    contact: "International Centre"
+                },
+                {
+                    name: "Lincoln University",
+                    location: "Lincoln, New Zealand",
+                    ranking: "QS World Ranking #362",
+                    courses: "Agriculture, Viticulture, Tourism, Commerce",
+                    fee: "NZD 28,000–40,000/year",
+                    intakes: "Feb, Jul",
+                    portal: "https://www.lincoln.ac.nz/",
+                    contact: "International Office"
                 }
             ],
             germany: [
                 {
-                    name: "Technical University of Munich",
+                    name: "Technical University of Munich (TUM)",
                     location: "Munich, Bavaria",
                     ranking: "QS World Ranking #37",
                     courses: "Engineering, Computer Science, Natural Sciences",
                     fee: "No tuition fees (semester fee ~€150)",
-                    intakes: "October, April",
-                    portal: "https://www.tum.de"
+                    intakes: "Oct, Apr",
+                    portal: "https://www.tum.de/",
+                    contact: "International Office"
                 },
                 {
-                    name: "Ludwig Maximilian University of Munich",
+                    name: "LMU Munich",
                     location: "Munich, Bavaria",
-                    ranking: "QS World Ranking #59",
+                    ranking: "QS World Ranking #54",
                     courses: "Medicine, Physics, Business, Psychology",
-                    fee: "No tuition fees (semester fee ~€150)",
-                    intakes: "October, April",
-                    portal: "https://www.lmu.de"
+                    fee: "No tuition fees (semester fee ~€300)",
+                    intakes: "Oct, Apr",
+                    portal: "https://www.lmu.de/",
+                    contact: "International Office"
+                },
+                {
+                    name: "RWTH Aachen University",
+                    location: "Aachen, North Rhine-Westphalia",
+                    ranking: "QS World Ranking #106",
+                    courses: "Engineering, Computer Science, Natural Sciences",
+                    fee: "€0–€3,000 depending on program",
+                    intakes: "Oct, Apr",
+                    portal: "https://www.rwth-aachen.de/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Stuttgart",
+                    location: "Stuttgart, Baden-Württemberg",
+                    ranking: "QS World Ranking #312",
+                    courses: "Engineering, Architecture, Computer Science",
+                    fee: "€1,500/semester for non-EU students",
+                    intakes: "Oct, Apr",
+                    portal: "https://www.uni-stuttgart.de/",
+                    contact: "International Office"
                 },
                 {
                     name: "Heidelberg University",
                     location: "Heidelberg, Baden-Württemberg",
-                    ranking: "QS World Ranking #65",
+                    ranking: "QS World Ranking #87",
                     courses: "Medicine, Life Sciences, Physics, Humanities",
-                    fee: "No tuition fees (semester fee ~€150)",
-                    intakes: "October, April",
-                    portal: "https://www.uni-heidelberg.de"
+                    fee: "€1,500/semester",
+                    intakes: "Oct, Apr",
+                    portal: "https://www.uni-heidelberg.de/",
+                    contact: "International Relations"
+                },
+                {
+                    name: "University of Hamburg",
+                    location: "Hamburg",
+                    ranking: "QS World Ranking #205",
+                    courses: "Law, Business, Medicine, Social Sciences",
+                    fee: "No tuition fees",
+                    intakes: "Oct, Apr",
+                    portal: "https://www.uni-hamburg.de/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Göttingen",
+                    location: "Göttingen, Lower Saxony",
+                    ranking: "QS World Ranking #232",
+                    courses: "Agriculture, Biology, Chemistry, Physics",
+                    fee: "No tuition fees",
+                    intakes: "Oct, Apr",
+                    portal: "https://www.uni-goettingen.de/",
+                    contact: "International Office"
+                },
+                {
+                    name: "TU Berlin",
+                    location: "Berlin",
+                    ranking: "QS World Ranking #154",
+                    courses: "Engineering, Computer Science, Planning",
+                    fee: "No tuition fees",
+                    intakes: "Oct, Apr",
+                    portal: "https://www.tu.berlin/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Freiburg",
+                    location: "Freiburg, Baden-Württemberg",
+                    ranking: "QS World Ranking #189",
+                    courses: "Medicine, Law, Humanities, Sciences",
+                    fee: "€1,500/semester",
+                    intakes: "Oct, Apr",
+                    portal: "https://www.uni-freiburg.de/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Cologne",
+                    location: "Cologne, North Rhine-Westphalia",
+                    ranking: "QS World Ranking #335",
+                    courses: "Business, Law, Medicine, Social Sciences",
+                    fee: "No tuition fees",
+                    intakes: "Oct, Apr",
+                    portal: "https://www.uni-koeln.de/",
+                    contact: "International Office"
                 }
             ],
-            latvia: [
+            ireland: [
                 {
-                    name: "University of Latvia (LU)",
-                    location: "Riga, Latvia",
-                    ranking: "QS World Ranking 701-750",
-                    courses: "Computer Science, Medicine, Law, Business Administration, International Economics",
-                    fee: "€3,000 - €6,000/year",
-                    intakes: "September, February",
-                    portal: "https://www.lu.lv/en"
+                    name: "Trinity College Dublin",
+                    location: "Dublin, Ireland",
+                    ranking: "QS World Ranking #81",
+                    courses: "Medicine, Law, Business, Engineering",
+                    fee: "€17,000–36,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.tcd.ie/",
+                    contact: "International Admissions"
                 },
                 {
-                    name: "Riga Technical University (RTU)",
-                    location: "Riga, Latvia",
-                    ranking: "QS World Ranking 751-800",
-                    courses: "Engineering, Computer Systems, Civil Engineering, Electronics, Business Administration",
-                    fee: "€3,500 - €7,000/year",
-                    intakes: "September, February",
-                    portal: "https://www.rtu.lv/en"
+                    name: "University College Dublin (UCD)",
+                    location: "Dublin, Ireland",
+                    ranking: "QS World Ranking #171",
+                    courses: "Business, Agriculture, Medicine, Engineering",
+                    fee: "€20,000–40,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.ucd.ie/",
+                    contact: "Global Centre"
                 },
                 {
-                    name: "Riga Stradiņš University (RSU)",
-                    location: "Riga, Latvia",
-                    ranking: "QS World Ranking 801-1000",
-                    courses: "Medicine, Dentistry, Pharmacy, Public Health, Nursing, Rehabilitation",
-                    fee: "€8,000 - €15,000/year",
-                    intakes: "September",
-                    portal: "https://www.rsu.lv/en"
+                    name: "University of Galway",
+                    location: "Galway, Ireland",
+                    ranking: "QS World Ranking #289",
+                    courses: "Medicine, Engineering, Business, Arts",
+                    fee: "€15,000–25,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.universityofgalway.ie/",
+                    contact: "International Office"
                 },
                 {
-                    name: "Stockholm School of Economics in Riga (SSE Riga)",
-                    location: "Riga, Latvia",
-                    ranking: "Top Business School in Baltics",
-                    courses: "Business Administration, Economics, Finance, Management",
-                    fee: "€6,500 - €9,000/year",
-                    intakes: "September",
-                    portal: "https://www.sseriga.edu"
+                    name: "University College Cork (UCC)",
+                    location: "Cork, Ireland",
+                    ranking: "QS World Ranking #292",
+                    courses: "Medicine, Law, Business, Food Science",
+                    fee: "€15,000–45,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.ucc.ie/",
+                    contact: "International Office"
                 },
                 {
-                    name: "Latvia University of Life Sciences and Technologies (LLU)",
-                    location: "Jelgava, Latvia",
-                    ranking: "QS World Ranking 1000+",
-                    courses: "Agriculture, Veterinary Medicine, Food Science, Forestry, Environmental Engineering",
-                    fee: "€2,500 - €4,500/year",
-                    intakes: "September, February",
-                    portal: "https://www.llu.lv/en"
+                    name: "Dublin City University (DCU)",
+                    location: "Dublin, Ireland",
+                    ranking: "QS World Ranking #436",
+                    courses: "Business, Communications, Engineering, Computing",
+                    fee: "€15,000–23,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.dcu.ie/",
+                    contact: "International Office"
                 },
                 {
-                    name: "Vidzeme University of Applied Sciences (ViA)",
-                    location: "Valmiera, Latvia",
-                    ranking: "Modern Applied Sciences University",
-                    courses: "Information Technology, Business Administration, Social Sciences, Design",
-                    fee: "€2,000 - €3,500/year",
-                    intakes: "September, February",
-                    portal: "https://www.va.lv/en"
+                    name: "Maynooth University",
+                    location: "Maynooth, Ireland",
+                    ranking: "QS World Ranking #801-1000",
+                    courses: "Science, Engineering, Business, Arts",
+                    fee: "€14,000–22,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.maynoothuniversity.ie/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Technological University Dublin (TU Dublin)",
+                    location: "Dublin, Ireland",
+                    ranking: "QS World Ranking #851-900",
+                    courses: "Engineering, Business, Computing, Tourism",
+                    fee: "€12,000–20,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.tudublin.ie/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Limerick",
+                    location: "Limerick, Ireland",
+                    ranking: "QS World Ranking #501-510",
+                    courses: "Engineering, Business, Health Sciences, Arts",
+                    fee: "€14,000–20,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.ul.ie/",
+                    contact: "International Office"
                 }
             ],
-            france: [
+            finland: [
                 {
-                    name: "PSL University",
-                    location: "Paris, France",
-                    ranking: "QS World Ranking #26",
-                    courses: "Engineering, Sciences, Arts, Business",
-                    fee: "€3,000-€10,000/year",
-                    intakes: "September",
-                    portal: "https://www.psl.eu"
+                    name: "University of Helsinki",
+                    location: "Helsinki, Finland",
+                    ranking: "QS World Ranking #106",
+                    courses: "Medicine, Law, Computer Science, Agriculture",
+                    fee: "€13,000–18,000/year",
+                    intakes: "Aug",
+                    portal: "https://www.helsinki.fi/",
+                    contact: "Admissions Services"
                 },
                 {
-                    name: "Sorbonne University",
-                    location: "Paris, France",
-                    ranking: "QS World Ranking #60",
-                    courses: "Medicine, Sciences, Humanities, Law",
-                    fee: "€3,000-€8,000/year",
-                    intakes: "September",
-                    portal: "https://www.sorbonne-universite.fr"
-                }
-            ],
-            italy: [
+                    name: "Aalto University",
+                    location: "Espoo, Finland",
+                    ranking: "QS World Ranking #109",
+                    courses: "Engineering, Business, Design, Arts",
+                    fee: "€12,000–18,000/year",
+                    intakes: "Aug",
+                    portal: "https://www.aalto.fi/",
+                    contact: "Admission Services"
+                },
                 {
-                    name: "Politecnico di Milano",
-                    location: "Milan, Italy",
-                    ranking: "QS World Ranking #123",
-                    courses: "Engineering, Architecture, Design",
-                    fee: "€3,500-€4,000/year",
-                    intakes: "September",
-                    portal: "https://www.polimi.it"
-                }
-            ],
-            netherlands: [
+                    name: "Tampere University",
+                    location: "Tampere, Finland",
+                    ranking: "QS World Ranking #415",
+                    courses: "Technology, Medicine, Management",
+                    fee: "€10,000–15,000/year",
+                    intakes: "Aug",
+                    portal: "https://www.tuni.fi/",
+                    contact: "International Office"
+                },
                 {
-                    name: "Delft University of Technology",
-                    location: "Delft, Netherlands",
-                    ranking: "QS World Ranking #47",
-                    courses: "Engineering, Architecture, Computer Science",
-                    fee: "€15,000-€20,000/year",
-                    intakes: "September",
-                    portal: "https://www.tudelft.nl"
+                    name: "University of Oulu",
+                    location: "Oulu, Finland",
+                    ranking: "QS World Ranking #313",
+                    courses: "Engineering, IT, Business, Education",
+                    fee: "€10,000–13,000/year",
+                    intakes: "Aug",
+                    portal: "https://www.oulu.fi/",
+                    contact: "International Office"
+                },
+                {
+                    name: "LUT University",
+                    location: "Lappeenranta, Finland",
+                    ranking: "QS World Ranking #388",
+                    courses: "Energy Technology, Business, Engineering",
+                    fee: "€10,000–15,000/year",
+                    intakes: "Aug",
+                    portal: "https://www.lut.fi/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Turku",
+                    location: "Turku, Finland",
+                    ranking: "QS World Ranking #315",
+                    courses: "Medicine, Law, Humanities, Sciences",
+                    fee: "€10,000–16,000/year",
+                    intakes: "Aug",
+                    portal: "https://www.utu.fi/",
+                    contact: "International Office"
                 }
             ],
             sweden: [
                 {
                     name: "Lund University",
                     location: "Lund, Sweden",
-                    ranking: "QS World Ranking #87",
-                    courses: "Engineering, Medicine, Social Sciences",
-                    fee: "SEK 100,000-150,000/year",
-                    intakes: "September",
-                    portal: "https://www.lunduniversity.lu.se"
+                    ranking: "QS World Ranking #85",
+                    courses: "Engineering, Medicine, Social Sciences, Law",
+                    fee: "€10,000–20,000/year",
+                    intakes: "Aug",
+                    portal: "https://www.lunduniversity.lu.se/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Uppsala University",
+                    location: "Uppsala, Sweden",
+                    ranking: "QS World Ranking #105",
+                    courses: "Medicine, Law, Theology, Sciences",
+                    fee: "€10,000–20,000/year",
+                    intakes: "Aug",
+                    portal: "https://www.uu.se/",
+                    contact: "International Office"
+                },
+                {
+                    name: "KTH Royal Institute of Technology",
+                    location: "Stockholm, Sweden",
+                    ranking: "QS World Ranking #73",
+                    courses: "Engineering, Technology, Architecture",
+                    fee: "€15,000–20,000/year",
+                    intakes: "Aug",
+                    portal: "https://www.kth.se/",
+                    contact: "International Admissions"
+                },
+                {
+                    name: "Chalmers University of Technology",
+                    location: "Gothenburg, Sweden",
+                    ranking: "QS World Ranking #129",
+                    courses: "Engineering, Architecture, Technology",
+                    fee: "€15,000–20,000/year",
+                    intakes: "Aug",
+                    portal: "https://www.chalmers.se/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Stockholm University",
+                    location: "Stockholm, Sweden",
+                    ranking: "QS World Ranking #118",
+                    courses: "Law, Humanities, Social Sciences, Sciences",
+                    fee: "€9,000–15,000/year",
+                    intakes: "Aug",
+                    portal: "https://www.su.se/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Gothenburg",
+                    location: "Gothenburg, Sweden",
+                    ranking: "QS World Ranking #187",
+                    courses: "Medicine, Social Sciences, Business, Arts",
+                    fee: "€10,000–17,000/year",
+                    intakes: "Aug",
+                    portal: "https://www.gu.se/",
+                    contact: "International Office"
+                }
+            ],
+            netherlands: [
+                {
+                    name: "University of Amsterdam",
+                    location: "Amsterdam, Netherlands",
+                    ranking: "QS World Ranking #53",
+                    courses: "Business, Law, Social Sciences, Humanities",
+                    fee: "€10,000–18,000/year",
+                    intakes: "Sept (main), some Feb",
+                    portal: "https://www.uva.nl/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Delft University of Technology (TU Delft)",
+                    location: "Delft, Netherlands",
+                    ranking: "QS World Ranking #47",
+                    courses: "Engineering, Architecture, Technology",
+                    fee: "€15,000–20,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.tudelft.nl/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Erasmus University Rotterdam",
+                    location: "Rotterdam, Netherlands",
+                    ranking: "QS World Ranking #176",
+                    courses: "Business, Economics, Medicine, Law",
+                    fee: "€9,000–18,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.eur.nl/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Leiden University",
+                    location: "Leiden, Netherlands",
+                    ranking: "QS World Ranking #126",
+                    courses: "Law, Medicine, Humanities, Sciences",
+                    fee: "€12,000–18,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.universiteitleiden.nl/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Utrecht University",
+                    location: "Utrecht, Netherlands",
+                    ranking: "QS World Ranking #107",
+                    courses: "Veterinary Medicine, Humanities, Sciences, Law",
+                    fee: "€10,000–17,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.uu.nl/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Groningen",
+                    location: "Groningen, Netherlands",
+                    ranking: "QS World Ranking #139",
+                    courses: "Medicine, Law, Business, Arts",
+                    fee: "€10,000–15,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.rug.nl/",
+                    contact: "International Office"
+                }
+            ],
+            hungary: [
+                {
+                    name: "University of Debrecen",
+                    location: "Debrecen, Hungary",
+                    ranking: "QS World Ranking #651-700",
+                    courses: "Medicine, Dentistry, Pharmacy, Engineering",
+                    fee: "€4,000–12,000/year",
+                    intakes: "Sept, Feb",
+                    portal: "https://unideb.hu/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Szeged",
+                    location: "Szeged, Hungary",
+                    ranking: "QS World Ranking #551-560",
+                    courses: "Medicine, Dentistry, Pharmacy, Sciences",
+                    fee: "€4,000–12,000/year",
+                    intakes: "Sept, Feb",
+                    portal: "https://u-szeged.hu/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Budapest University of Technology & Economics",
+                    location: "Budapest, Hungary",
+                    ranking: "QS World Ranking #651-700",
+                    courses: "Engineering, Architecture, Computer Science",
+                    fee: "€4,000–8,000/year",
+                    intakes: "Sept, Feb",
+                    portal: "https://www.bme.hu/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Corvinus University of Budapest",
+                    location: "Budapest, Hungary",
+                    ranking: "QS World Ranking #701-750",
+                    courses: "Business, Economics, Social Sciences",
+                    fee: "€4,000–8,000/year",
+                    intakes: "Sept, Feb",
+                    portal: "https://www.uni-corvinus.hu/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Pécs",
+                    location: "Pécs, Hungary",
+                    ranking: "QS World Ranking #651-700",
+                    courses: "Medicine, Dentistry, Pharmacy, Arts",
+                    fee: "€4,000–12,000/year",
+                    intakes: "Sept, Feb",
+                    portal: "https://international.pte.hu/",
+                    contact: "International Centre"
+                },
+                {
+                    name: "Eötvös Loránd University (ELTE)",
+                    location: "Budapest, Hungary",
+                    ranking: "QS World Ranking #651-700",
+                    courses: "Humanities, Sciences, Law, Informatics",
+                    fee: "€4,000–8,000/year",
+                    intakes: "Sept, Feb",
+                    portal: "https://www.elte.hu/",
+                    contact: "International Office"
+                }
+            ],
+            italy: [
+                {
+                    name: "University of Bologna",
+                    location: "Bologna, Italy",
+                    ranking: "QS World Ranking #154",
+                    courses: "Law, Medicine, Engineering, Arts",
+                    fee: "€1,000–4,000/year",
+                    intakes: "Sept, some Feb",
+                    portal: "https://www.unibo.it/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Politecnico di Milano",
+                    location: "Milan, Italy",
+                    ranking: "QS World Ranking #123",
+                    courses: "Engineering, Architecture, Design",
+                    fee: "€3,500–4,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.polimi.it/",
+                    contact: "International Admissions"
+                },
+                {
+                    name: "Sapienza University of Rome",
+                    location: "Rome, Italy",
+                    ranking: "QS World Ranking #134",
+                    courses: "Medicine, Engineering, Humanities, Law",
+                    fee: "€1,000–3,000/year",
+                    intakes: "Sept, some Feb",
+                    portal: "https://www.uniroma1.it/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Milan",
+                    location: "Milan, Italy",
+                    ranking: "QS World Ranking #276",
+                    courses: "Medicine, Law, Sciences, Humanities",
+                    fee: "€1,000–3,500/year",
+                    intakes: "Sept",
+                    portal: "https://www.unimi.it/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Padua",
+                    location: "Padua, Italy",
+                    ranking: "QS World Ranking #219",
+                    courses: "Medicine, Engineering, Law, Sciences",
+                    fee: "€1,000–4,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.unipd.it/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Politecnico di Torino",
+                    location: "Turin, Italy",
+                    ranking: "QS World Ranking #325",
+                    courses: "Engineering, Architecture, Design",
+                    fee: "€3,500–4,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.polito.it/",
+                    contact: "International Office"
+                }
+            ],
+            france: [
+                {
+                    name: "Sorbonne University",
+                    location: "Paris, France",
+                    ranking: "QS World Ranking #59",
+                    courses: "Medicine, Sciences, Humanities, Law",
+                    fee: "€2,770–3,770/year",
+                    intakes: "Sept, some Jan",
+                    portal: "https://www.sorbonne-universite.fr/",
+                    contact: "International Relations"
+                },
+                {
+                    name: "PSL University",
+                    location: "Paris, France",
+                    ranking: "QS World Ranking #26",
+                    courses: "Engineering, Sciences, Arts, Business",
+                    fee: "€2,770–3,770/year",
+                    intakes: "Sept",
+                    portal: "https://www.psl.eu/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Paris-Saclay University",
+                    location: "Paris, France",
+                    ranking: "QS World Ranking #71",
+                    courses: "Science, Engineering, Medicine, Law",
+                    fee: "€2,770–3,770/year",
+                    intakes: "Sept",
+                    portal: "https://www.universite-paris-saclay.fr/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Lyon",
+                    location: "Lyon, France",
+                    ranking: "QS World Ranking #275",
+                    courses: "Medicine, Law, Business, Engineering",
+                    fee: "€2,770–3,770/year",
+                    intakes: "Sept",
+                    portal: "https://www.universite-lyon.fr/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Bordeaux",
+                    location: "Bordeaux, France",
+                    ranking: "QS World Ranking #493",
+                    courses: "Medicine, Law, Sciences, Engineering",
+                    fee: "€2,770–3,770/year",
+                    intakes: "Sept",
+                    portal: "https://www.u-bordeaux.fr/",
+                    contact: "International Office"
+                }
+            ],
+            spain: [
+                {
+                    name: "University of Barcelona",
+                    location: "Barcelona, Spain",
+                    ranking: "QS World Ranking #164",
+                    courses: "Medicine, Law, Humanities, Sciences",
+                    fee: "€3,000–12,000/year",
+                    intakes: "Sept/Oct, some Feb",
+                    portal: "https://www.ub.edu/",
+                    contact: "International Relations"
+                },
+                {
+                    name: "Autonomous University of Barcelona (UAB)",
+                    location: "Barcelona, Spain",
+                    ranking: "QS World Ranking #149",
+                    courses: "Medicine, Law, Business, Engineering",
+                    fee: "€3,000–10,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.uab.cat/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Complutense University of Madrid",
+                    location: "Madrid, Spain",
+                    ranking: "QS World Ranking #171",
+                    courses: "Medicine, Law, Humanities, Sciences",
+                    fee: "€3,000–12,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.ucm.es/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Valencia",
+                    location: "Valencia, Spain",
+                    ranking: "QS World Ranking #400",
+                    courses: "Medicine, Law, Business, Sciences",
+                    fee: "€3,000–8,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.uv.es/",
+                    contact: "International Relations"
+                },
+                {
+                    name: "Polytechnic University of Catalonia (UPC)",
+                    location: "Barcelona, Spain",
+                    ranking: "QS World Ranking #343",
+                    courses: "Engineering, Architecture, Technology",
+                    fee: "€4,000–10,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.upc.edu/",
+                    contact: "International Office"
                 }
             ],
             switzerland: [
@@ -1731,20 +2985,102 @@
                     location: "Zurich, Switzerland",
                     ranking: "QS World Ranking #7",
                     courses: "Engineering, Computer Science, Architecture, Natural Sciences",
-                    fee: "CHF 1,298/semester",
-                    intakes: "Autumn (September), Spring (February)",
-                    portal: "https://ethz.ch"
+                    fee: "CHF 1,000–4,000/year",
+                    intakes: "Sept, some Feb",
+                    portal: "https://ethz.ch/",
+                    contact: "International Relations"
+                },
+                {
+                    name: "EPFL Lausanne",
+                    location: "Lausanne, Switzerland",
+                    ranking: "QS World Ranking #36",
+                    courses: "Engineering, Computer Science, Life Sciences",
+                    fee: "CHF 1,000–4,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.epfl.ch/",
+                    contact: "International Affairs"
+                },
+                {
+                    name: "University of Zurich",
+                    location: "Zurich, Switzerland",
+                    ranking: "QS World Ranking #91",
+                    courses: "Medicine, Law, Business, Sciences",
+                    fee: "CHF 1,000–4,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.uzh.ch/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Geneva",
+                    location: "Geneva, Switzerland",
+                    ranking: "QS World Ranking #128",
+                    courses: "Medicine, Law, Social Sciences, Sciences",
+                    fee: "CHF 1,000–4,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.unige.ch/",
+                    contact: "International Relations"
+                },
+                {
+                    name: "University of Lausanne",
+                    location: "Lausanne, Switzerland",
+                    ranking: "QS World Ranking #220",
+                    courses: "Medicine, Law, Business, Social Sciences",
+                    fee: "CHF 1,000–4,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.unil.ch/",
+                    contact: "International Office"
                 }
             ],
             singapore: [
                 {
-                    name: "National University of Singapore",
+                    name: "National University of Singapore (NUS)",
                     location: "Singapore",
                     ranking: "QS World Ranking #8",
                     courses: "Engineering, Business, Computer Science, Medicine",
-                    fee: "SGD 17,000-50,000/year",
-                    intakes: "August",
-                    portal: "https://www.nus.edu.sg"
+                    fee: "SGD 18,000–50,000/year",
+                    intakes: "Aug, some Jan",
+                    portal: "https://www.nus.edu.sg/",
+                    contact: "Office of Admissions"
+                },
+                {
+                    name: "Nanyang Technological University (NTU)",
+                    location: "Singapore",
+                    ranking: "QS World Ranking #26",
+                    courses: "Engineering, Business, Sciences, Medicine",
+                    fee: "SGD 18,000–45,000/year",
+                    intakes: "Aug",
+                    portal: "https://www.ntu.edu.sg/",
+                    contact: "Undergraduate Admissions"
+                },
+                {
+                    name: "Singapore Management University (SMU)",
+                    location: "Singapore",
+                    ranking: "QS World Ranking #545",
+                    courses: "Business, Law, Economics, Social Sciences",
+                    fee: "SGD 20,000–40,000/year",
+                    intakes: "Aug",
+                    portal: "https://www.smu.edu.sg/",
+                    contact: "Office of Admissions"
+                },
+                {
+                    name: "Singapore University of Technology & Design (SUTD)",
+                    location: "Singapore",
+                    ranking: "QS World Ranking #429",
+                    courses: "Engineering, Architecture, Design",
+                    fee: "SGD 20,000–35,000/year",
+                    intakes: "Aug",
+                    portal: "https://www.sutd.edu.sg/",
+                    contact: "Admissions Office"
+                },
+                {
+                    name: "Singapore Institute of Technology (SIT)",
+                    location: "Singapore",
+                    ranking: "Young University",
+                    courses: "Engineering, Health Sciences, Design, Hospitality",
+                    fee: "SGD 15,000–30,000/year",
+                    intakes: "Aug",
+                    portal: "https://www.singaporetech.edu.sg/",
+                    contact: "Admissions Office"
                 }
             ],
             japan: [
@@ -1754,36 +3090,241 @@
                     ranking: "QS World Ranking #28",
                     courses: "Engineering, Sciences, Medicine, Humanities",
                     fee: "¥535,800/year",
+                    intakes: "April, many also September",
+                    portal: "https://www.u-tokyo.ac.jp/",
+                    contact: "International Admissions"
+                },
+                {
+                    name: "Kyoto University",
+                    location: "Kyoto, Japan",
+                    ranking: "QS World Ranking #46",
+                    courses: "Engineering, Medicine, Sciences, Humanities",
+                    fee: "¥535,800/year",
                     intakes: "April",
-                    portal: "https://www.u-tokyo.ac.jp"
+                    portal: "https://www.kyoto-u.ac.jp/",
+                    contact: "International Center"
+                },
+                {
+                    name: "Osaka University",
+                    location: "Osaka, Japan",
+                    ranking: "QS World Ranking #80",
+                    courses: "Medicine, Engineering, Sciences, Humanities",
+                    fee: "¥535,800/year",
+                    intakes: "April",
+                    portal: "https://www.osaka-u.ac.jp/",
+                    contact: "International Affairs"
+                },
+                {
+                    name: "Tokyo Institute of Technology",
+                    location: "Tokyo, Japan",
+                    ranking: "QS World Ranking #55",
+                    courses: "Engineering, Science, Computer Science",
+                    fee: "¥535,800/year",
+                    intakes: "April",
+                    portal: "https://www.titech.ac.jp/",
+                    contact: "International Student Exchange"
+                },
+                {
+                    name: "Tohoku University",
+                    location: "Sendai, Japan",
+                    ranking: "QS World Ranking #113",
+                    courses: "Engineering, Medicine, Sciences, Arts",
+                    fee: "¥535,800/year",
+                    intakes: "April",
+                    portal: "https://www.tohoku.ac.jp/",
+                    contact: "International Office"
                 }
             ],
-            "south-korea": [
+            latvia: [
                 {
-                    name: "Seoul National University",
-                    location: "Seoul, South Korea",
-                    ranking: "QS World Ranking #41",
-                    courses: "Engineering, Business, Medicine, Sciences",
-                    fee: "KRW 4,000,000-8,000,000/semester",
-                    intakes: "March, September",
-                    portal: "https://www.snu.ac.kr"
+                    name: "University of Latvia (LU)",
+                    location: "Riga, Latvia",
+                    ranking: "QS World Ranking 701-750",
+                    courses: "Computer Science, Medicine, Law, Business Administration, International Economics",
+                    fee: "€3,000–6,000/year",
+                    intakes: "Sept, Feb",
+                    portal: "https://www.lu.lv/en",
+                    contact: "International Office"
+                },
+                {
+                    name: "Riga Technical University (RTU)",
+                    location: "Riga, Latvia",
+                    ranking: "QS World Ranking 751-800",
+                    courses: "Engineering, Computer Systems, Civil Engineering, Electronics, Business Administration",
+                    fee: "€3,500–7,000/year",
+                    intakes: "Sept, Feb",
+                    portal: "https://www.rtu.lv/en",
+                    contact: "International Cooperation & Foreign Students Department"
+                },
+                {
+                    name: "Riga Stradiņš University (RSU)",
+                    location: "Riga, Latvia",
+                    ranking: "QS World Ranking 801-1000",
+                    courses: "Medicine, Dentistry, Pharmacy, Public Health, Nursing, Rehabilitation",
+                    fee: "€8,000–15,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.rsu.lv/en",
+                    contact: "International Department"
+                },
+                {
+                    name: "Stockholm School of Economics in Riga (SSE Riga)",
+                    location: "Riga, Latvia",
+                    ranking: "Top Business School in Baltics",
+                    courses: "Business Administration, Economics, Finance, Management",
+                    fee: "€6,500–9,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.sseriga.edu",
+                    contact: "Admissions Office"
+                },
+                {
+                    name: "Latvia University of Life Sciences and Technologies (LLU)",
+                    location: "Jelgava, Latvia",
+                    ranking: "QS World Ranking 1000+",
+                    courses: "Agriculture, Veterinary Medicine, Food Science, Forestry, Environmental Engineering",
+                    fee: "€2,500–4,500/year",
+                    intakes: "Sept, Feb",
+                    portal: "https://www.llu.lv/en",
+                    contact: "International Relations Department"
+                },
+                {
+                    name: "Vidzeme University of Applied Sciences (ViA)",
+                    location: "Valmiera, Latvia",
+                    ranking: "Modern Applied Sciences University",
+                    courses: "Information Technology, Business Administration, Social Sciences, Design",
+                    fee: "€2,000–3,500/year",
+                    intakes: "Sept, Feb",
+                    portal: "https://www.va.lv/en",
+                    contact: "International Office"
+                },
+                {
+                    name: "Turība University",
+                    location: "Riga, Latvia",
+                    ranking: "Private Business University",
+                    courses: "Business Administration, Law, Tourism, Communication",
+                    fee: "€3,000–5,000/year",
+                    intakes: "Sept, Feb",
+                    portal: "https://www.turiba.lv/en",
+                    contact: "International Office"
+                },
+                {
+                    name: "Daugavpils University",
+                    location: "Daugavpils, Latvia",
+                    ranking: "Regional University",
+                    courses: "Education, Humanities, Social Sciences, Natural Sciences",
+                    fee: "€2,500–4,000/year",
+                    intakes: "Sept, Feb",
+                    portal: "https://du.lv/en",
+                    contact: "International Cooperation Center"
                 }
             ],
-            "new-zealand": [
+            poland: [
                 {
-                    name: "University of Auckland",
-                    location: "Auckland, New Zealand",
-                    ranking: "QS World Ranking #68",
-                    courses: "Business, Engineering, Medicine, Arts",
-                    fee: "NZD 35,000-45,000/year",
-                    intakes: "February, July",
-                    portal: "https://www.auckland.ac.nz"
+                    name: "University of Warsaw",
+                    location: "Warsaw, Poland",
+                    ranking: "QS World Ranking #262",
+                    courses: "Law, Medicine, Business, Humanities",
+                    fee: "€2,000–6,000/year",
+                    intakes: "Oct, some Feb",
+                    portal: "https://www.uw.edu.pl/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Jagiellonian University",
+                    location: "Kraków, Poland",
+                    ranking: "QS World Ranking #304",
+                    courses: "Medicine, Law, Humanities, Sciences",
+                    fee: "€2,000–8,000/year",
+                    intakes: "Oct",
+                    portal: "https://www.uj.edu.pl/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Warsaw University of Technology",
+                    location: "Warsaw, Poland",
+                    ranking: "QS World Ranking #571-580",
+                    courses: "Engineering, Computer Science, Architecture",
+                    fee: "€2,000–5,000/year",
+                    intakes: "Oct",
+                    portal: "https://www.pw.edu.pl/",
+                    contact: "International Relations Office"
+                },
+                {
+                    name: "AGH University of Science & Technology",
+                    location: "Kraków, Poland",
+                    ranking: "QS World Ranking #801-1000",
+                    courses: "Mining, Metallurgy, Geology, Computer Science",
+                    fee: "€2,000–4,000/year",
+                    intakes: "Oct",
+                    portal: "https://www.agh.edu.pl/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Wroclaw",
+                    location: "Wroclaw, Poland",
+                    ranking: "QS World Ranking #601-650",
+                    courses: "Law, Business, Chemistry, Biotechnology",
+                    fee: "€2,000–4,000/year",
+                    intakes: "Oct",
+                    portal: "https://www.uni.wroc.pl/",
+                    contact: "International Office"
+                }
+            ],
+            czech: [
+                {
+                    name: "Charles University",
+                    location: "Prague, Czech Republic",
+                    ranking: "QS World Ranking #248",
+                    courses: "Medicine, Law, Humanities, Sciences",
+                    fee: "€3,000–12,000/year",
+                    intakes: "Sept, some Feb",
+                    portal: "https://cuni.cz/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Czech Technical University Prague",
+                    location: "Prague, Czech Republic",
+                    ranking: "QS World Ranking #436",
+                    courses: "Engineering, Computer Science, Architecture",
+                    fee: "€4,000–8,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.cvut.cz/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Masaryk University",
+                    location: "Brno, Czech Republic",
+                    ranking: "QS World Ranking #551-560",
+                    courses: "Medicine, Law, Sciences, Informatics",
+                    fee: "€3,000–10,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.muni.cz/",
+                    contact: "International Office"
+                },
+                {
+                    name: "University of Economics Prague",
+                    location: "Prague, Czech Republic",
+                    ranking: "QS World Ranking #751-800",
+                    courses: "Business, Economics, Finance, Management",
+                    fee: "€3,000–8,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.vse.cz/",
+                    contact: "International Office"
+                },
+                {
+                    name: "Brno University of Technology",
+                    location: "Brno, Czech Republic",
+                    ranking: "QS World Ranking #651-700",
+                    courses: "Engineering, Architecture, Chemistry, IT",
+                    fee: "€3,000–7,000/year",
+                    intakes: "Sept",
+                    portal: "https://www.vutbr.cz/",
+                    contact: "International Office"
                 }
             ]
         };
 
         // =============================================
-        // UNIVERSITY FILTERING FUNCTION - FIXED
+        // UNIVERSITY FILTERING AND DISPLAY FUNCTIONS
         // =============================================
 
         // Filter universities by country
@@ -1804,8 +3345,8 @@
                 header.innerHTML = `
                     <div class="country-header">
                         <div class="country-flag">${info.flag}</div>
-                        <h2 class="country-title">${info.name}</h2>
-                        <p>Explore top universities in ${info.name} with detailed information about courses, fees, and intakes</p>
+                        <h2 class="country-title">Study in ${info.name}</h2>
+                        <p>Explore top universities in ${info.name} with detailed information about courses, fees, intakes, and post-study work opportunities</p>
                         <div class="country-stats">
                             <div class="stat">
                                 <div class="stat-value">${info.stats.students}</div>
@@ -1817,8 +3358,51 @@
                             </div>
                             <div class="stat">
                                 <div class="stat-value">${info.stats.workPermit}</div>
-                                <div class="stat-label">Work Permit</div>
+                                <div class="stat-label">Post-Study Work</div>
                             </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Display country information (visa details, popular courses, etc.)
+            const infoSection = document.getElementById('countryInfoSection');
+            if (info) {
+                infoSection.innerHTML = `
+                    <div class="country-info-section">
+                        <h3 style="color: var(--primary-teal); margin-bottom: 1.5rem;">About Studying in ${info.name}</h3>
+                        <div class="country-info-grid">
+                            <div class="info-card">
+                                <h3>🎓 Post-Study Work Visa Details</h3>
+                                <div class="country-details">
+                                    <div class="detail-item">
+                                        <span class="detail-label">After Bachelor's Degree:</span>
+                                        <span class="detail-value">${info.visaDetails.bachelor}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">After Master's Degree:</span>
+                                        <span class="detail-value">${info.visaDetails.master}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Job Seeker Visa:</span>
+                                        <span class="detail-value">${info.visaDetails.jobSeeker}</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">PR Pathway:</span>
+                                        <span class="detail-value">${info.visaDetails.prPathway}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <h3>📚 Popular Courses for Indian Students</h3>
+                                <p>${info.popularCourses}</p>
+                                
+                                <h3 style="margin-top: 1.5rem;">💰 Estimated Cost of Living</h3>
+                                <p>${info.costOfLiving}</p>
+                            </div>
+                        </div>
+                        <div style="margin-top: 2rem; text-align: center;">
+                            <button class="btn btn-primary" onclick="scrollToSection('booking')">Book Free Consultation for ${info.name}</button>
                         </div>
                     </div>
                 `;
@@ -1844,20 +3428,103 @@
                         <span class="uni-label">🏆 Ranking:</span>
                         <span class="uni-value">${uni.ranking}</span>
                     </div>
+                    <div class="uni-info">
+                        <span class="uni-label">📞 Contact:</span>
+                        <span class="uni-value">${uni.contact}</span>
+                    </div>
                     <div class="uni-courses">
                         <strong>📚 Popular Courses:</strong><br>
                         ${uni.courses}
                     </div>
-                    <div class="uni-fee">💰 ${uni.fee}</div>
+                    <div class="uni-fee">💰 Annual Tuition: ${uni.fee}</div>
                     <div class="uni-intakes">📅 Intakes: ${uni.intakes}</div>
-                    <a href="${uni.portal}" target="_blank" class="uni-link">Visit University Portal →</a>
-                    <a href="#booking" class="uni-link" onclick="scrollToSection('booking')">Apply Now →</a>
+                    <div>
+                        <a href="${uni.portal}" target="_blank" class="uni-link">Visit University Website</a>
+                        <a href="#booking" class="uni-link" onclick="scrollToSection('booking')">Apply Now</a>
+                    </div>
                 </div>
             `).join('');
         }
 
+        // Search universities
+        function searchUniversities() {
+            const searchTerm = document.getElementById('universitySearch').value.toLowerCase();
+            const container = document.getElementById('universityContainer');
+            
+            if (!searchTerm) {
+                // If search is empty, show current filtered country
+                const activeCountry = document.querySelector('.country-btn.active');
+                if (activeCountry) {
+                    const country = activeCountry.getAttribute('onclick').match(/'([^']+)'/)[1];
+                    filterCountry(country);
+                }
+                return;
+            }
+            
+            let allUniversities = [];
+            
+            // Collect all universities from all countries
+            for (const country in universities) {
+                universities[country].forEach(uni => {
+                    allUniversities.push({
+                        ...uni,
+                        country: countryInfo[country] ? countryInfo[country].name : country
+                    });
+                });
+            }
+            
+            // Filter universities based on search term
+            const filteredUnis = allUniversities.filter(uni => 
+                uni.name.toLowerCase().includes(searchTerm) ||
+                uni.location.toLowerCase().includes(searchTerm) ||
+                uni.courses.toLowerCase().includes(searchTerm) ||
+                uni.country.toLowerCase().includes(searchTerm)
+            );
+            
+            if (filteredUnis.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: var(--text-light); font-size: 1.2rem; grid-column: 1/-1;">No universities found matching your search.</p>';
+                return;
+            }
+            
+            container.innerHTML = filteredUnis.map(uni => `
+                <div class="university-card">
+                    <h3 class="uni-name">${uni.name}</h3>
+                    <div class="uni-info">
+                        <span class="uni-label">📍 Location:</span>
+                        <span class="uni-value">${uni.location}, ${uni.country}</span>
+                    </div>
+                    <div class="uni-info">
+                        <span class="uni-label">🏆 Ranking:</span>
+                        <span class="uni-value">${uni.ranking}</span>
+                    </div>
+                    <div class="uni-courses">
+                        <strong>📚 Popular Courses:</strong><br>
+                        ${uni.courses}
+                    </div>
+                    <div class="uni-fee">💰 Annual Tuition: ${uni.fee}</div>
+                    <div class="uni-intakes">📅 Intakes: ${uni.intakes}</div>
+                    <div>
+                        <a href="${uni.portal}" target="_blank" class="uni-link">Visit University Website</a>
+                        <a href="#booking" class="uni-link" onclick="scrollToSection('booking')">Apply Now</a>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Update header to show search results
+            document.getElementById('countryHeader').innerHTML = `
+                <div class="country-header">
+                    <div class="country-flag">🔍</div>
+                    <h2 class="country-title">Search Results</h2>
+                    <p>Found ${filteredUnis.length} universities matching "${searchTerm}"</p>
+                </div>
+            `;
+            
+            // Clear country info section
+            document.getElementById('countryInfoSection').innerHTML = '';
+        }
+
         // =============================================
-        // OTHER FUNCTIONS
+        // OTHER FUNCTIONS (Modal, Navigation, etc.)
         // =============================================
 
         // Scroll to section
@@ -1943,28 +3610,44 @@
             // Simulate AI processing
             setTimeout(() => {
                 let recommendations = [];
+                const budgetNum = parseInt(budget);
+                const scoreNum = parseFloat(score);
                 
-                // Simple matching logic based on budget and score
+                // Simple matching logic
                 if (country === 'latvia' || country === 'any') {
-                    if (parseInt(budget) <= 10000) {
+                    if (budgetNum <= 10000) {
                         recommendations = universities.latvia.filter(uni => {
-                            return uni.fee.includes('€2,000') || uni.fee.includes('€3,000');
-                        });
+                            const feeMatch = uni.fee.includes('€2,000') || uni.fee.includes('€3,000');
+                            return feeMatch && (field === 'computer-science' || field === 'engineering' || field === 'business');
+                        }).slice(0, 3);
                     }
                 }
                 
-                if (recommendations.length === 0 && (country === 'germany' || country === 'any')) {
-                    recommendations = universities.germany.slice(0, 2);
+                if (country === 'germany' || country === 'any') {
+                    if (budgetNum <= 5000) {
+                        recommendations = [...recommendations, ...universities.germany.slice(0, 2)];
+                    }
+                }
+                
+                if (country === 'canada' || country === 'any') {
+                    if (budgetNum >= 20000 && budgetNum <= 40000) {
+                        recommendations = [...recommendations, ...universities.canada.slice(0, 2)];
+                    }
                 }
                 
                 if (recommendations.length === 0) {
-                    // Fallback to some universities
+                    // Fallback recommendations
                     recommendations = [
                         universities.latvia[0],
                         universities.germany[0],
                         universities.canada[0]
                     ].filter(Boolean);
                 }
+                
+                // Remove duplicates
+                recommendations = recommendations.filter((uni, index, self) =>
+                    index === self.findIndex((u) => u.name === uni.name)
+                );
                 
                 // Display results
                 listDiv.innerHTML = recommendations.map(uni => `
@@ -1978,8 +3661,16 @@
                             <span class="uni-label">🏆 Ranking:</span>
                             <span class="uni-value">${uni.ranking}</span>
                         </div>
+                        <div class="uni-info">
+                            <span class="uni-label">📚 Courses:</span>
+                            <span class="uni-value">${uni.courses.split(',').slice(0, 2).join(',')}</span>
+                        </div>
                         <div class="uni-fee">💰 ${uni.fee}</div>
-                        <a href="${uni.portal}" target="_blank" class="uni-link">Visit University Portal →</a>
+                        <div class="uni-intakes">📅 ${uni.intakes}</div>
+                        <div>
+                            <a href="${uni.portal}" target="_blank" class="uni-link">Visit Website</a>
+                            <a href="#booking" class="uni-link" onclick="scrollToSection('booking')">Apply Now</a>
+                        </div>
                     </div>
                 `).join('');
                 
@@ -1988,34 +3679,108 @@
             }, 1500);
         }
 
-        // Form submission functions (simplified for demo)
+        // Form submission functions
         function submitQuickApp() {
-            alert('Thank you! Your application has been submitted. We will contact you soon.');
+            const name = document.getElementById('qaName').value;
+            const email = document.getElementById('qaEmail').value;
+            const phone = document.getElementById('qaPhone').value;
+            
+            if (!name || !email || !phone) {
+                alert('Please fill in all required fields!');
+                return;
+            }
+            
+            alert('Thank you! Your application has been submitted. We will contact you within 24 hours.');
             closeQuickApplication();
+            
+            // Reset form
+            document.getElementById('qaName').value = '';
+            document.getElementById('qaEmail').value = '';
+            document.getElementById('qaPhone').value = '';
+            document.getElementById('qaCountry').value = '';
+            document.getElementById('qaCourse').value = '';
+            document.getElementById('qaMessage').value = '';
         }
 
         function submitUSVisa() {
+            const name = document.getElementById('uvName').value;
+            const email = document.getElementById('uvEmail').value;
+            const phone = document.getElementById('uvPhone').value;
+            
+            if (!name || !email || !phone) {
+                alert('Please fill in all required fields!');
+                return;
+            }
+            
             alert('Thank you! Your US visa slot booking request has been submitted. Our team will contact you within 24 hours.');
             closeUSVisaForm();
+            
+            // Reset form
+            document.getElementById('uvName').value = '';
+            document.getElementById('uvEmail').value = '';
+            document.getElementById('uvPhone').value = '';
+            document.getElementById('uvType').value = '';
+            document.getElementById('uvDate').value = '';
+            document.getElementById('uvMessage').value = '';
         }
 
         function submitConsultation() {
+            const name = document.getElementById('cbName').value;
+            const email = document.getElementById('cbEmail').value;
+            const phone = document.getElementById('cbPhone').value;
+            
+            if (!name || !email || !phone) {
+                alert('Please fill in all required fields!');
+                return;
+            }
+            
             alert('Thank you! Your consultation has been booked. We will reach out to you shortly to confirm the time.');
             closeBookingForm();
+            
+            // Reset form
+            document.getElementById('cbName').value = '';
+            document.getElementById('cbEmail').value = '';
+            document.getElementById('cbPhone').value = '';
+            document.getElementById('cbCountry').value = '';
+            document.getElementById('cbTime').value = '';
+            document.getElementById('cbMessage').value = '';
         }
 
         function submitVolunteer() {
-            alert('Thank you for your interest in volunteering! We appreciate your willingness to help students achieve their dreams.');
+            const name = document.getElementById('vName').value;
+            const email = document.getElementById('vEmail').value;
+            const phone = document.getElementById('vPhone').value;
+            
+            if (!name || !email || !phone) {
+                alert('Please fill in all required fields!');
+                return;
+            }
+            
+            alert('Thank you for your interest in volunteering! We appreciate your willingness to help students achieve their dreams. We will contact you soon.');
             closeVolunteerForm();
+            
+            // Reset form
+            document.getElementById('vName').value = '';
+            document.getElementById('vEmail').value = '';
+            document.getElementById('vPhone').value = '';
+            document.getElementById('vCountry').value = '';
+            document.getElementById('vCity').value = '';
+            document.getElementById('vUniversity').value = '';
+            document.getElementById('vCourse').value = '';
+            document.getElementById('vYear').value = '';
+            document.getElementById('vYears').value = '';
+            document.getElementById('vPayment').value = '';
+            document.getElementById('vLanguages').value = '';
+            document.getElementById('vComments').value = '';
         }
 
         function viewSubmissions() {
             alert('This would show all form submissions in a real application. In this demo, forms are simulated.');
         }
 
-        // Initialize with USA universities
+        // Initialize with Dubai universities
         window.onload = function() {
-            filterCountry('usa');
+            filterCountry('dubai');
             
             // Smooth scroll for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
